@@ -6,7 +6,7 @@ namespace Carver.Models
 {
     internal class Administrator : User
     {
-        public Administrator(string email, string name, string password) : base(email, name, password, "Administrator")
+        public Administrator(string email, string name, string password) : base(email, name, password, UserRole.Administrator)
         {
         }
     }
