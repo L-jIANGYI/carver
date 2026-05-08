@@ -14,5 +14,18 @@ namespace Carver
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "admin" && txtPassword.Text == "1234")
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Onjuiste gebruikersnaam of wachtwoord");
+            }
+        }
     }
 }
