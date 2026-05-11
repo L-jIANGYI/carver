@@ -12,15 +12,18 @@ namespace Carver.Database
         {
             using(SqlConnection conn = DBConnection.GetConnection())
             {
+                // Open the connection and execute a query to find the user with the given email and password
                 conn.Open();
                 string query = "SELECT * FROM Users WHERE Email = @Email AND Password = @Password";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Email", email);
                 cmd.Parameters.AddWithValue("@Password", password);
 
+                // Execute the query and read the results
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
+                    // Return a User object based on the role
                     UserRole role = (UserRole)reader.GetInt32(reader.GetOrdinal("Role"));
 
                     if (role == UserRole.Administrator)
