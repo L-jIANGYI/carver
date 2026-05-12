@@ -406,12 +406,13 @@
             // 
             // lblWelcome
             // 
-            lblWelcome.AutoSize = true;
-            lblWelcome.Location = new Point(561, 18);
+            lblWelcome.Location = new Point(363, 18);
             lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(119, 20);
+            lblWelcome.RightToLeft = RightToLeft.No;
+            lblWelcome.Size = new Size(317, 20);
             lblWelcome.TabIndex = 1;
             lblWelcome.Text = "Welkom, Naam";
+            lblWelcome.TextAlign = ContentAlignment.TopRight;
             // 
             // lblTitle
             // 

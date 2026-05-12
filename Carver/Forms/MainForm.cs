@@ -9,6 +9,7 @@ namespace Carver
         public MainForm(User user)
         {
             InitializeComponent();
+            lblWelcome.Text = $"Welkom, {user.Name}!";
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
