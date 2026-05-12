@@ -7,7 +7,7 @@ namespace Carver.Database
 {
     internal class DBConnection
     {
-        private static string _connectionString = "Data Source=HPPAV\\SQLEXPRESS;Initial Catalog=GezondheidDB;Integrated Security=True;Encrypt=False";
+        private static string _connectionString = "Data Source=HPPAV\\SQLEXPRESS;Initial Catalog=CarverDB;Integrated Security=True;Encrypt=False";
 
         public static SqlConnection GetConnection()
         {
