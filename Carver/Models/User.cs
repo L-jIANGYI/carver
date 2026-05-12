@@ -14,7 +14,7 @@ namespace Carver.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public User(string email, string name, string password, UserRole role)
+        public User(string name, string email, string password, UserRole role)
         {
             this.Name = name;
             this.Email = email;
