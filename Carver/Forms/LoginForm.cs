@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using Carver.Database;
+using Carver.Models;
 
 namespace Carver
 {
-    public partial class LoginForm : Form
+    internal partial class LoginForm : Form
     {
+        public User? LoggedInUser { get; private set; }
+
         public LoginForm()
         {
             InitializeComponent();
@@ -17,14 +14,19 @@ namespace Carver
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtEmail.Text == "admin" && txtPassword.Text == "1234")
+            UserRepository repo = new UserRepository();
+            User? user = repo.Login(txtEmail.Text, txtPassword.Text);
+
+            if (user != null)
             {
+                LoggedInUser = user;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Onjuiste gebruikersnaam of wachtwoord");
+                MessageBox.Show("Onjuiste gegevens", "Fout",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
