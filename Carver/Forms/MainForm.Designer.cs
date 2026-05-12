@@ -139,7 +139,6 @@
             lblInterestReason.Size = new Size(126, 20);
             lblInterestReason.TabIndex = 25;
             lblInterestReason.Text = "Reden interesse";
-            lblInterestReason.Click += label3_Click;
             // 
             // cmbInterestedModel
             // 
@@ -213,7 +212,6 @@
             grpProspect.Size = new Size(451, 373);
             grpProspect.TabIndex = 25;
             grpProspect.TabStop = false;
-            grpProspect.Enter += groupBox1_Enter;
             // 
             // lblProspectInfo
             // 
@@ -275,7 +273,6 @@
             chkScooterLicense.TabIndex = 21;
             chkScooterLicense.Text = "Scooterrijbewijs (AM)";
             chkScooterLicense.UseVisualStyleBackColor = true;
-            chkScooterLicense.CheckedChanged += checkBox2_CheckedChanged;
             // 
             // txtEmail
             // 
@@ -325,7 +322,6 @@
             lblProspectEmail.Size = new Size(47, 20);
             lblProspectEmail.TabIndex = 8;
             lblProspectEmail.Text = "Email";
-            lblProspectEmail.Click += lblProspectEmail_Click;
             // 
             // lblPhone
             // 
@@ -344,7 +340,6 @@
             lblAddress.Size = new Size(52, 20);
             lblAddress.TabIndex = 10;
             lblAddress.Text = "Adres";
-            lblAddress.Click += lblAddress_Click;
             // 
             // lblLastname
             // 
@@ -363,7 +358,6 @@
             lblCity.Size = new Size(42, 20);
             lblCity.TabIndex = 12;
             lblCity.Text = "Stad";
-            lblCity.Click += lblCity_Click;
             // 
             // btnTestDriveSubmit
             // 
@@ -387,7 +381,7 @@
             // 
             tpCompleted.Location = new Point(4, 29);
             tpCompleted.Name = "tpCompleted";
-            tpCompleted.Size = new Size(768, 430);
+            tpCompleted.Size = new Size(768, 426);
             tpCompleted.TabIndex = 3;
             tpCompleted.Text = "Uitgevoerd";
             tpCompleted.UseVisualStyleBackColor = true;
@@ -396,7 +390,7 @@
             // 
             tpStatistics.Location = new Point(4, 29);
             tpStatistics.Name = "tpStatistics";
-            tpStatistics.Size = new Size(768, 430);
+            tpStatistics.Size = new Size(768, 426);
             tpStatistics.TabIndex = 4;
             tpStatistics.Text = "Stastieken";
             tpStatistics.UseVisualStyleBackColor = true;
@@ -405,7 +399,7 @@
             // 
             tpEmployeeManagement.Location = new Point(4, 29);
             tpEmployeeManagement.Name = "tpEmployeeManagement";
-            tpEmployeeManagement.Size = new Size(768, 430);
+            tpEmployeeManagement.Size = new Size(768, 426);
             tpEmployeeManagement.TabIndex = 5;
             tpEmployeeManagement.Text = "Medewerkers";
             tpEmployeeManagement.UseVisualStyleBackColor = true;
