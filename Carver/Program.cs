@@ -7,12 +7,13 @@ namespace Carver
         {
             ApplicationConfiguration.Initialize();
 
-            LoginForm loginForm = new LoginForm();
-            if (loginForm.ShowDialog() == DialogResult.OK)
-            {
-                // If the login is successful, run the main form
-                Application.Run(new MainForm());
-            }
+            //LoginForm loginForm = new LoginForm();
+            //if (loginForm.ShowDialog() == DialogResult.OK)
+            //{
+            //    // If the login is successful, run the main form
+            //    Application.Run(new MainForm());
+            //}
+            Application.Run(new MainForm());
         }
     }
 }
