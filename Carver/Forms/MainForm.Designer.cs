@@ -381,7 +381,7 @@
             // 
             tpCompleted.Location = new Point(4, 29);
             tpCompleted.Name = "tpCompleted";
-            tpCompleted.Size = new Size(768, 426);
+            tpCompleted.Size = new Size(768, 430);
             tpCompleted.TabIndex = 3;
             tpCompleted.Text = "Uitgevoerd";
             tpCompleted.UseVisualStyleBackColor = true;
@@ -390,7 +390,7 @@
             // 
             tpStatistics.Location = new Point(4, 29);
             tpStatistics.Name = "tpStatistics";
-            tpStatistics.Size = new Size(768, 426);
+            tpStatistics.Size = new Size(768, 430);
             tpStatistics.TabIndex = 4;
             tpStatistics.Text = "Stastieken";
             tpStatistics.UseVisualStyleBackColor = true;
@@ -399,7 +399,7 @@
             // 
             tpEmployeeManagement.Location = new Point(4, 29);
             tpEmployeeManagement.Name = "tpEmployeeManagement";
-            tpEmployeeManagement.Size = new Size(768, 426);
+            tpEmployeeManagement.Size = new Size(768, 430);
             tpEmployeeManagement.TabIndex = 5;
             tpEmployeeManagement.Text = "Medewerkers";
             tpEmployeeManagement.UseVisualStyleBackColor = true;
@@ -431,6 +431,7 @@
             btnLogOut.TabIndex = 3;
             btnLogOut.Text = "Uitloggen";
             btnLogOut.UseVisualStyleBackColor = true;
+            btnLogOut.Click += btnLogOut_Click;
             // 
             // MainForm
             // 
