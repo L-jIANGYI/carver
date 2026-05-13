@@ -19,6 +19,13 @@ namespace Carver.Models
         Sport
     }
 
+    internal enum TestDriveStatus
+    {
+        Scheduled,
+        Completed,
+        Canceled
+    }
+
     internal enum ExperienceAnswer
     {
         Disagree = 1,
