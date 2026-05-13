@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Carver.Models;
+﻿using Carver.Models;
 using Microsoft.Data.SqlClient;
 
 namespace Carver.Database
