@@ -11,7 +11,7 @@ namespace Carver.Models
         public Carver Carver { get; set; }
         public DateTime ScheduledAt { get; set; }
         public string Reason { get; set; }
-        public string Status { get; set; }  // Scheduled, Completed, Canceled
+        public TestDriveStatus Status { get; set; }
         public DateTime CreatedAt { get; set; }
 
         public TestDrive(Prospect prospect, Carver carver, DateTime scheduledAt, string reason)
@@ -20,7 +20,7 @@ namespace Carver.Models
             Carver = carver;
             ScheduledAt = scheduledAt;
             Reason = reason;
-            Status = "Scheduled";
+            Status = TestDriveStatus.Scheduled;
         }
     }
 }
