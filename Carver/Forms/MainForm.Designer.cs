@@ -48,6 +48,10 @@
             btnTestDriveNewProspect = new Button();
             lblProspectInfo = new Label();
             tpProspect = new TabPage();
+            dgvProspects = new DataGridView();
+            FullName = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Phone = new DataGridViewTextBoxColumn();
             btnNewProspect = new Button();
             btnSearchProspects = new Button();
             txtSearchProspects = new TextBox();
@@ -63,6 +67,7 @@
             grpTestDriveDetails.SuspendLayout();
             grpProspect.SuspendLayout();
             tpProspect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             SuspendLayout();
             // 
             // tabMain
@@ -261,6 +266,7 @@
             // 
             // tpProspect
             // 
+            tpProspect.Controls.Add(dgvProspects);
             tpProspect.Controls.Add(btnNewProspect);
             tpProspect.Controls.Add(btnSearchProspects);
             tpProspect.Controls.Add(txtSearchProspects);
@@ -270,6 +276,43 @@
             tpProspect.TabIndex = 6;
             tpProspect.Text = "Prospects";
             tpProspect.UseVisualStyleBackColor = true;
+            // 
+            // dgvProspects
+            // 
+            dgvProspects.AllowUserToAddRows = false;
+            dgvProspects.AllowUserToDeleteRows = false;
+            dgvProspects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProspects.Columns.AddRange(new DataGridViewColumn[] { FullName, Email, Phone });
+            dgvProspects.Location = new Point(18, 60);
+            dgvProspects.Name = "dgvProspects";
+            dgvProspects.ReadOnly = true;
+            dgvProspects.RowHeadersWidth = 51;
+            dgvProspects.Size = new Size(727, 358);
+            dgvProspects.TabIndex = 3;
+            // 
+            // FullName
+            // 
+            FullName.HeaderText = "Naam";
+            FullName.MinimumWidth = 6;
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
+            FullName.Width = 125;
+            // 
+            // Email
+            // 
+            Email.HeaderText = "Email";
+            Email.MinimumWidth = 6;
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            Email.Width = 125;
+            // 
+            // Phone
+            // 
+            Phone.HeaderText = "Telefoon";
+            Phone.MinimumWidth = 6;
+            Phone.Name = "Phone";
+            Phone.ReadOnly = true;
+            Phone.Width = 125;
             // 
             // btnNewProspect
             // 
@@ -283,7 +326,7 @@
             // 
             // btnSearchProspects
             // 
-            btnSearchProspects.Location = new Point(221, 14);
+            btnSearchProspects.Location = new Point(236, 16);
             btnSearchProspects.Name = "btnSearchProspects";
             btnSearchProspects.Size = new Size(94, 29);
             btnSearchProspects.TabIndex = 1;
@@ -292,7 +335,7 @@
             // 
             // txtSearchProspects
             // 
-            txtSearchProspects.Location = new Point(3, 14);
+            txtSearchProspects.Location = new Point(18, 16);
             txtSearchProspects.Name = "txtSearchProspects";
             txtSearchProspects.Size = new Size(201, 27);
             txtSearchProspects.TabIndex = 0;
@@ -382,6 +425,7 @@
             grpProspect.PerformLayout();
             tpProspect.ResumeLayout(false);
             tpProspect.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProspects).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -418,5 +462,9 @@
         private Button btnSearchProspects;
         private TextBox txtSearchProspects;
         private Button btnNewProspect;
+        private DataGridView dgvProspects;
+        private DataGridViewTextBoxColumn FullName;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Phone;
     }
 }

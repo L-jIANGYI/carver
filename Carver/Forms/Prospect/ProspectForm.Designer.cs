@@ -73,14 +73,14 @@
             txtAddress.Location = new Point(14, 206);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(236, 27);
-            txtAddress.TabIndex = 26;
+            txtAddress.TabIndex = 4;
             // 
             // txtFirstName
             // 
             txtFirstName.Location = new Point(14, 79);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(204, 27);
-            txtFirstName.TabIndex = 27;
+            txtFirstName.TabIndex = 0;
             // 
             // chkDisabledVehicle
             // 
@@ -88,7 +88,7 @@
             chkDisabledVehicle.Location = new Point(13, 339);
             chkDisabledVehicle.Name = "chkDisabledVehicle";
             chkDisabledVehicle.Size = new Size(158, 24);
-            chkDisabledVehicle.TabIndex = 40;
+            chkDisabledVehicle.TabIndex = 8;
             chkDisabledVehicle.Text = "Invalidenvoertuig";
             chkDisabledVehicle.UseVisualStyleBackColor = true;
             // 
@@ -97,7 +97,7 @@
             txtLastName.Location = new Point(241, 79);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(148, 27);
-            txtLastName.TabIndex = 28;
+            txtLastName.TabIndex = 1;
             // 
             // chkScooterLicense
             // 
@@ -105,7 +105,7 @@
             chkScooterLicense.Location = new Point(13, 309);
             chkScooterLicense.Name = "chkScooterLicense";
             chkScooterLicense.Size = new Size(189, 24);
-            chkScooterLicense.TabIndex = 39;
+            chkScooterLicense.TabIndex = 7;
             chkScooterLicense.Text = "Scooterrijbewijs (AM)";
             chkScooterLicense.UseVisualStyleBackColor = true;
             // 
@@ -114,7 +114,7 @@
             txtEmail.Location = new Point(14, 141);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(241, 27);
-            txtEmail.TabIndex = 29;
+            txtEmail.TabIndex = 2;
             // 
             // chkDrivingLicense
             // 
@@ -122,7 +122,7 @@
             chkDrivingLicense.Location = new Point(13, 279);
             chkDrivingLicense.Name = "chkDrivingLicense";
             chkDrivingLicense.Size = new Size(133, 24);
-            chkDrivingLicense.TabIndex = 38;
+            chkDrivingLicense.TabIndex = 6;
             chkDrivingLicense.Text = "Rijbewijs A / B";
             chkDrivingLicense.UseVisualStyleBackColor = true;
             // 
@@ -131,14 +131,14 @@
             txtPhone.Location = new Point(287, 142);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(148, 27);
-            txtPhone.TabIndex = 30;
+            txtPhone.TabIndex = 3;
             // 
             // txtCity
             // 
             txtCity.Location = new Point(287, 206);
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(155, 27);
-            txtCity.TabIndex = 31;
+            txtCity.TabIndex = 5;
             // 
             // lblFirstname
             // 
@@ -199,13 +199,14 @@
             btnSubmit.Location = new Point(164, 388);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(113, 37);
-            btnSubmit.TabIndex = 43;
+            btnSubmit.TabIndex = 9;
             btnSubmit.Text = "Aanmaken";
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // ProspectForm
             // 
+            AcceptButton = btnSubmit;
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(455, 450);
@@ -228,7 +229,7 @@
             Controls.Add(lblLastname);
             Controls.Add(lblCity);
             Name = "ProspectForm";
-            Text = "ProspectForm";
+            Text = "1";
             ResumeLayout(false);
             PerformLayout();
         }
