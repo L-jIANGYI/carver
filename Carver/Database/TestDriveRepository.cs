@@ -5,6 +5,8 @@ namespace Carver.Database
 {
     internal class TestDriveRepository
     {
+        private ProspectRepository _prospectRepo = new ProspectRepository();
+
         public void Add(TestDrive testDrive)
         {
             using(SqlConnection conn = DBConnection.GetConnection())
@@ -33,13 +35,8 @@ namespace Carver.Database
             using (SqlConnection conn = DBConnection.GetConnection())
             {
                 conn.Open();
-                string query = @"SELECT t.*, 
-                    p.FirstName, p.LastName, p.Email, p.Phone,
-                    p.Address, p.City, p.HasDrivingLicense,
-                    p.HasScooterLicense, p.IsDisabledVehicle,
-                    c.Id AS CarverId, c.ModelType
+                string query = @"SELECT t.*, c.Id AS CarverId, c.ModelType
                     FROM TestDrives t
-                    INNER JOIN Prospects p ON t.ProspectId = p.Id
                     INNER JOIN Carvers c ON t.CarverId = c.Id
                     WHERE t.Status = @Status
                     ORDER BY t.ScheduledAt";
@@ -50,17 +47,7 @@ namespace Carver.Database
 
                 while (reader.Read())
                 {
-                    Prospect prospect = new Prospect(
-                        reader.GetString(reader.GetOrdinal("FirstName")),
-                        reader.GetString(reader.GetOrdinal("LastName")),
-                        reader.GetString(reader.GetOrdinal("Email")),
-                        reader.GetString(reader.GetOrdinal("Phone"))
-                    );
-                    prospect.Address = reader.GetString(reader.GetOrdinal("Address"));
-                    prospect.City = reader.GetString(reader.GetOrdinal("City"));
-                    prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
-                    prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
-                    prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
+                    Prospect prospect = _prospectRepo.GetById(reader.GetInt32(reader.GetOrdinal("ProspectId")))!;
 
                     CarverModelType modelType = (CarverModelType)reader.GetInt32(reader.GetOrdinal("ModelType"));
                     Models.Carver carver = new Models.Carver(modelType);
@@ -87,13 +74,8 @@ namespace Carver.Database
             using (SqlConnection conn = DBConnection.GetConnection())
             {
                 conn.Open();
-                string query = @"SELECT t.*, 
-                    p.FirstName, p.LastName, p.Email, p.Phone,
-                    p.Address, p.City, p.HasDrivingLicense,
-                    p.HasScooterLicense, p.IsDisabledVehicle,
-                    c.Id AS CarverId, c.ModelType
+                string query = @"SELECT t.*, c.Id AS CarverId, c.ModelType
                     FROM TestDrives t
-                    INNER JOIN Prospects p ON t.ProspectId = p.Id
                     INNER JOIN Carvers c ON t.CarverId = c.Id
                     ORDER BY t.ScheduledAt";
 
@@ -102,17 +84,7 @@ namespace Carver.Database
 
                 while (reader.Read())
                 {
-                    Prospect prospect = new Prospect(
-                        reader.GetString(reader.GetOrdinal("FirstName")),
-                        reader.GetString(reader.GetOrdinal("LastName")),
-                        reader.GetString(reader.GetOrdinal("Email")),
-                        reader.GetString(reader.GetOrdinal("Phone"))
-                    );
-                    prospect.Address = reader.GetString(reader.GetOrdinal("Address"));
-                    prospect.City = reader.GetString(reader.GetOrdinal("City"));
-                    prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
-                    prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
-                    prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
+                    Prospect prospect = _prospectRepo.GetById(reader.GetInt32(reader.GetOrdinal("ProspectId")))!;
 
                     CarverModelType modelType = (CarverModelType)reader.GetInt32(reader.GetOrdinal("ModelType"));
                     Models.Carver carver = new Models.Carver(modelType);
