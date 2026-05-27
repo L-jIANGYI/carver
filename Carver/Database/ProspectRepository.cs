@@ -78,6 +78,7 @@ namespace Carver.Database
                         reader.GetString(reader.GetOrdinal("Address")),
                         reader.GetString(reader.GetOrdinal("City"))
                     );
+                    prospect.Id = reader.GetInt32(reader.GetOrdinal("Id"));
                     prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
                     prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
                     prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
