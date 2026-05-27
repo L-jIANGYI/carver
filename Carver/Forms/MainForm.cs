@@ -1,3 +1,5 @@
+using Carver.Forms;
+using Carver.Forms.Prospect;
 using Carver.Models;
 
 namespace Carver
@@ -22,6 +24,12 @@ namespace Carver
                 IsLogout = true;
                 this.Close();
             }
+        }
+
+        private void btnNewProspect_Click(object sender, EventArgs e)
+        {
+            NewProspectForm form = new NewProspectForm();
+            form.ShowDialog();
         }
     }
 }

@@ -48,6 +48,9 @@
             btnTestDriveNewProspect = new Button();
             lblProspectInfo = new Label();
             tpProspect = new TabPage();
+            btnNewProspect = new Button();
+            btnSearchProspects = new Button();
+            txtSearchProspects = new TextBox();
             tpScheduled = new TabPage();
             tpCompleted = new TabPage();
             tpStatistics = new TabPage();
@@ -55,9 +58,6 @@
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
-            txtSearchProspects = new TextBox();
-            btnSearchProspects = new Button();
-            btnNewProspect = new Button();
             tabMain.SuspendLayout();
             tpNewTestDrive.SuspendLayout();
             grpTestDriveDetails.SuspendLayout();
@@ -271,6 +271,32 @@
             tpProspect.Text = "Prospects";
             tpProspect.UseVisualStyleBackColor = true;
             // 
+            // btnNewProspect
+            // 
+            btnNewProspect.Location = new Point(588, 14);
+            btnNewProspect.Name = "btnNewProspect";
+            btnNewProspect.Size = new Size(157, 29);
+            btnNewProspect.TabIndex = 2;
+            btnNewProspect.Text = "Nieuwe prospect";
+            btnNewProspect.UseVisualStyleBackColor = true;
+            btnNewProspect.Click += btnNewProspect_Click;
+            // 
+            // btnSearchProspects
+            // 
+            btnSearchProspects.Location = new Point(221, 14);
+            btnSearchProspects.Name = "btnSearchProspects";
+            btnSearchProspects.Size = new Size(94, 29);
+            btnSearchProspects.TabIndex = 1;
+            btnSearchProspects.Text = "Zoeken";
+            btnSearchProspects.UseVisualStyleBackColor = true;
+            // 
+            // txtSearchProspects
+            // 
+            txtSearchProspects.Location = new Point(3, 14);
+            txtSearchProspects.Name = "txtSearchProspects";
+            txtSearchProspects.Size = new Size(201, 27);
+            txtSearchProspects.TabIndex = 0;
+            // 
             // tpScheduled
             // 
             tpScheduled.Location = new Point(4, 29);
@@ -336,31 +362,6 @@
             btnLogOut.Text = "Uitloggen";
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
-            // 
-            // txtSearchProspects
-            // 
-            txtSearchProspects.Location = new Point(3, 14);
-            txtSearchProspects.Name = "txtSearchProspects";
-            txtSearchProspects.Size = new Size(201, 27);
-            txtSearchProspects.TabIndex = 0;
-            // 
-            // btnSearchProspects
-            // 
-            btnSearchProspects.Location = new Point(221, 14);
-            btnSearchProspects.Name = "btnSearchProspects";
-            btnSearchProspects.Size = new Size(94, 29);
-            btnSearchProspects.TabIndex = 1;
-            btnSearchProspects.Text = "Zoeken";
-            btnSearchProspects.UseVisualStyleBackColor = true;
-            // 
-            // btnNewProspect
-            // 
-            btnNewProspect.Location = new Point(588, 14);
-            btnNewProspect.Name = "btnNewProspect";
-            btnNewProspect.Size = new Size(157, 29);
-            btnNewProspect.TabIndex = 2;
-            btnNewProspect.Text = "Nieuwe prospect";
-            btnNewProspect.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

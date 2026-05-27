@@ -54,9 +54,9 @@
             lblProspect.Font = new Font("Microsoft YaHei UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 134);
             lblProspect.Location = new Point(12, 19);
             lblProspect.Name = "lblProspect";
-            lblProspect.Size = new Size(248, 31);
+            lblProspect.Size = new Size(210, 31);
             lblProspect.TabIndex = 42;
-            lblProspect.Text = "Prospect Toevoegen";
+            lblProspect.Text = "Nieuwe prospect";
             // 
             // lblDrivingLicense
             // 
@@ -200,8 +200,9 @@
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(113, 37);
             btnSubmit.TabIndex = 43;
-            btnSubmit.Text = "Toevoegen";
+            btnSubmit.Text = "Aanmaken";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // ProspectForm
             // 
@@ -233,8 +234,6 @@
         }
 
         #endregion
-
-        private Label lblProspect;
         private Label lblDrivingLicense;
         private TextBox txtAddress;
         private TextBox txtFirstname;
@@ -251,6 +250,7 @@
         private Label lblAddress;
         private Label lblLastname;
         private Label lblCity;
-        private Button btnSubmit;
+        protected Button btnSubmit;
+        protected Label lblProspect;
     }
 }
