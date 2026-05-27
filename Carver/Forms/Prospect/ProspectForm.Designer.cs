@@ -32,11 +32,11 @@
             lblDrivingLicense = new Label();
             txtAddress = new TextBox();
             txtFirstName = new TextBox();
-            chkDisabledVehicle = new CheckBox();
+            chkIsDisabledVehicle = new CheckBox();
             txtLastName = new TextBox();
-            chkScooterLicense = new CheckBox();
+            chkHasScooterLicense = new CheckBox();
             txtEmail = new TextBox();
-            chkDrivingLicense = new CheckBox();
+            chkHasDrivingLicense = new CheckBox();
             txtPhone = new TextBox();
             txtCity = new TextBox();
             lblFirstname = new Label();
@@ -82,15 +82,15 @@
             txtFirstName.Size = new Size(204, 27);
             txtFirstName.TabIndex = 0;
             // 
-            // chkDisabledVehicle
+            // chkIsDisabledVehicle
             // 
-            chkDisabledVehicle.AutoSize = true;
-            chkDisabledVehicle.Location = new Point(13, 339);
-            chkDisabledVehicle.Name = "chkDisabledVehicle";
-            chkDisabledVehicle.Size = new Size(158, 24);
-            chkDisabledVehicle.TabIndex = 8;
-            chkDisabledVehicle.Text = "Invalidenvoertuig";
-            chkDisabledVehicle.UseVisualStyleBackColor = true;
+            chkIsDisabledVehicle.AutoSize = true;
+            chkIsDisabledVehicle.Location = new Point(13, 339);
+            chkIsDisabledVehicle.Name = "chkIsDisabledVehicle";
+            chkIsDisabledVehicle.Size = new Size(158, 24);
+            chkIsDisabledVehicle.TabIndex = 8;
+            chkIsDisabledVehicle.Text = "Invalidenvoertuig";
+            chkIsDisabledVehicle.UseVisualStyleBackColor = true;
             // 
             // txtLastName
             // 
@@ -99,15 +99,15 @@
             txtLastName.Size = new Size(148, 27);
             txtLastName.TabIndex = 1;
             // 
-            // chkScooterLicense
+            // chkHasScooterLicense
             // 
-            chkScooterLicense.AutoSize = true;
-            chkScooterLicense.Location = new Point(13, 309);
-            chkScooterLicense.Name = "chkScooterLicense";
-            chkScooterLicense.Size = new Size(189, 24);
-            chkScooterLicense.TabIndex = 7;
-            chkScooterLicense.Text = "Scooterrijbewijs (AM)";
-            chkScooterLicense.UseVisualStyleBackColor = true;
+            chkHasScooterLicense.AutoSize = true;
+            chkHasScooterLicense.Location = new Point(13, 309);
+            chkHasScooterLicense.Name = "chkHasScooterLicense";
+            chkHasScooterLicense.Size = new Size(189, 24);
+            chkHasScooterLicense.TabIndex = 7;
+            chkHasScooterLicense.Text = "Scooterrijbewijs (AM)";
+            chkHasScooterLicense.UseVisualStyleBackColor = true;
             // 
             // txtEmail
             // 
@@ -116,15 +116,15 @@
             txtEmail.Size = new Size(241, 27);
             txtEmail.TabIndex = 2;
             // 
-            // chkDrivingLicense
+            // chkHasDrivingLicense
             // 
-            chkDrivingLicense.AutoSize = true;
-            chkDrivingLicense.Location = new Point(13, 279);
-            chkDrivingLicense.Name = "chkDrivingLicense";
-            chkDrivingLicense.Size = new Size(133, 24);
-            chkDrivingLicense.TabIndex = 6;
-            chkDrivingLicense.Text = "Rijbewijs A / B";
-            chkDrivingLicense.UseVisualStyleBackColor = true;
+            chkHasDrivingLicense.AutoSize = true;
+            chkHasDrivingLicense.Location = new Point(13, 279);
+            chkHasDrivingLicense.Name = "chkHasDrivingLicense";
+            chkHasDrivingLicense.Size = new Size(133, 24);
+            chkHasDrivingLicense.TabIndex = 6;
+            chkHasDrivingLicense.Text = "Rijbewijs A / B";
+            chkHasDrivingLicense.UseVisualStyleBackColor = true;
             // 
             // txtPhone
             // 
@@ -215,11 +215,11 @@
             Controls.Add(lblDrivingLicense);
             Controls.Add(txtAddress);
             Controls.Add(txtFirstName);
-            Controls.Add(chkDisabledVehicle);
+            Controls.Add(chkIsDisabledVehicle);
             Controls.Add(txtLastName);
-            Controls.Add(chkScooterLicense);
+            Controls.Add(chkHasScooterLicense);
             Controls.Add(txtEmail);
-            Controls.Add(chkDrivingLicense);
+            Controls.Add(chkHasDrivingLicense);
             Controls.Add(txtPhone);
             Controls.Add(txtCity);
             Controls.Add(lblFirstname);
@@ -238,11 +238,11 @@
         private Label lblDrivingLicense;
         protected TextBox txtAddress;
         protected TextBox txtFirstName;
-        protected CheckBox chkDisabledVehicle;
+        protected CheckBox chkIsDisabledVehicle;
         protected TextBox txtLastName;
-        protected CheckBox chkScooterLicense;
+        protected CheckBox chkHasScooterLicense;
         protected TextBox txtEmail;
-        protected CheckBox chkDrivingLicense;
+        protected CheckBox chkHasDrivingLicense;
         protected TextBox txtPhone;
         protected TextBox txtCity;
         private Label lblFirstname;

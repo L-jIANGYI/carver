@@ -27,9 +27,9 @@ namespace Carver.Forms.Prospect
                     txtCity.Text
                 )
                 {
-                    HasDrivingLicense = chkDrivingLicense.Checked,
-                    HasScooterLicense = chkScooterLicense.Checked,
-                    IsDisabledVehicle = chkDisabledVehicle.Checked
+                    HasDrivingLicense = chkHasDrivingLicense.Checked,
+                    HasScooterLicense = chkHasScooterLicense.Checked,
+                    IsDisabledVehicle = chkIsDisabledVehicle.Checked
                 };
 
                 _prospectService.Add(prospect);
