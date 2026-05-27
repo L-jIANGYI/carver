@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            dgvProspects = new DataGridView();
             tabMain = new TabControl();
             tpDashboard = new TabPage();
             tpNewTestDrive = new TabPage();
@@ -48,10 +49,6 @@
             btnTestDriveNewProspect = new Button();
             lblProspectInfo = new Label();
             tpProspect = new TabPage();
-            dgvProspects = new DataGridView();
-            FullName = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            Phone = new DataGridViewTextBoxColumn();
             btnNewProspect = new Button();
             btnSearchProspects = new Button();
             txtSearchProspects = new TextBox();
@@ -62,13 +59,30 @@
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
+            FullName = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Phone = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpNewTestDrive.SuspendLayout();
             grpTestDriveDetails.SuspendLayout();
             grpProspect.SuspendLayout();
             tpProspect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             SuspendLayout();
+            // 
+            // dgvProspects
+            // 
+            dgvProspects.AllowUserToAddRows = false;
+            dgvProspects.AllowUserToDeleteRows = false;
+            dgvProspects.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProspects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProspects.Columns.AddRange(new DataGridViewColumn[] { FullName, Email, Phone });
+            dgvProspects.Location = new Point(18, 60);
+            dgvProspects.Name = "dgvProspects";
+            dgvProspects.ReadOnly = true;
+            dgvProspects.RowHeadersWidth = 51;
+            dgvProspects.Size = new Size(727, 358);
+            dgvProspects.TabIndex = 3;
             // 
             // tabMain
             // 
@@ -277,43 +291,6 @@
             tpProspect.Text = "Prospects";
             tpProspect.UseVisualStyleBackColor = true;
             // 
-            // dgvProspects
-            // 
-            dgvProspects.AllowUserToAddRows = false;
-            dgvProspects.AllowUserToDeleteRows = false;
-            dgvProspects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProspects.Columns.AddRange(new DataGridViewColumn[] { FullName, Email, Phone });
-            dgvProspects.Location = new Point(18, 60);
-            dgvProspects.Name = "dgvProspects";
-            dgvProspects.ReadOnly = true;
-            dgvProspects.RowHeadersWidth = 51;
-            dgvProspects.Size = new Size(727, 358);
-            dgvProspects.TabIndex = 3;
-            // 
-            // FullName
-            // 
-            FullName.HeaderText = "Naam";
-            FullName.MinimumWidth = 6;
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
-            FullName.Width = 125;
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.MinimumWidth = 6;
-            Email.Name = "Email";
-            Email.ReadOnly = true;
-            Email.Width = 125;
-            // 
-            // Phone
-            // 
-            Phone.HeaderText = "Telefoon";
-            Phone.MinimumWidth = 6;
-            Phone.Name = "Phone";
-            Phone.ReadOnly = true;
-            Phone.Width = 125;
-            // 
             // btnNewProspect
             // 
             btnNewProspect.Location = new Point(588, 14);
@@ -406,6 +383,30 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
+            // FullName
+            // 
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Naam";
+            FullName.MinimumWidth = 6;
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
+            // 
+            // Email
+            // 
+            Email.DataPropertyName = "Email";
+            Email.HeaderText = "Email";
+            Email.MinimumWidth = 6;
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            // 
+            // Phone
+            // 
+            Phone.DataPropertyName = "Phone";
+            Phone.HeaderText = "Telefoon";
+            Phone.MinimumWidth = 6;
+            Phone.Name = "Phone";
+            Phone.ReadOnly = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -417,6 +418,7 @@
             Controls.Add(tabMain);
             Name = "MainForm";
             Text = "MainForm";
+            ((System.ComponentModel.ISupportInitialize)dgvProspects).EndInit();
             tabMain.ResumeLayout(false);
             tpNewTestDrive.ResumeLayout(false);
             grpTestDriveDetails.ResumeLayout(false);
@@ -425,7 +427,6 @@
             grpProspect.PerformLayout();
             tpProspect.ResumeLayout(false);
             tpProspect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProspects).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

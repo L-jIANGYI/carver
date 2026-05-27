@@ -42,6 +42,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(230, 27);
             txtEmail.TabIndex = 0;
+            txtEmail.Text = "admin@carver.nl";
             // 
             // txtPassword
             // 
@@ -49,6 +50,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(230, 27);
             txtPassword.TabIndex = 1;
+            txtPassword.Text = "admin123";
             // 
             // lblEmail
             // 

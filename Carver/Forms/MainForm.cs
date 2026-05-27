@@ -15,7 +15,7 @@ namespace Carver
             InitializeComponent();
 
             lblWelcome.Text = $"Welkom, {user.Name}!";
-
+            dgvProspects.AutoGenerateColumns = false;
             LoadProspects();
         }
 
