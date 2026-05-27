@@ -54,8 +54,8 @@
             btnTestDriveNewProspect = new Button();
             lblProspectInfo = new Label();
             tpProspect = new TabPage();
+            lstFilteredProspects = new ListBox();
             btnNewProspect = new Button();
-            btnSearchProspects = new Button();
             txtSearchProspects = new TextBox();
             tpScheduled = new TabPage();
             tpCompleted = new TabPage();
@@ -325,9 +325,9 @@
             // 
             // tpProspect
             // 
+            tpProspect.Controls.Add(lstFilteredProspects);
             tpProspect.Controls.Add(dgvProspects);
             tpProspect.Controls.Add(btnNewProspect);
-            tpProspect.Controls.Add(btnSearchProspects);
             tpProspect.Controls.Add(txtSearchProspects);
             tpProspect.Location = new Point(4, 29);
             tpProspect.Name = "tpProspect";
@@ -335,6 +335,15 @@
             tpProspect.TabIndex = 6;
             tpProspect.Text = "Prospects";
             tpProspect.UseVisualStyleBackColor = true;
+            // 
+            // lstFilteredProspects
+            // 
+            lstFilteredProspects.FormattingEnabled = true;
+            lstFilteredProspects.Location = new Point(18, 40);
+            lstFilteredProspects.Name = "lstFilteredProspects";
+            lstFilteredProspects.Size = new Size(201, 104);
+            lstFilteredProspects.TabIndex = 4;
+            lstFilteredProspects.Visible = false;
             // 
             // btnNewProspect
             // 
@@ -346,21 +355,14 @@
             btnNewProspect.UseVisualStyleBackColor = true;
             btnNewProspect.Click += btnNewProspect_Click;
             // 
-            // btnSearchProspects
-            // 
-            btnSearchProspects.Location = new Point(236, 16);
-            btnSearchProspects.Name = "btnSearchProspects";
-            btnSearchProspects.Size = new Size(94, 29);
-            btnSearchProspects.TabIndex = 1;
-            btnSearchProspects.Text = "Zoeken";
-            btnSearchProspects.UseVisualStyleBackColor = true;
-            // 
             // txtSearchProspects
             // 
             txtSearchProspects.Location = new Point(18, 16);
             txtSearchProspects.Name = "txtSearchProspects";
             txtSearchProspects.Size = new Size(201, 27);
             txtSearchProspects.TabIndex = 0;
+            txtSearchProspects.TextChanged += txtSearchProspects_TextChanged;
+            txtSearchProspects.KeyDown += txtSearchProspects_KeyDown;
             // 
             // tpScheduled
             // 
@@ -481,7 +483,6 @@
         private ListBox lstProspects;
         private TextBox txtSearchProspect;
         private Button btnSearchProspect;
-        private Button btnSearchProspects;
         private TextBox txtSearchProspects;
         private Button btnNewProspect;
         private DataGridView dgvProspects;
@@ -490,5 +491,6 @@
         private DataGridViewTextBoxColumn Phone;
         private DataGridViewButtonColumn colEdit;
         private DataGridViewButtonColumn colDelete;
+        private ListBox lstFilteredProspects;
     }
 }

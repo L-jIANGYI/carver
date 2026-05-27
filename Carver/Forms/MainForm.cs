@@ -9,6 +9,7 @@ namespace Carver
     {
         public bool IsLogout { get; private set; } = false;
         private readonly ProspectService _prospectService = new ProspectService();
+        private List<Prospect> _allProspects;
 
         public MainForm(User user)
         {
@@ -33,7 +34,8 @@ namespace Carver
 
         private void LoadProspects()
         {
-            dgvProspects.DataSource = _prospectService.GetAll();
+            _allProspects = _prospectService.GetAll();
+            dgvProspects.DataSource = _allProspects;
         }
 
         private void btnNewProspect_Click(object sender, EventArgs e)
@@ -70,6 +72,37 @@ namespace Carver
 
                     LoadProspects();
                 }
+            }
+        }
+
+        private void txtSearchProspects_TextChanged(object sender, EventArgs e)
+        {
+            string query = txtSearchProspects.Text.ToLower();
+
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                lstFilteredProspects.Visible = false;
+                dgvProspects.DataSource = _allProspects;
+                return;
+            }
+
+            var filtered = _allProspects
+                .Where(p => p.FullName.ToLower().Contains(query))
+                .ToList();
+
+            lstFilteredProspects.DataSource = filtered;
+            lstFilteredProspects.DisplayMember = "FullName";
+            lstFilteredProspects.Visible = true;
+
+            dgvProspects.DataSource = filtered;
+        }
+
+        private void txtSearchProspects_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                lstFilteredProspects.Visible = false;
+                e.SuppressKeyPress = true;
             }
         }
     }
