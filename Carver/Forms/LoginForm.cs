@@ -1,11 +1,12 @@
-﻿using Carver.Database;
-using Carver.Models;
+﻿using Carver.Models;
+using Carver.Services;
 
 namespace Carver
 {
     internal partial class LoginForm : Form
     {
         public User? LoggedInUser { get; private set; }
+        private readonly UserService _userService = new UserService();
 
         public LoginForm()
         {
@@ -14,8 +15,7 @@ namespace Carver
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            UserRepository repo = new UserRepository();
-            User? user = repo.Login(txtEmail.Text, txtPassword.Text);
+            User? user = _userService.Login(txtEmail.Text, txtPassword.Text);
 
             if (user != null)
             {
