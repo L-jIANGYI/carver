@@ -1,10 +1,10 @@
 ﻿namespace Carver.Forms.Prospect
 {
-    internal class UpdateProspectForm : ProspectForm
+    internal class EditProspectForm : ProspectForm
     {
         private int _prospectId;
 
-        public UpdateProspectForm(int prospectId)
+        public EditProspectForm(int prospectId)
         {
             this._prospectId = prospectId;
 
