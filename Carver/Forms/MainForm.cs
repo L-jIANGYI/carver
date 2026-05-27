@@ -42,5 +42,35 @@ namespace Carver
             if (form.ShowDialog() == DialogResult.OK)
                 LoadProspects();
         }
+
+        private void dgvProspects_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            Prospect? selected = dgvProspects.Rows[e.RowIndex].DataBoundItem as Prospect;
+            if (selected == null) return;
+
+            if (e.ColumnIndex == colEdit.Index)
+            {
+                EditProspectForm form = new EditProspectForm(selected.Id);
+                if (form.ShowDialog() == DialogResult.OK)
+                    LoadProspects();
+            }
+            else if (e.ColumnIndex == colDelete.Index)
+            {
+                var result = MessageBox.Show($"Weet je zeker dat je {selected.FullName} wilt verwijderen?",
+                    "Bevestigen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    _prospectService.Delete(selected);
+
+                    MessageBox.Show("Prospect verwijderd.", "Succes",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LoadProspects();
+                }
+            }
+        }
     }
 }

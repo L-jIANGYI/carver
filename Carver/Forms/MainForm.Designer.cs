@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             dgvProspects = new DataGridView();
+            FullName = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Phone = new DataGridViewTextBoxColumn();
+            colEdit = new DataGridViewButtonColumn();
+            colDelete = new DataGridViewButtonColumn();
             tabMain = new TabControl();
             tpDashboard = new TabPage();
             tpNewTestDrive = new TabPage();
@@ -59,9 +64,6 @@
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
-            FullName = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            Phone = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpNewTestDrive.SuspendLayout();
@@ -76,13 +78,56 @@
             dgvProspects.AllowUserToDeleteRows = false;
             dgvProspects.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProspects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProspects.Columns.AddRange(new DataGridViewColumn[] { FullName, Email, Phone });
+            dgvProspects.Columns.AddRange(new DataGridViewColumn[] { FullName, Email, Phone, colEdit, colDelete });
             dgvProspects.Location = new Point(18, 60);
             dgvProspects.Name = "dgvProspects";
             dgvProspects.ReadOnly = true;
             dgvProspects.RowHeadersWidth = 51;
             dgvProspects.Size = new Size(727, 358);
             dgvProspects.TabIndex = 3;
+            dgvProspects.CellClick += dgvProspects_CellClick;
+            // 
+            // FullName
+            // 
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Naam";
+            FullName.MinimumWidth = 6;
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
+            // 
+            // Email
+            // 
+            Email.DataPropertyName = "Email";
+            Email.HeaderText = "Email";
+            Email.MinimumWidth = 6;
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            // 
+            // Phone
+            // 
+            Phone.DataPropertyName = "Phone";
+            Phone.HeaderText = "Telefoon";
+            Phone.MinimumWidth = 6;
+            Phone.Name = "Phone";
+            Phone.ReadOnly = true;
+            // 
+            // colEdit
+            // 
+            colEdit.HeaderText = "";
+            colEdit.MinimumWidth = 6;
+            colEdit.Name = "colEdit";
+            colEdit.ReadOnly = true;
+            colEdit.Text = "Bijwerken";
+            colEdit.UseColumnTextForButtonValue = true;
+            // 
+            // colDelete
+            // 
+            colDelete.HeaderText = "";
+            colDelete.MinimumWidth = 6;
+            colDelete.Name = "colDelete";
+            colDelete.ReadOnly = true;
+            colDelete.Text = "Verwijderen";
+            colDelete.UseColumnTextForButtonValue = true;
             // 
             // tabMain
             // 
@@ -383,30 +428,6 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
-            // FullName
-            // 
-            FullName.DataPropertyName = "FullName";
-            FullName.HeaderText = "Naam";
-            FullName.MinimumWidth = 6;
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
-            // 
-            // Email
-            // 
-            Email.DataPropertyName = "Email";
-            Email.HeaderText = "Email";
-            Email.MinimumWidth = 6;
-            Email.Name = "Email";
-            Email.ReadOnly = true;
-            // 
-            // Phone
-            // 
-            Phone.DataPropertyName = "Phone";
-            Phone.HeaderText = "Telefoon";
-            Phone.MinimumWidth = 6;
-            Phone.Name = "Phone";
-            Phone.ReadOnly = true;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -467,5 +488,7 @@
         private DataGridViewTextBoxColumn FullName;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Phone;
+        private DataGridViewButtonColumn colEdit;
+        private DataGridViewButtonColumn colDelete;
     }
 }
