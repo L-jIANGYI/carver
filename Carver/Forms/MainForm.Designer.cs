@@ -34,30 +34,20 @@
             grpTestDriveDetails = new GroupBox();
             rtbInterestReason = new RichTextBox();
             lblInterestReason = new Label();
+            btnTestDriveSubmit = new Button();
             cmbInterestedModel = new ComboBox();
             lblInterestedModel = new Label();
             lblDateTime = new Label();
             dtpTestDriveDateTime = new DateTimePicker();
             lblTestDriveDetail = new Label();
             grpProspect = new GroupBox();
+            btnSearchProspect = new Button();
+            lblSearchProspect = new Label();
+            lstProspects = new ListBox();
+            txtSearchProspect = new TextBox();
+            btnTestDriveNewProspect = new Button();
             lblProspectInfo = new Label();
-            lblDrivingLicense = new Label();
-            txtAddress = new TextBox();
-            txtFirstname = new TextBox();
-            chkDisabledVehicle = new CheckBox();
-            txtLastname = new TextBox();
-            chkScooterLicense = new CheckBox();
-            txtEmail = new TextBox();
-            chkDrivingLicense = new CheckBox();
-            txtPhone = new TextBox();
-            txtCity = new TextBox();
-            lblFirstname = new Label();
-            lblProspectEmail = new Label();
-            lblPhone = new Label();
-            lblAddress = new Label();
-            lblLastname = new Label();
-            lblCity = new Label();
-            btnTestDriveSubmit = new Button();
+            tpProspect = new TabPage();
             tpScheduled = new TabPage();
             tpCompleted = new TabPage();
             tpStatistics = new TabPage();
@@ -65,16 +55,21 @@
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
+            txtSearchProspects = new TextBox();
+            btnSearchProspects = new Button();
+            btnNewProspect = new Button();
             tabMain.SuspendLayout();
             tpNewTestDrive.SuspendLayout();
             grpTestDriveDetails.SuspendLayout();
             grpProspect.SuspendLayout();
+            tpProspect.SuspendLayout();
             SuspendLayout();
             // 
             // tabMain
             // 
             tabMain.Controls.Add(tpDashboard);
             tabMain.Controls.Add(tpNewTestDrive);
+            tabMain.Controls.Add(tpProspect);
             tabMain.Controls.Add(tpScheduled);
             tabMain.Controls.Add(tpCompleted);
             tabMain.Controls.Add(tpStatistics);
@@ -99,7 +94,6 @@
             // 
             tpNewTestDrive.Controls.Add(grpTestDriveDetails);
             tpNewTestDrive.Controls.Add(grpProspect);
-            tpNewTestDrive.Controls.Add(btnTestDriveSubmit);
             tpNewTestDrive.Location = new Point(4, 29);
             tpNewTestDrive.Name = "tpNewTestDrive";
             tpNewTestDrive.Padding = new Padding(3);
@@ -112,14 +106,15 @@
             // 
             grpTestDriveDetails.Controls.Add(rtbInterestReason);
             grpTestDriveDetails.Controls.Add(lblInterestReason);
+            grpTestDriveDetails.Controls.Add(btnTestDriveSubmit);
             grpTestDriveDetails.Controls.Add(cmbInterestedModel);
             grpTestDriveDetails.Controls.Add(lblInterestedModel);
             grpTestDriveDetails.Controls.Add(lblDateTime);
             grpTestDriveDetails.Controls.Add(dtpTestDriveDateTime);
             grpTestDriveDetails.Controls.Add(lblTestDriveDetail);
-            grpTestDriveDetails.Location = new Point(463, 0);
+            grpTestDriveDetails.Location = new Point(6, 3);
             grpTestDriveDetails.Name = "grpTestDriveDetails";
-            grpTestDriveDetails.Size = new Size(299, 373);
+            grpTestDriveDetails.Size = new Size(333, 421);
             grpTestDriveDetails.TabIndex = 26;
             grpTestDriveDetails.TabStop = false;
             // 
@@ -127,7 +122,7 @@
             // 
             rtbInterestReason.Location = new Point(6, 199);
             rtbInterestReason.Name = "rtbInterestReason";
-            rtbInterestReason.Size = new Size(287, 168);
+            rtbInterestReason.Size = new Size(321, 168);
             rtbInterestReason.TabIndex = 26;
             rtbInterestReason.Text = "";
             // 
@@ -139,6 +134,15 @@
             lblInterestReason.Size = new Size(126, 20);
             lblInterestReason.TabIndex = 25;
             lblInterestReason.Text = "Reden interesse";
+            // 
+            // btnTestDriveSubmit
+            // 
+            btnTestDriveSubmit.Location = new Point(6, 372);
+            btnTestDriveSubmit.Name = "btnTestDriveSubmit";
+            btnTestDriveSubmit.Size = new Size(171, 43);
+            btnTestDriveSubmit.TabIndex = 23;
+            btnTestDriveSubmit.Text = "Proefrit inplannen";
+            btnTestDriveSubmit.UseVisualStyleBackColor = true;
             // 
             // cmbInterestedModel
             // 
@@ -190,28 +194,60 @@
             // 
             // grpProspect
             // 
+            grpProspect.Controls.Add(btnSearchProspect);
+            grpProspect.Controls.Add(lblSearchProspect);
+            grpProspect.Controls.Add(lstProspects);
+            grpProspect.Controls.Add(txtSearchProspect);
+            grpProspect.Controls.Add(btnTestDriveNewProspect);
             grpProspect.Controls.Add(lblProspectInfo);
-            grpProspect.Controls.Add(lblDrivingLicense);
-            grpProspect.Controls.Add(txtAddress);
-            grpProspect.Controls.Add(txtFirstname);
-            grpProspect.Controls.Add(chkDisabledVehicle);
-            grpProspect.Controls.Add(txtLastname);
-            grpProspect.Controls.Add(chkScooterLicense);
-            grpProspect.Controls.Add(txtEmail);
-            grpProspect.Controls.Add(chkDrivingLicense);
-            grpProspect.Controls.Add(txtPhone);
-            grpProspect.Controls.Add(txtCity);
-            grpProspect.Controls.Add(lblFirstname);
-            grpProspect.Controls.Add(lblProspectEmail);
-            grpProspect.Controls.Add(lblPhone);
-            grpProspect.Controls.Add(lblAddress);
-            grpProspect.Controls.Add(lblLastname);
-            grpProspect.Controls.Add(lblCity);
-            grpProspect.Location = new Point(6, 0);
+            grpProspect.Location = new Point(347, 3);
             grpProspect.Name = "grpProspect";
-            grpProspect.Size = new Size(451, 373);
+            grpProspect.Size = new Size(418, 421);
             grpProspect.TabIndex = 25;
             grpProspect.TabStop = false;
+            // 
+            // btnSearchProspect
+            // 
+            btnSearchProspect.Location = new Point(219, 72);
+            btnSearchProspect.Name = "btnSearchProspect";
+            btnSearchProspect.Size = new Size(98, 27);
+            btnSearchProspect.TabIndex = 31;
+            btnSearchProspect.Text = "Zoeken";
+            btnSearchProspect.UseVisualStyleBackColor = true;
+            // 
+            // lblSearchProspect
+            // 
+            lblSearchProspect.AutoSize = true;
+            lblSearchProspect.Location = new Point(6, 49);
+            lblSearchProspect.Name = "lblSearchProspect";
+            lblSearchProspect.Size = new Size(119, 20);
+            lblSearchProspect.TabIndex = 30;
+            lblSearchProspect.Text = "Zoek prospect:";
+            // 
+            // lstProspects
+            // 
+            lstProspects.FormattingEnabled = true;
+            lstProspects.Location = new Point(6, 99);
+            lstProspects.Name = "lstProspects";
+            lstProspects.Size = new Size(205, 124);
+            lstProspects.TabIndex = 29;
+            lstProspects.Visible = false;
+            // 
+            // txtSearchProspect
+            // 
+            txtSearchProspect.Location = new Point(6, 72);
+            txtSearchProspect.Name = "txtSearchProspect";
+            txtSearchProspect.Size = new Size(205, 27);
+            txtSearchProspect.TabIndex = 28;
+            // 
+            // btnTestDriveNewProspect
+            // 
+            btnTestDriveNewProspect.Location = new Point(255, 14);
+            btnTestDriveNewProspect.Name = "btnTestDriveNewProspect";
+            btnTestDriveNewProspect.Size = new Size(160, 34);
+            btnTestDriveNewProspect.TabIndex = 27;
+            btnTestDriveNewProspect.Text = "Niuwe prospect";
+            btnTestDriveNewProspect.UseVisualStyleBackColor = true;
             // 
             // lblProspectInfo
             // 
@@ -223,150 +259,17 @@
             lblProspectInfo.TabIndex = 25;
             lblProspectInfo.Text = "Prospect gegevens";
             // 
-            // lblDrivingLicense
+            // tpProspect
             // 
-            lblDrivingLicense.AutoSize = true;
-            lblDrivingLicense.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            lblDrivingLicense.Location = new Point(5, 246);
-            lblDrivingLicense.Name = "lblDrivingLicense";
-            lblDrivingLicense.Size = new Size(203, 27);
-            lblDrivingLicense.TabIndex = 24;
-            lblDrivingLicense.Text = "Rijbewijs en overig";
-            // 
-            // txtAddress
-            // 
-            txtAddress.Location = new Point(6, 199);
-            txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(236, 27);
-            txtAddress.TabIndex = 1;
-            // 
-            // txtFirstname
-            // 
-            txtFirstname.Location = new Point(6, 72);
-            txtFirstname.Name = "txtFirstname";
-            txtFirstname.Size = new Size(204, 27);
-            txtFirstname.TabIndex = 2;
-            // 
-            // chkDisabledVehicle
-            // 
-            chkDisabledVehicle.AutoSize = true;
-            chkDisabledVehicle.Location = new Point(6, 336);
-            chkDisabledVehicle.Name = "chkDisabledVehicle";
-            chkDisabledVehicle.Size = new Size(158, 24);
-            chkDisabledVehicle.TabIndex = 22;
-            chkDisabledVehicle.Text = "Invalidenvoertuig";
-            chkDisabledVehicle.UseVisualStyleBackColor = true;
-            // 
-            // txtLastname
-            // 
-            txtLastname.Location = new Point(233, 72);
-            txtLastname.Name = "txtLastname";
-            txtLastname.Size = new Size(148, 27);
-            txtLastname.TabIndex = 3;
-            // 
-            // chkScooterLicense
-            // 
-            chkScooterLicense.AutoSize = true;
-            chkScooterLicense.Location = new Point(6, 306);
-            chkScooterLicense.Name = "chkScooterLicense";
-            chkScooterLicense.Size = new Size(189, 24);
-            chkScooterLicense.TabIndex = 21;
-            chkScooterLicense.Text = "Scooterrijbewijs (AM)";
-            chkScooterLicense.UseVisualStyleBackColor = true;
-            // 
-            // txtEmail
-            // 
-            txtEmail.Location = new Point(6, 134);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(241, 27);
-            txtEmail.TabIndex = 4;
-            // 
-            // chkDrivingLicense
-            // 
-            chkDrivingLicense.AutoSize = true;
-            chkDrivingLicense.Location = new Point(6, 276);
-            chkDrivingLicense.Name = "chkDrivingLicense";
-            chkDrivingLicense.Size = new Size(133, 24);
-            chkDrivingLicense.TabIndex = 20;
-            chkDrivingLicense.Text = "Rijbewijs A / B";
-            chkDrivingLicense.UseVisualStyleBackColor = true;
-            // 
-            // txtPhone
-            // 
-            txtPhone.Location = new Point(279, 135);
-            txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(148, 27);
-            txtPhone.TabIndex = 5;
-            // 
-            // txtCity
-            // 
-            txtCity.Location = new Point(279, 199);
-            txtCity.Name = "txtCity";
-            txtCity.Size = new Size(155, 27);
-            txtCity.TabIndex = 6;
-            // 
-            // lblFirstname
-            // 
-            lblFirstname.AutoSize = true;
-            lblFirstname.Location = new Point(6, 49);
-            lblFirstname.Name = "lblFirstname";
-            lblFirstname.Size = new Size(84, 20);
-            lblFirstname.TabIndex = 7;
-            lblFirstname.Text = "Voornaam";
-            // 
-            // lblProspectEmail
-            // 
-            lblProspectEmail.AutoSize = true;
-            lblProspectEmail.Location = new Point(6, 111);
-            lblProspectEmail.Name = "lblProspectEmail";
-            lblProspectEmail.Size = new Size(47, 20);
-            lblProspectEmail.TabIndex = 8;
-            lblProspectEmail.Text = "Email";
-            // 
-            // lblPhone
-            // 
-            lblPhone.AutoSize = true;
-            lblPhone.Location = new Point(279, 111);
-            lblPhone.Name = "lblPhone";
-            lblPhone.Size = new Size(135, 20);
-            lblPhone.TabIndex = 9;
-            lblPhone.Text = "Telefoonnummer";
-            // 
-            // lblAddress
-            // 
-            lblAddress.AutoSize = true;
-            lblAddress.Location = new Point(6, 176);
-            lblAddress.Name = "lblAddress";
-            lblAddress.Size = new Size(52, 20);
-            lblAddress.TabIndex = 10;
-            lblAddress.Text = "Adres";
-            // 
-            // lblLastname
-            // 
-            lblLastname.AutoSize = true;
-            lblLastname.Location = new Point(233, 49);
-            lblLastname.Name = "lblLastname";
-            lblLastname.Size = new Size(97, 20);
-            lblLastname.TabIndex = 11;
-            lblLastname.Text = "Achternaam";
-            // 
-            // lblCity
-            // 
-            lblCity.AutoSize = true;
-            lblCity.Location = new Point(279, 176);
-            lblCity.Name = "lblCity";
-            lblCity.Size = new Size(42, 20);
-            lblCity.TabIndex = 12;
-            lblCity.Text = "Stad";
-            // 
-            // btnTestDriveSubmit
-            // 
-            btnTestDriveSubmit.Location = new Point(177, 379);
-            btnTestDriveSubmit.Name = "btnTestDriveSubmit";
-            btnTestDriveSubmit.Size = new Size(428, 43);
-            btnTestDriveSubmit.TabIndex = 23;
-            btnTestDriveSubmit.Text = "Proefrit inplannen";
-            btnTestDriveSubmit.UseVisualStyleBackColor = true;
+            tpProspect.Controls.Add(btnNewProspect);
+            tpProspect.Controls.Add(btnSearchProspects);
+            tpProspect.Controls.Add(txtSearchProspects);
+            tpProspect.Location = new Point(4, 29);
+            tpProspect.Name = "tpProspect";
+            tpProspect.Size = new Size(768, 430);
+            tpProspect.TabIndex = 6;
+            tpProspect.Text = "Prospects";
+            tpProspect.UseVisualStyleBackColor = true;
             // 
             // tpScheduled
             // 
@@ -392,7 +295,7 @@
             tpStatistics.Name = "tpStatistics";
             tpStatistics.Size = new Size(768, 430);
             tpStatistics.TabIndex = 4;
-            tpStatistics.Text = "Stastieken";
+            tpStatistics.Text = "Statistieken";
             tpStatistics.UseVisualStyleBackColor = true;
             // 
             // tpEmployeeManagement
@@ -434,6 +337,31 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
+            // txtSearchProspects
+            // 
+            txtSearchProspects.Location = new Point(3, 14);
+            txtSearchProspects.Name = "txtSearchProspects";
+            txtSearchProspects.Size = new Size(201, 27);
+            txtSearchProspects.TabIndex = 0;
+            // 
+            // btnSearchProspects
+            // 
+            btnSearchProspects.Location = new Point(221, 14);
+            btnSearchProspects.Name = "btnSearchProspects";
+            btnSearchProspects.Size = new Size(94, 29);
+            btnSearchProspects.TabIndex = 1;
+            btnSearchProspects.Text = "Zoeken";
+            btnSearchProspects.UseVisualStyleBackColor = true;
+            // 
+            // btnNewProspect
+            // 
+            btnNewProspect.Location = new Point(588, 14);
+            btnNewProspect.Name = "btnNewProspect";
+            btnNewProspect.Size = new Size(157, 29);
+            btnNewProspect.TabIndex = 2;
+            btnNewProspect.Text = "Nieuwe prospect";
+            btnNewProspect.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -451,6 +379,8 @@
             grpTestDriveDetails.PerformLayout();
             grpProspect.ResumeLayout(false);
             grpProspect.PerformLayout();
+            tpProspect.ResumeLayout(false);
+            tpProspect.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -469,22 +399,6 @@
         private Button btnLogOut;
         private Button btnTestDriveSubmit;
         private GroupBox grpProspect;
-        private Label lblDrivingLicense;
-        private TextBox txtAddress;
-        private TextBox txtFirstname;
-        private CheckBox chkDisabledVehicle;
-        private TextBox txtLastname;
-        private CheckBox chkScooterLicense;
-        private TextBox txtEmail;
-        private CheckBox chkDrivingLicense;
-        private TextBox txtPhone;
-        private TextBox txtCity;
-        private Label lblFirstname;
-        private Label lblProspectEmail;
-        private Label lblPhone;
-        private Label lblAddress;
-        private Label lblLastname;
-        private Label lblCity;
         private GroupBox grpTestDriveDetails;
         private RichTextBox rtbInterestReason;
         private Label lblInterestReason;
@@ -494,5 +408,14 @@
         private DateTimePicker dtpTestDriveDateTime;
         private Label lblTestDriveDetail;
         private Label lblProspectInfo;
+        private Button btnTestDriveNewProspect;
+        private TabPage tpProspect;
+        private Label lblSearchProspect;
+        private ListBox lstProspects;
+        private TextBox txtSearchProspect;
+        private Button btnSearchProspect;
+        private Button btnSearchProspects;
+        private TextBox txtSearchProspects;
+        private Button btnNewProspect;
     }
 }
