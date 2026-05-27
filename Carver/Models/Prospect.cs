@@ -15,12 +15,14 @@
 
         public string FullName => $"{FirstName} {LastName}";
 
-        public Prospect(string firstName, string lastName, string email, string phone)
+        public Prospect(string firstName, string lastName, string email, string phone, string address, string city)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             Phone = phone;
+            Address = address;
+            City = city;
         }
 
     }

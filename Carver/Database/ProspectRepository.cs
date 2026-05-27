@@ -44,10 +44,10 @@ namespace Carver.Database
                         reader.GetString(reader.GetOrdinal("FirstName")),
                         reader.GetString(reader.GetOrdinal("LastName")),
                         reader.GetString(reader.GetOrdinal("Email")),
-                        reader.GetString(reader.GetOrdinal("Phone"))
+                        reader.GetString(reader.GetOrdinal("Phone")),
+                        reader.GetString(reader.GetOrdinal("Address")),
+                        reader.GetString(reader.GetOrdinal("City"))
                     );
-                    prospect.Address = reader.GetString(reader.GetOrdinal("Address"));
-                    prospect.City = reader.GetString(reader.GetOrdinal("City"));
                     prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
                     prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
                     prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
@@ -74,10 +74,10 @@ namespace Carver.Database
                         reader.GetString(reader.GetOrdinal("FirstName")),
                         reader.GetString(reader.GetOrdinal("LastName")),
                         reader.GetString(reader.GetOrdinal("Email")),
-                        reader.GetString(reader.GetOrdinal("Phone"))
+                        reader.GetString(reader.GetOrdinal("Phone")),
+                        reader.GetString(reader.GetOrdinal("Address")),
+                        reader.GetString(reader.GetOrdinal("City"))
                     );
-                    prospect.Address = reader.GetString(reader.GetOrdinal("Address"));
-                    prospect.City = reader.GetString(reader.GetOrdinal("City"));
                     prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
                     prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
                     prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
