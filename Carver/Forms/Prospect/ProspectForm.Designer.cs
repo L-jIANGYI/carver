@@ -31,9 +31,9 @@
             lblProspect = new Label();
             lblDrivingLicense = new Label();
             txtAddress = new TextBox();
-            txtFirstname = new TextBox();
+            txtFirstName = new TextBox();
             chkDisabledVehicle = new CheckBox();
-            txtLastname = new TextBox();
+            txtLastName = new TextBox();
             chkScooterLicense = new CheckBox();
             txtEmail = new TextBox();
             chkDrivingLicense = new CheckBox();
@@ -75,12 +75,12 @@
             txtAddress.Size = new Size(236, 27);
             txtAddress.TabIndex = 26;
             // 
-            // txtFirstname
+            // txtFirstName
             // 
-            txtFirstname.Location = new Point(14, 79);
-            txtFirstname.Name = "txtFirstname";
-            txtFirstname.Size = new Size(204, 27);
-            txtFirstname.TabIndex = 27;
+            txtFirstName.Location = new Point(14, 79);
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Size = new Size(204, 27);
+            txtFirstName.TabIndex = 27;
             // 
             // chkDisabledVehicle
             // 
@@ -92,12 +92,12 @@
             chkDisabledVehicle.Text = "Invalidenvoertuig";
             chkDisabledVehicle.UseVisualStyleBackColor = true;
             // 
-            // txtLastname
+            // txtLastName
             // 
-            txtLastname.Location = new Point(241, 79);
-            txtLastname.Name = "txtLastname";
-            txtLastname.Size = new Size(148, 27);
-            txtLastname.TabIndex = 28;
+            txtLastName.Location = new Point(241, 79);
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new Size(148, 27);
+            txtLastName.TabIndex = 28;
             // 
             // chkScooterLicense
             // 
@@ -213,9 +213,9 @@
             Controls.Add(lblProspect);
             Controls.Add(lblDrivingLicense);
             Controls.Add(txtAddress);
-            Controls.Add(txtFirstname);
+            Controls.Add(txtFirstName);
             Controls.Add(chkDisabledVehicle);
-            Controls.Add(txtLastname);
+            Controls.Add(txtLastName);
             Controls.Add(chkScooterLicense);
             Controls.Add(txtEmail);
             Controls.Add(chkDrivingLicense);
@@ -235,15 +235,15 @@
 
         #endregion
         private Label lblDrivingLicense;
-        private TextBox txtAddress;
-        private TextBox txtFirstname;
-        private CheckBox chkDisabledVehicle;
-        private TextBox txtLastname;
-        private CheckBox chkScooterLicense;
-        private TextBox txtEmail;
-        private CheckBox chkDrivingLicense;
-        private TextBox txtPhone;
-        private TextBox txtCity;
+        protected TextBox txtAddress;
+        protected TextBox txtFirstName;
+        protected CheckBox chkDisabledVehicle;
+        protected TextBox txtLastName;
+        protected CheckBox chkScooterLicense;
+        protected TextBox txtEmail;
+        protected CheckBox chkDrivingLicense;
+        protected TextBox txtPhone;
+        protected TextBox txtCity;
         private Label lblFirstname;
         private Label lblProspectEmail;
         private Label lblPhone;
