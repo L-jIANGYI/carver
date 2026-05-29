@@ -47,9 +47,26 @@
             dtpTestDriveDateTime = new DateTimePicker();
             lblTestDriveDetail = new Label();
             grpProspect = new GroupBox();
-            btnSearchProspect = new Button();
-            lblSearchProspect = new Label();
+            lblCity = new Label();
             lstProspects = new ListBox();
+            lblAddress = new Label();
+            lblPhone = new Label();
+            lblEmail = new Label();
+            lblLastName = new Label();
+            lblFirstName = new Label();
+            chkIsDisabledVehicle = new CheckBox();
+            chkHasScooterLicense = new CheckBox();
+            chkHasDrivingLicense = new CheckBox();
+            label9 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            lblSearchProspect = new Label();
             txtSearchProspect = new TextBox();
             btnTestDriveNewProspect = new Button();
             lblProspectInfo = new Label();
@@ -258,9 +275,26 @@
             // 
             // grpProspect
             // 
-            grpProspect.Controls.Add(btnSearchProspect);
-            grpProspect.Controls.Add(lblSearchProspect);
+            grpProspect.Controls.Add(lblCity);
             grpProspect.Controls.Add(lstProspects);
+            grpProspect.Controls.Add(lblAddress);
+            grpProspect.Controls.Add(lblPhone);
+            grpProspect.Controls.Add(lblEmail);
+            grpProspect.Controls.Add(lblLastName);
+            grpProspect.Controls.Add(lblFirstName);
+            grpProspect.Controls.Add(chkIsDisabledVehicle);
+            grpProspect.Controls.Add(chkHasScooterLicense);
+            grpProspect.Controls.Add(chkHasDrivingLicense);
+            grpProspect.Controls.Add(label9);
+            grpProspect.Controls.Add(label8);
+            grpProspect.Controls.Add(label7);
+            grpProspect.Controls.Add(label6);
+            grpProspect.Controls.Add(label5);
+            grpProspect.Controls.Add(label4);
+            grpProspect.Controls.Add(label3);
+            grpProspect.Controls.Add(label2);
+            grpProspect.Controls.Add(label1);
+            grpProspect.Controls.Add(lblSearchProspect);
             grpProspect.Controls.Add(txtSearchProspect);
             grpProspect.Controls.Add(btnTestDriveNewProspect);
             grpProspect.Controls.Add(lblProspectInfo);
@@ -270,14 +304,171 @@
             grpProspect.TabIndex = 25;
             grpProspect.TabStop = false;
             // 
-            // btnSearchProspect
+            // lblCity
             // 
-            btnSearchProspect.Location = new Point(219, 72);
-            btnSearchProspect.Name = "btnSearchProspect";
-            btnSearchProspect.Size = new Size(98, 27);
-            btnSearchProspect.TabIndex = 31;
-            btnSearchProspect.Text = "Zoeken";
-            btnSearchProspect.UseVisualStyleBackColor = true;
+            lblCity.AutoSize = true;
+            lblCity.Location = new Point(58, 274);
+            lblCity.Name = "lblCity";
+            lblCity.Size = new Size(0, 20);
+            lblCity.TabIndex = 47;
+            // 
+            // lstProspects
+            // 
+            lstProspects.FormattingEnabled = true;
+            lstProspects.Location = new Point(6, 95);
+            lstProspects.Name = "lstProspects";
+            lstProspects.Size = new Size(205, 124);
+            lstProspects.TabIndex = 29;
+            lstProspects.Visible = false;
+            lstProspects.SelectedIndexChanged += lstProspects_SelectedIndexChanged;
+            // 
+            // lblAddress
+            // 
+            lblAddress.AutoSize = true;
+            lblAddress.Location = new Point(68, 244);
+            lblAddress.Name = "lblAddress";
+            lblAddress.Size = new Size(0, 20);
+            lblAddress.TabIndex = 46;
+            // 
+            // lblPhone
+            // 
+            lblPhone.AutoSize = true;
+            lblPhone.Location = new Point(90, 213);
+            lblPhone.Name = "lblPhone";
+            lblPhone.Size = new Size(0, 20);
+            lblPhone.TabIndex = 45;
+            // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(63, 177);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(0, 20);
+            lblEmail.TabIndex = 44;
+            // 
+            // lblLastName
+            // 
+            lblLastName.AutoSize = true;
+            lblLastName.Location = new Point(113, 146);
+            lblLastName.Name = "lblLastName";
+            lblLastName.Size = new Size(0, 20);
+            lblLastName.TabIndex = 43;
+            // 
+            // lblFirstName
+            // 
+            lblFirstName.AutoSize = true;
+            lblFirstName.Location = new Point(100, 112);
+            lblFirstName.Name = "lblFirstName";
+            lblFirstName.Size = new Size(0, 20);
+            lblFirstName.TabIndex = 42;
+            // 
+            // chkIsDisabledVehicle
+            // 
+            chkIsDisabledVehicle.AutoSize = true;
+            chkIsDisabledVehicle.Location = new Point(206, 370);
+            chkIsDisabledVehicle.Name = "chkIsDisabledVehicle";
+            chkIsDisabledVehicle.Size = new Size(18, 17);
+            chkIsDisabledVehicle.TabIndex = 41;
+            chkIsDisabledVehicle.UseVisualStyleBackColor = true;
+            // 
+            // chkHasScooterLicense
+            // 
+            chkHasScooterLicense.AutoSize = true;
+            chkHasScooterLicense.Location = new Point(206, 340);
+            chkHasScooterLicense.Name = "chkHasScooterLicense";
+            chkHasScooterLicense.Size = new Size(18, 17);
+            chkHasScooterLicense.TabIndex = 40;
+            chkHasScooterLicense.UseVisualStyleBackColor = true;
+            // 
+            // chkHasDrivingLicense
+            // 
+            chkHasDrivingLicense.AutoSize = true;
+            chkHasDrivingLicense.Location = new Point(206, 308);
+            chkHasDrivingLicense.Name = "chkHasDrivingLicense";
+            chkHasDrivingLicense.Size = new Size(18, 17);
+            chkHasDrivingLicense.TabIndex = 39;
+            chkHasDrivingLicense.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(6, 274);
+            label9.Name = "label9";
+            label9.Size = new Size(46, 20);
+            label9.TabIndex = 38;
+            label9.Text = "Stad:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(6, 367);
+            label8.Name = "label8";
+            label8.Size = new Size(140, 20);
+            label8.TabIndex = 37;
+            label8.Text = "Invalidenvoertuig:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(6, 308);
+            label7.Name = "label7";
+            label7.Size = new Size(139, 20);
+            label7.TabIndex = 36;
+            label7.Text = "Rijbewijs B/B+/BE:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(6, 244);
+            label6.Name = "label6";
+            label6.Size = new Size(56, 20);
+            label6.TabIndex = 35;
+            label6.Text = "Adres:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(6, 337);
+            label5.Name = "label5";
+            label5.Size = new Size(171, 20);
+            label5.TabIndex = 34;
+            label5.Text = "Scooterrijbewijs (AM):";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(6, 213);
+            label4.Name = "label4";
+            label4.Size = new Size(78, 20);
+            label4.TabIndex = 33;
+            label4.Text = "Telefoon:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(6, 177);
+            label3.Name = "label3";
+            label3.Size = new Size(51, 20);
+            label3.TabIndex = 32;
+            label3.Text = "Email:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(6, 146);
+            label2.Name = "label2";
+            label2.Size = new Size(101, 20);
+            label2.TabIndex = 31;
+            label2.Text = "Achternaam:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 112);
+            label1.Name = "label1";
+            label1.Size = new Size(88, 20);
+            label1.TabIndex = 30;
+            label1.Text = "Voornaam:";
             // 
             // lblSearchProspect
             // 
@@ -288,21 +479,14 @@
             lblSearchProspect.TabIndex = 30;
             lblSearchProspect.Text = "Zoek prospect:";
             // 
-            // lstProspects
-            // 
-            lstProspects.FormattingEnabled = true;
-            lstProspects.Location = new Point(6, 99);
-            lstProspects.Name = "lstProspects";
-            lstProspects.Size = new Size(205, 124);
-            lstProspects.TabIndex = 29;
-            lstProspects.Visible = false;
-            // 
             // txtSearchProspect
             // 
             txtSearchProspect.Location = new Point(6, 72);
             txtSearchProspect.Name = "txtSearchProspect";
             txtSearchProspect.Size = new Size(205, 27);
             txtSearchProspect.TabIndex = 28;
+            txtSearchProspect.TextChanged += txtSearchProspect_TextChanged;
+            txtSearchProspect.KeyDown += txtSearchProspect_KeyDown;
             // 
             // btnTestDriveNewProspect
             // 
@@ -359,6 +543,7 @@
             // 
             txtSearchProspects.Location = new Point(18, 16);
             txtSearchProspects.Name = "txtSearchProspects";
+            txtSearchProspects.PlaceholderText = "Zoek een prospect";
             txtSearchProspects.Size = new Size(201, 27);
             txtSearchProspects.TabIndex = 0;
             txtSearchProspects.TextChanged += txtSearchProspects_TextChanged;
@@ -482,7 +667,6 @@
         private Label lblSearchProspect;
         private ListBox lstProspects;
         private TextBox txtSearchProspect;
-        private Button btnSearchProspect;
         private TextBox txtSearchProspects;
         private Button btnNewProspect;
         private DataGridView dgvProspects;
@@ -492,5 +676,23 @@
         private DataGridViewButtonColumn colEdit;
         private DataGridViewButtonColumn colDelete;
         private ListBox lstFilteredProspects;
+        private Label label1;
+        private Label label9;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private CheckBox chkHasDrivingLicense;
+        private Label lblCity;
+        private Label lblAddress;
+        private Label lblPhone;
+        private Label lblEmail;
+        private Label lblLastName;
+        private Label lblFirstName;
+        private CheckBox chkIsDisabledVehicle;
+        private CheckBox chkHasScooterLicense;
     }
 }
