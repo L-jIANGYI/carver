@@ -13,13 +13,13 @@ namespace Carver.Database
             {
                 conn.Open();
                 string query = @"INSERT INTO TestDrives 
-                    (ProspectId, CarverId, ScheduledAt, Reason, Status) 
+                    (ProspectId, CarverModel, ScheduledAt, Reason, Status) 
                     VALUES 
-                    (@ProspectId, @CarverId, @ScheduledAt, @Reason, @Status)";
+                    (@ProspectId, @CarverModel, @ScheduledAt, @Reason, @Status)";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@ProspectId", testDrive.Prospect.Id);
-                cmd.Parameters.AddWithValue("@CarverId", testDrive.Carver.Id);
+                cmd.Parameters.AddWithValue("@CarverModel", (int)testDrive.Carver.ModelType);
                 cmd.Parameters.AddWithValue("@ScheduledAt", testDrive.ScheduledAt);
                 cmd.Parameters.AddWithValue("@Reason", testDrive.Reason);
                 cmd.Parameters.AddWithValue("@Status", (int)testDrive.Status);
@@ -35,11 +35,9 @@ namespace Carver.Database
             using (SqlConnection conn = DBConnection.GetConnection())
             {
                 conn.Open();
-                string query = @"SELECT t.*, c.Id AS CarverId, c.ModelType
-                    FROM TestDrives t
-                    INNER JOIN Carvers c ON t.CarverId = c.Id
+                string query = @"SELECT * FROM TestDrives
                     WHERE t.Status = @Status
-                    ORDER BY t.ScheduledAt";
+                    ORDER BY ScheduledAt";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Status", (int)status);
@@ -49,7 +47,7 @@ namespace Carver.Database
                 {
                     Prospect prospect = _prospectRepo.GetById(reader.GetInt32(reader.GetOrdinal("ProspectId")))!;
 
-                    CarverModelType modelType = (CarverModelType)reader.GetInt32(reader.GetOrdinal("ModelType"));
+                    CarverModelType modelType = (CarverModelType)reader.GetInt32(reader.GetOrdinal("CarverModel"));
                     Models.Carver carver = new Models.Carver(modelType);
 
                     TestDrive testDrive = new TestDrive(
@@ -75,10 +73,7 @@ namespace Carver.Database
             using (SqlConnection conn = DBConnection.GetConnection())
             {
                 conn.Open();
-                string query = @"SELECT t.*, c.Id AS CarverId, c.ModelType
-                    FROM TestDrives t
-                    INNER JOIN Carvers c ON t.CarverId = c.Id
-                    ORDER BY t.ScheduledAt";
+                string query = @"SELECT * FROM ORDER BY ScheduledAt";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -87,7 +82,7 @@ namespace Carver.Database
                 {
                     Prospect prospect = _prospectRepo.GetById(reader.GetInt32(reader.GetOrdinal("ProspectId")))!;
 
-                    CarverModelType modelType = (CarverModelType)reader.GetInt32(reader.GetOrdinal("ModelType"));
+                    CarverModelType modelType = (CarverModelType)reader.GetInt32(reader.GetOrdinal("CarverModel"));
                     Models.Carver carver = new Models.Carver(modelType);
 
                     TestDrive testDrive = new TestDrive(
@@ -124,14 +119,14 @@ namespace Carver.Database
             {
                 conn.Open();
                 string query = @"UPDATE TestDrives 
-                    SET CarverId = @CarverId, 
+                    SET CarverModel = @CarverModel, 
                         ScheduledAt = @ScheduledAt, 
                         Reason = @Reason
                     WHERE Id = @Id";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Id", testDrive.Id);
-                cmd.Parameters.AddWithValue("@CarverId", testDrive.Carver.Id);
+                cmd.Parameters.AddWithValue("@CarverModel", (int)testDrive.Carver.ModelType);
                 cmd.Parameters.AddWithValue("@ScheduledAt", testDrive.ScheduledAt);
                 cmd.Parameters.AddWithValue("@Reason", testDrive.Reason);
                 cmd.ExecuteNonQuery();
