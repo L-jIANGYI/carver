@@ -224,6 +224,7 @@
             btnTestDriveSubmit.TabIndex = 23;
             btnTestDriveSubmit.Text = "Proefrit inplannen";
             btnTestDriveSubmit.UseVisualStyleBackColor = true;
+            btnTestDriveSubmit.Click += btnTestDriveSubmit_Click;
             // 
             // cmbInterestedModel
             // 
@@ -364,6 +365,7 @@
             // 
             // chkIsDisabledVehicle
             // 
+            chkIsDisabledVehicle.AutoCheck = false;
             chkIsDisabledVehicle.AutoSize = true;
             chkIsDisabledVehicle.Location = new Point(206, 370);
             chkIsDisabledVehicle.Name = "chkIsDisabledVehicle";
@@ -373,6 +375,7 @@
             // 
             // chkHasScooterLicense
             // 
+            chkHasScooterLicense.AutoCheck = false;
             chkHasScooterLicense.AutoSize = true;
             chkHasScooterLicense.Location = new Point(206, 340);
             chkHasScooterLicense.Name = "chkHasScooterLicense";
@@ -382,6 +385,7 @@
             // 
             // chkHasDrivingLicense
             // 
+            chkHasDrivingLicense.AutoCheck = false;
             chkHasDrivingLicense.AutoSize = true;
             chkHasDrivingLicense.Location = new Point(206, 308);
             chkHasDrivingLicense.Name = "chkHasDrivingLicense";
@@ -485,8 +489,9 @@
             txtSearchProspect.Name = "txtSearchProspect";
             txtSearchProspect.Size = new Size(205, 27);
             txtSearchProspect.TabIndex = 28;
+            txtSearchProspect.Tag = "";
             txtSearchProspect.TextChanged += txtSearchProspect_TextChanged;
-            txtSearchProspect.KeyDown += txtSearchProspects_KeyDown;
+            txtSearchProspect.KeyDown += txtSearch_KeyDown;
             // 
             // btnTestDriveNewProspect
             // 
@@ -548,8 +553,9 @@
             txtSearchProspects.PlaceholderText = "Zoek een prospect";
             txtSearchProspects.Size = new Size(201, 27);
             txtSearchProspects.TabIndex = 0;
+            txtSearchProspects.Tag = "lstFilteredProspects";
             txtSearchProspects.TextChanged += txtSearchProspects_TextChanged;
-            txtSearchProspects.KeyDown += txtSearchProspects_KeyDown;
+            txtSearchProspects.KeyDown += txtSearch_KeyDown;
             // 
             // tpScheduled
             // 

@@ -9,6 +9,7 @@ namespace Carver
     {
         public bool IsLogout { get; private set; } = false;
         private readonly ProspectService _prospectService = new ProspectService();
+        private readonly TestDriveService _testDriveService = new TestDriveService();
         private List<Prospect> _allProspects;
         private Prospect? _selectedProspect;
 
@@ -120,17 +121,20 @@ namespace Carver
             lstFilteredProspects.Visible = false;
         }
 
-        private void txtSearchProspects_KeyDown(object sender, KeyEventArgs e)
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
+            if (e.KeyCode != Keys.Enter) return;
+
+            if (sender == txtSearchProspects)
                 lstFilteredProspects.Visible = false;
-                e.SuppressKeyPress = true;
-            }
+            else if (sender == txtSearchProspect)
+                lstProspects.Visible = false;
+
+            e.SuppressKeyPress = true;
         }
 
         // =======================================
-        // TestDrive tabpage
+        // TestDrive tabpage - prospect search & select
         // =======================================
         private void txtSearchProspect_TextChanged(object sender, EventArgs e)
         {
@@ -165,6 +169,63 @@ namespace Carver
                 _allProspects = _prospectService.GetAll();
                 DisplaySelectedProspect(form.CreatedProspect);
             }
+        }
+
+        // =======================================
+        // TestDrive tabpage - testdrive details & actions
+        // =======================================
+
+        private void btnTestDriveSubmit_Click(object sender, EventArgs e)
+        {
+            //if (_selectedProspect == null)
+            //{
+            //    MessageBox.Show("Selecteer eerst een prospect.", "Fout",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+
+            //try
+            //{
+            //    CarverModelType modelType = (CarverModelType)cmbInterestedModel.SelectedIndex;
+            //    Models.Carver carver = _carverService.GetByModelType(modelType);
+
+            //    TestDrive testDrive = new TestDrive(
+            //        _selectedProspect,
+            //        carver,
+            //        dtpTestDriveDateTime.Value,
+            //        rtbInterestReason.Text.Trim()
+            //    );
+
+            //    _testDriveService.Add(testDrive);
+
+            //    MessageBox.Show("Proefrit ingepland.", "Succes",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //    ResetTestDriveForm();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Fout bij plannen testdrive: {ex.Message}", "Fout",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //};
+        }
+
+        private void ResetTestDriveForm()
+        {
+            rtbInterestReason.Clear();
+            dtpTestDriveDateTime.Value = DateTime.Now;
+
+            _selectedProspect = null;
+            txtSearchProspect.Clear();
+            lblFirstName.Text = "-";
+            lblLastName.Text = "-";
+            lblEmail.Text = "-";
+            lblPhone.Text = "-";
+            lblAddress.Text = "-";
+            lblCity.Text = "-";
+            chkHasDrivingLicense.Checked = false;
+            chkHasScooterLicense.Checked = false;
+            chkIsDisabledVehicle.Checked = false;
         }
     }
 }
