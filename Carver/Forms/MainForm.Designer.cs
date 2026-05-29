@@ -496,6 +496,7 @@
             btnTestDriveNewProspect.TabIndex = 27;
             btnTestDriveNewProspect.Text = "Niuwe prospect";
             btnTestDriveNewProspect.UseVisualStyleBackColor = true;
+            btnTestDriveNewProspect.Click += btnTestDriveNewProspect_Click;
             // 
             // lblProspectInfo
             // 

@@ -111,9 +111,6 @@ namespace Carver
         {
             string query = txtSearchProspect.Text.ToLower();
 
-            System.Diagnostics.Debug.WriteLine($"query: {query}, prospects count: {_allProspects?.Count}");
-
-
             if (string.IsNullOrWhiteSpace(query))
             {
                 lstProspects.Visible = false;
@@ -143,9 +140,9 @@ namespace Carver
             _selectedProspect = lstProspects.SelectedItem as Prospect;
             if (_selectedProspect == null) return;
 
-            lblFirstName.Text = _selectedProspect.FullName;
-            lblLastName.Text = _selectedProspect.Email;
-            lblEmail.Text = _selectedProspect.Phone;
+            lblFirstName.Text = _selectedProspect.FirstName;
+            lblLastName.Text = _selectedProspect.LastName;
+            lblEmail.Text = _selectedProspect.Email;
             lblPhone.Text = _selectedProspect.Phone;
             lblAddress.Text = _selectedProspect.Address;
             lblCity.Text = _selectedProspect.City;
@@ -154,6 +151,26 @@ namespace Carver
             chkIsDisabledVehicle.Checked = _selectedProspect.IsDisabledVehicle;
 
             lstProspects.Visible = false;
+        }
+
+        private void btnTestDriveNewProspect_Click(object sender, EventArgs e)
+        {
+            NewProspectForm form = new NewProspectForm();
+            if (form.ShowDialog() == DialogResult.OK && form.CreatedProspect != null)
+            {
+                _selectedProspect = form.CreatedProspect;
+                _allProspects = _prospectService.GetAll();
+
+                lblFirstName.Text = _selectedProspect.FirstName;
+                lblLastName.Text = _selectedProspect.LastName;
+                lblEmail.Text = _selectedProspect.Email;
+                lblPhone.Text = _selectedProspect.Phone;
+                lblAddress.Text = _selectedProspect.Address;
+                lblCity.Text = _selectedProspect.City;
+                chkHasDrivingLicense.Checked = _selectedProspect.HasDrivingLicense;
+                chkHasScooterLicense.Checked = _selectedProspect.HasScooterLicense;
+                chkIsDisabledVehicle.Checked = _selectedProspect.IsDisabledVehicle;
+            }
         }
     }
 }

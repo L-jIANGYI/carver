@@ -5,6 +5,7 @@ namespace Carver.Forms.Prospect
 {
     internal class NewProspectForm : ProspectForm
     {
+        public ProspectModel? CreatedProspect { get; private set; }
         private readonly ProspectService _prospectService = new ProspectService();
 
         public NewProspectForm()
@@ -33,6 +34,7 @@ namespace Carver.Forms.Prospect
                 };
 
                 _prospectService.Add(prospect);
+                CreatedProspect = _prospectService.GetByEmail(prospect.Email);
 
                 MessageBox.Show("Prospect aangemaakt.", "Succes",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
