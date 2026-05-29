@@ -2,7 +2,7 @@
 {
     internal class TestDrive
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public Prospect Prospect { get; set; }
         public Carver Carver { get; set; }
         public DateTime ScheduledAt { get; set; }

@@ -58,6 +58,7 @@ namespace Carver.Database
                         reader.GetDateTime(reader.GetOrdinal("ScheduledAt")),
                         reader.GetString(reader.GetOrdinal("Reason"))
                     );
+                    testDrive.Id = reader.GetInt32(reader.GetOrdinal("Id"));
                     testDrive.Status = (TestDriveStatus)reader.GetInt32(reader.GetOrdinal("Status"));
 
                     testDrives.Add(testDrive);
@@ -95,6 +96,7 @@ namespace Carver.Database
                         reader.GetDateTime(reader.GetOrdinal("ScheduledAt")),
                         reader.GetString(reader.GetOrdinal("Reason"))
                     );
+                    testDrive.Id = reader.GetInt32(reader.GetOrdinal("Id"));
                     testDrive.Status = (TestDriveStatus)reader.GetInt32(reader.GetOrdinal("Status"));
 
                     testDrives.Add(testDrive);
