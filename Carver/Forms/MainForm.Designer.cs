@@ -486,7 +486,7 @@
             txtSearchProspect.Size = new Size(205, 27);
             txtSearchProspect.TabIndex = 28;
             txtSearchProspect.TextChanged += txtSearchProspect_TextChanged;
-            txtSearchProspect.KeyDown += txtSearchProspect_KeyDown;
+            txtSearchProspect.KeyDown += txtSearchProspects_KeyDown;
             // 
             // btnTestDriveNewProspect
             // 
@@ -529,6 +529,7 @@
             lstFilteredProspects.Size = new Size(201, 104);
             lstFilteredProspects.TabIndex = 4;
             lstFilteredProspects.Visible = false;
+            lstFilteredProspects.SelectedIndexChanged += lstFilteredProspects_SelectedIndexChanged;
             // 
             // btnNewProspect
             // 

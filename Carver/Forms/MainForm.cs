@@ -111,6 +111,15 @@ namespace Carver
             dgvProspects.DataSource = filtered;
         }
 
+        private void lstFilteredProspects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Prospect? selected = lstFilteredProspects.SelectedItem as Prospect;
+            if (selected == null) return;
+
+            dgvProspects.DataSource = new List<Prospect> { selected };
+            lstFilteredProspects.Visible = false;
+        }
+
         private void txtSearchProspects_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
