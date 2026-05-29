@@ -57,6 +57,35 @@ namespace Carver.Database
             }
         }
 
+        public Prospect? GetByEmail(string email)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT * FROM Prospects WHERE Email = @Email";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Email", email);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Prospect prospect = new Prospect(
+                        reader.GetString(reader.GetOrdinal("FirstName")),
+                        reader.GetString(reader.GetOrdinal("LastName")),
+                        reader.GetString(reader.GetOrdinal("Email")),
+                        reader.GetString(reader.GetOrdinal("Phone")),
+                        reader.GetString(reader.GetOrdinal("Address")),
+                        reader.GetString(reader.GetOrdinal("City"))
+                    );
+                    prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
+                    prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
+                    prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
+                    return prospect;
+                }
+                return null;
+            }
+        }
+
         public List<Prospect> GetAll()
         {
             List<Prospect> prospects = new List<Prospect>();

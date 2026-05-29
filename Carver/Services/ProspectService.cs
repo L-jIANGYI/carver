@@ -17,6 +17,11 @@ namespace Carver.Services
             return _prospectRepo.GetById(id);
         }
 
+        public Prospect? GetByEmail(string email)
+        {
+            return _prospectRepo.GetByEmail(email);
+        }
+
         public void Add(Prospect prospect)
         {
             if (string.IsNullOrWhiteSpace(prospect.FirstName))
