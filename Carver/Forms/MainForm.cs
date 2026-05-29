@@ -33,6 +33,9 @@ namespace Carver
             }
         }
 
+        // =======================================
+        // Prospects tabpage
+        // =======================================
         private void LoadProspects()
         {
             _allProspects = _prospectService.GetAll();
@@ -76,6 +79,20 @@ namespace Carver
             }
         }
 
+        private void DisplaySelectedProspect(Prospect prospect)
+        {
+            _selectedProspect = prospect;
+            lblFirstName.Text = prospect.FirstName;
+            lblLastName.Text = prospect.LastName;
+            lblEmail.Text = prospect.Email;
+            lblPhone.Text = prospect.Phone;
+            lblAddress.Text = prospect.Address;
+            lblCity.Text = prospect.City;
+            chkHasDrivingLicense.Checked = prospect.HasDrivingLicense;
+            chkHasScooterLicense.Checked = prospect.HasScooterLicense;
+            chkIsDisabledVehicle.Checked = prospect.IsDisabledVehicle;
+        }
+
         private void txtSearchProspects_TextChanged(object sender, EventArgs e)
         {
             string query = txtSearchProspects.Text.ToLower();
@@ -87,14 +104,10 @@ namespace Carver
                 return;
             }
 
-            var filtered = _allProspects
-                .Where(p => p.FullName.ToLower().Contains(query))
-                .ToList();
-
+            var filtered = _prospectService.Search(_allProspects, query);
             lstFilteredProspects.DataSource = filtered;
             lstFilteredProspects.DisplayMember = "FullName";
             lstFilteredProspects.Visible = true;
-
             dgvProspects.DataSource = filtered;
         }
 
@@ -107,6 +120,9 @@ namespace Carver
             }
         }
 
+        // =======================================
+        // TestDrive tabpage
+        // =======================================
         private void txtSearchProspect_TextChanged(object sender, EventArgs e)
         {
             string query = txtSearchProspect.Text.ToLower();
@@ -117,39 +133,18 @@ namespace Carver
                 return;
             }
 
-            var filtered = _allProspects
-                .Where(p => p.FullName.ToLower().Contains(query))
-                .ToList();
-
+            var filtered = _prospectService.Search(_allProspects, query);
             lstProspects.DataSource = filtered;
             lstProspects.DisplayMember = "FullName";
             lstProspects.Visible = true;
         }
 
-        private void txtSearchProspect_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                lstProspects.Visible = false;
-                e.SuppressKeyPress = true;
-            }
-        }
-
         private void lstProspects_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _selectedProspect = lstProspects.SelectedItem as Prospect;
-            if (_selectedProspect == null) return;
+            Prospect? selected = lstProspects.SelectedItem as Prospect;
+            if (selected == null) return;
 
-            lblFirstName.Text = _selectedProspect.FirstName;
-            lblLastName.Text = _selectedProspect.LastName;
-            lblEmail.Text = _selectedProspect.Email;
-            lblPhone.Text = _selectedProspect.Phone;
-            lblAddress.Text = _selectedProspect.Address;
-            lblCity.Text = _selectedProspect.City;
-            chkHasDrivingLicense.Checked = _selectedProspect.HasDrivingLicense;
-            chkHasScooterLicense.Checked = _selectedProspect.HasScooterLicense;
-            chkIsDisabledVehicle.Checked = _selectedProspect.IsDisabledVehicle;
-
+            DisplaySelectedProspect(selected);
             lstProspects.Visible = false;
         }
 
@@ -158,18 +153,8 @@ namespace Carver
             NewProspectForm form = new NewProspectForm();
             if (form.ShowDialog() == DialogResult.OK && form.CreatedProspect != null)
             {
-                _selectedProspect = form.CreatedProspect;
                 _allProspects = _prospectService.GetAll();
-
-                lblFirstName.Text = _selectedProspect.FirstName;
-                lblLastName.Text = _selectedProspect.LastName;
-                lblEmail.Text = _selectedProspect.Email;
-                lblPhone.Text = _selectedProspect.Phone;
-                lblAddress.Text = _selectedProspect.Address;
-                lblCity.Text = _selectedProspect.City;
-                chkHasDrivingLicense.Checked = _selectedProspect.HasDrivingLicense;
-                chkHasScooterLicense.Checked = _selectedProspect.HasScooterLicense;
-                chkIsDisabledVehicle.Checked = _selectedProspect.IsDisabledVehicle;
+                DisplaySelectedProspect(form.CreatedProspect);
             }
         }
     }

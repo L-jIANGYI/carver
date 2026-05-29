@@ -54,5 +54,12 @@ namespace Carver.Services
         {
             _prospectRepo.Delete(prospect);
         }
+
+        public List<Prospect> Search(List<Prospect> prospects, string query)
+        {
+            return prospects
+                .Where(p => p.FullName.ToLower().Contains(query.ToLower()))
+                .ToList();
+        }
     }
 }
