@@ -177,37 +177,37 @@ namespace Carver
 
         private void btnTestDriveSubmit_Click(object sender, EventArgs e)
         {
-            //if (_selectedProspect == null)
-            //{
-            //    MessageBox.Show("Selecteer eerst een prospect.", "Fout",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            if (_selectedProspect == null)
+            {
+                MessageBox.Show("Selecteer eerst een prospect.", "Fout",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            //try
-            //{
-            //    CarverModelType modelType = (CarverModelType)cmbInterestedModel.SelectedIndex;
-            //    Models.Carver carver = _carverService.GetByModelType(modelType);
+            try
+            {
+                CarverModelType modelType = (CarverModelType)cmbInterestedModel.SelectedIndex;
+                Models.Carver carver = new Models.Carver(modelType);
 
-            //    TestDrive testDrive = new TestDrive(
-            //        _selectedProspect,
-            //        carver,
-            //        dtpTestDriveDateTime.Value,
-            //        rtbInterestReason.Text.Trim()
-            //    );
+                TestDrive testDrive = new TestDrive(
+                    _selectedProspect,
+                    carver,
+                    dtpTestDriveDateTime.Value,
+                    rtbInterestReason.Text.Trim()
+                );
 
-            //    _testDriveService.Add(testDrive);
+                _testDriveService.Add(testDrive);
 
-            //    MessageBox.Show("Proefrit ingepland.", "Succes",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Proefrit ingepland.", "Succes",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //    ResetTestDriveForm();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Fout bij plannen testdrive: {ex.Message}", "Fout",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //};
+                ResetTestDriveForm();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Fout",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ResetTestDriveForm()
