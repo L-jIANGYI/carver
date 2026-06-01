@@ -95,6 +95,7 @@
             colCompletedProspectName = new DataGridViewTextBoxColumn();
             colModel = new DataGridViewTextBoxColumn();
             colDateTime = new DataGridViewTextBoxColumn();
+            colCompletedStatus = new DataGridViewTextBoxColumn();
             colExperience = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
@@ -690,7 +691,7 @@
             // 
             dgvCompleted.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCompleted.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCompleted.Columns.AddRange(new DataGridViewColumn[] { colCompletedProspectName, colModel, colDateTime, colExperience });
+            dgvCompleted.Columns.AddRange(new DataGridViewColumn[] { colCompletedProspectName, colModel, colDateTime, colCompletedStatus, colExperience });
             dgvCompleted.Location = new Point(18, 60);
             dgvCompleted.Name = "dgvCompleted";
             dgvCompleted.RowHeadersWidth = 51;
@@ -765,6 +766,13 @@
             colDateTime.HeaderText = "Datum";
             colDateTime.MinimumWidth = 6;
             colDateTime.Name = "colDateTime";
+            // 
+            // colCompletedStatus
+            // 
+            colCompletedStatus.DataPropertyName = "StatusDisplay";
+            colCompletedStatus.HeaderText = "Status";
+            colCompletedStatus.MinimumWidth = 6;
+            colCompletedStatus.Name = "colCompletedStatus";
             // 
             // colExperience
             // 
@@ -873,6 +881,7 @@
         private DataGridViewTextBoxColumn colCompletedProspectName;
         private DataGridViewTextBoxColumn colModel;
         private DataGridViewTextBoxColumn colDateTime;
+        private DataGridViewTextBoxColumn colCompletedStatus;
         private DataGridViewButtonColumn colExperience;
     }
 }
