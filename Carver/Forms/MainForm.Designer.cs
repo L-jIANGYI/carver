@@ -723,7 +723,7 @@
             // 
             // colStatus
             // 
-            colStatus.DataPropertyName = "Status";
+            colStatus.DataPropertyName = "StatusDisplay";
             colStatus.HeaderText = "Status";
             colStatus.MinimumWidth = 6;
             colStatus.Name = "colStatus";
