@@ -12,6 +12,7 @@ namespace Carver
         private readonly TestDriveService _testDriveService = new TestDriveService();
         private List<Prospect> _allProspects = new List<Prospect>();
         private Prospect? _selectedProspect;
+        private TestDrive? _editingTestDrive;
 
         public MainForm(User user)
         {
@@ -202,19 +203,40 @@ namespace Carver
                 CarverModelType modelType = (CarverModelType)cmbInterestedModel.SelectedIndex;
                 Models.Carver carver = new Models.Carver(modelType);
 
-                TestDrive testDrive = new TestDrive(
-                    _selectedProspect,
-                    carver,
-                    dtpTestDriveDateTime.Value,
-                    rtbInterestReason.Text.Trim()
-                );
+                if (_editingTestDrive != null)
+                {
+                    // Update existing
+                    _editingTestDrive.Prospect = _selectedProspect;
+                    _editingTestDrive.Carver = carver;
+                    _editingTestDrive.ScheduledAt = dtpTestDriveDateTime.Value;
+                    _editingTestDrive.Reason = rtbInterestReason.Text.Trim();
 
-                _testDriveService.Add(testDrive);
+                    _testDriveService.Update(_editingTestDrive);
+                    _editingTestDrive = null;
 
-                MessageBox.Show("Proefrit ingepland.", "Succes",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Proefrit bijgewerkt.", "Succes",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Create new
+                    TestDrive testDrive = new TestDrive(
+                        _selectedProspect,
+                        carver,
+                        dtpTestDriveDateTime.Value,
+                        rtbInterestReason.Text.Trim()
+                    );
 
+                    _testDriveService.Add(testDrive);
+
+                    MessageBox.Show("Proefrit ingepland.", "Succes",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                btnTestDriveSubmit.Text = "Proefrit inplannen";
                 ResetTestDriveForm();
+                LoadScheduledTestDrives();
+                LoadCompletedTestDrives();
             }
             catch (ArgumentException ex)
             {
@@ -227,7 +249,9 @@ namespace Carver
         {
             rtbInterestReason.Clear();
             dtpTestDriveDateTime.Value = DateTime.Now;
+            btnTestDriveSubmit.Text = "Proefrit inplannen";
 
+            _editingTestDrive = null;
             _selectedProspect = null;
             txtSearchProspect.Clear();
             lblFirstName.Text = "-";
@@ -265,6 +289,29 @@ namespace Carver
 
             LoadScheduledTestDrives();
             LoadCompletedTestDrives();
+        }
+
+        private void dgvScheduled_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex != colScheduledEdit.Index) return;
+
+            TestDrive? selected = dgvScheduled.Rows[e.RowIndex].DataBoundItem as TestDrive;
+            if (selected == null) return;
+
+            tabMain.SelectedTab = tpNewTestDrive;
+
+            _editingTestDrive = selected;
+            DisplaySelectedProspect(selected.Prospect);
+            dtpTestDriveDateTime.Value = selected.ScheduledAt;
+            cmbInterestedModel.SelectedIndex = (int)selected.Carver.ModelType;
+            rtbInterestReason.Text = selected.Reason;
+
+            btnTestDriveSubmit.Text = "Proefrit bijwerken";
+        }
+
+        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ResetTestDriveForm();
         }
     }
 }

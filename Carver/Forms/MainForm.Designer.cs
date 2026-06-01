@@ -87,16 +87,16 @@
             lstFilteredCompleted = new ListBox();
             txtSearchCompleted = new TextBox();
             dgvCompleted = new DataGridView();
-            tpStatistics = new TabPage();
-            tpEmployeeManagement = new TabPage();
-            lblWelcome = new Label();
-            lblTitle = new Label();
-            btnLogOut = new Button();
             colCompletedProspectName = new DataGridViewTextBoxColumn();
             colModel = new DataGridViewTextBoxColumn();
             colDateTime = new DataGridViewTextBoxColumn();
             colCompletedStatus = new DataGridViewTextBoxColumn();
             colExperience = new DataGridViewButtonColumn();
+            tpStatistics = new TabPage();
+            tpEmployeeManagement = new TabPage();
+            lblWelcome = new Label();
+            lblTitle = new Label();
+            btnLogOut = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpNewTestDrive.SuspendLayout();
@@ -180,6 +180,7 @@
             tabMain.SelectedIndex = 0;
             tabMain.Size = new Size(776, 463);
             tabMain.TabIndex = 0;
+            tabMain.SelectedIndexChanged += tabMain_SelectedIndexChanged;
             // 
             // tpDashboard
             // 
@@ -617,6 +618,7 @@
             dgvScheduled.RowHeadersWidth = 51;
             dgvScheduled.Size = new Size(727, 358);
             dgvScheduled.TabIndex = 0;
+            dgvScheduled.CellContentClick += dgvScheduled_CellContentClick;
             dgvScheduled.CellValueChanged += dgvScheduled_CellValueChanged;
             // 
             // colProspectName
@@ -698,6 +700,42 @@
             dgvCompleted.Size = new Size(727, 358);
             dgvCompleted.TabIndex = 1;
             // 
+            // colCompletedProspectName
+            // 
+            colCompletedProspectName.DataPropertyName = "ProspectName";
+            colCompletedProspectName.HeaderText = "Naam";
+            colCompletedProspectName.MinimumWidth = 6;
+            colCompletedProspectName.Name = "colCompletedProspectName";
+            // 
+            // colModel
+            // 
+            colModel.DataPropertyName = "CarverModel";
+            colModel.HeaderText = "Model";
+            colModel.MinimumWidth = 6;
+            colModel.Name = "colModel";
+            // 
+            // colDateTime
+            // 
+            colDateTime.DataPropertyName = "ScheduledAt";
+            colDateTime.HeaderText = "Datum";
+            colDateTime.MinimumWidth = 6;
+            colDateTime.Name = "colDateTime";
+            // 
+            // colCompletedStatus
+            // 
+            colCompletedStatus.DataPropertyName = "StatusDisplay";
+            colCompletedStatus.HeaderText = "Status";
+            colCompletedStatus.MinimumWidth = 6;
+            colCompletedStatus.Name = "colCompletedStatus";
+            // 
+            // colExperience
+            // 
+            colExperience.HeaderText = "";
+            colExperience.MinimumWidth = 6;
+            colExperience.Name = "colExperience";
+            colExperience.Text = "Ervaring invullen";
+            colExperience.UseColumnTextForButtonValue = true;
+            // 
             // tpStatistics
             // 
             tpStatistics.Location = new Point(4, 29);
@@ -745,42 +783,6 @@
             btnLogOut.Text = "Uitloggen";
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
-            // 
-            // colCompletedProspectName
-            // 
-            colCompletedProspectName.DataPropertyName = "ProspectName";
-            colCompletedProspectName.HeaderText = "Naam";
-            colCompletedProspectName.MinimumWidth = 6;
-            colCompletedProspectName.Name = "colCompletedProspectName";
-            // 
-            // colModel
-            // 
-            colModel.DataPropertyName = "CarverModel";
-            colModel.HeaderText = "Model";
-            colModel.MinimumWidth = 6;
-            colModel.Name = "colModel";
-            // 
-            // colDateTime
-            // 
-            colDateTime.DataPropertyName = "ScheduledAt";
-            colDateTime.HeaderText = "Datum";
-            colDateTime.MinimumWidth = 6;
-            colDateTime.Name = "colDateTime";
-            // 
-            // colCompletedStatus
-            // 
-            colCompletedStatus.DataPropertyName = "StatusDisplay";
-            colCompletedStatus.HeaderText = "Status";
-            colCompletedStatus.MinimumWidth = 6;
-            colCompletedStatus.Name = "colCompletedStatus";
-            // 
-            // colExperience
-            // 
-            colExperience.HeaderText = "";
-            colExperience.MinimumWidth = 6;
-            colExperience.Name = "colExperience";
-            colExperience.Text = "Ervaring invullen";
-            colExperience.UseColumnTextForButtonValue = true;
             // 
             // MainForm
             // 
