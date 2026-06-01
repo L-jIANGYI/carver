@@ -9,6 +9,8 @@
         public string Reason { get; set; }
         public TestDriveStatus Status { get; set; }
         public DateTime CreatedAt { get; set; }
+        public string ProspectName => Prospect.FullName;
+        public string CarverModel => Carver.Type;
 
         public TestDrive(Prospect prospect, Carver carver, DateTime scheduledAt, string reason)
         {
