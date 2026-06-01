@@ -87,10 +87,10 @@
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
-            ProspectName = new DataGridViewTextBoxColumn();
-            ScheduledAt = new DataGridViewTextBoxColumn();
-            Model = new DataGridViewTextBoxColumn();
-            Status = new DataGridViewTextBoxColumn();
+            colProspectName = new DataGridViewTextBoxColumn();
+            colScheduledAt = new DataGridViewTextBoxColumn();
+            colCarverModel = new DataGridViewTextBoxColumn();
+            colStatus = new DataGridViewTextBoxColumn();
             editCol = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
@@ -606,7 +606,7 @@
             // 
             dgvScheduled.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvScheduled.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvScheduled.Columns.AddRange(new DataGridViewColumn[] { ProspectName, ScheduledAt, Model, Status, editCol });
+            dgvScheduled.Columns.AddRange(new DataGridViewColumn[] { colProspectName, colScheduledAt, colCarverModel, colStatus, editCol });
             dgvScheduled.Location = new Point(18, 60);
             dgvScheduled.Name = "dgvScheduled";
             dgvScheduled.RowHeadersWidth = 51;
@@ -700,29 +700,33 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
-            // ProspectName
+            // colProspectName
             // 
-            ProspectName.HeaderText = "Naam";
-            ProspectName.MinimumWidth = 6;
-            ProspectName.Name = "ProspectName";
+            colProspectName.DataPropertyName = "ProspectName";
+            colProspectName.HeaderText = "Naam";
+            colProspectName.MinimumWidth = 6;
+            colProspectName.Name = "colProspectName";
             // 
-            // ScheduledAt
+            // colScheduledAt
             // 
-            ScheduledAt.HeaderText = "Gepland op";
-            ScheduledAt.MinimumWidth = 6;
-            ScheduledAt.Name = "ScheduledAt";
+            colScheduledAt.DataPropertyName = "ScheduledAt";
+            colScheduledAt.HeaderText = "Gepland op";
+            colScheduledAt.MinimumWidth = 6;
+            colScheduledAt.Name = "colScheduledAt";
             // 
-            // Model
+            // colCarverModel
             // 
-            Model.HeaderText = "Model";
-            Model.MinimumWidth = 6;
-            Model.Name = "Model";
+            colCarverModel.DataPropertyName = "CarverModel";
+            colCarverModel.HeaderText = "Model";
+            colCarverModel.MinimumWidth = 6;
+            colCarverModel.Name = "colCarverModel";
             // 
-            // Status
+            // colStatus
             // 
-            Status.HeaderText = "Status";
-            Status.MinimumWidth = 6;
-            Status.Name = "Status";
+            colStatus.DataPropertyName = "Status";
+            colStatus.HeaderText = "Status";
+            colStatus.MinimumWidth = 6;
+            colStatus.Name = "colStatus";
             // 
             // editCol
             // 
@@ -823,10 +827,10 @@
         private TextBox txtSearchScheduled;
         private ListBox lstFilteredCompleted;
         private TextBox txtSearchCompleted;
-        private DataGridViewTextBoxColumn ProspectName;
-        private DataGridViewTextBoxColumn ScheduledAt;
-        private DataGridViewTextBoxColumn Model;
-        private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn colProspectName;
+        private DataGridViewTextBoxColumn colScheduledAt;
+        private DataGridViewTextBoxColumn colCarverModel;
+        private DataGridViewTextBoxColumn colStatus;
         private DataGridViewButtonColumn editCol;
     }
 }

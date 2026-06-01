@@ -10,7 +10,7 @@ namespace Carver
         public bool IsLogout { get; private set; } = false;
         private readonly ProspectService _prospectService = new ProspectService();
         private readonly TestDriveService _testDriveService = new TestDriveService();
-        private List<Prospect> _allProspects;
+        private List<Prospect> _allProspects = new List<Prospect>();
         private Prospect? _selectedProspect;
 
         public MainForm(User user)
@@ -20,6 +20,8 @@ namespace Carver
             lblWelcome.Text = $"Welkom, {user.Name}!";
             InitDataGridView();
             LoadProspects();
+            LoadScheduledTestDrives();
+            LoadCompletedTestDrives();
         }
 
         private void InitDataGridView()
@@ -233,6 +235,18 @@ namespace Carver
             chkHasDrivingLicense.Checked = false;
             chkHasScooterLicense.Checked = false;
             chkIsDisabledVehicle.Checked = false;
+        }
+
+        private void LoadScheduledTestDrives()
+        {
+            var testDrives = _testDriveService.GetByStatus(TestDriveStatus.Scheduled);
+            dgvScheduled.DataSource = testDrives;
+        }
+
+        private void LoadCompletedTestDrives()
+        {
+            var testDrives = _testDriveService.GetByStatus(TestDriveStatus.Completed);
+            dgvCompleted.DataSource = testDrives;
         }
     }
 }
