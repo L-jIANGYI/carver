@@ -36,7 +36,7 @@ namespace Carver.Database
             {
                 conn.Open();
                 string query = @"SELECT * FROM TestDrives
-                    WHERE t.Status = @Status
+                    WHERE Status = @Status
                     ORDER BY ScheduledAt";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
