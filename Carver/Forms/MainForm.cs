@@ -18,8 +18,15 @@ namespace Carver
             InitializeComponent();
 
             lblWelcome.Text = $"Welkom, {user.Name}!";
-            dgvProspects.AutoGenerateColumns = false;
+            InitDataGridView();
             LoadProspects();
+        }
+
+        private void InitDataGridView()
+        {
+            dgvProspects.AutoGenerateColumns = false;
+            dgvScheduled.AutoGenerateColumns = false;
+            dgvCompleted.AutoGenerateColumns = false;
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

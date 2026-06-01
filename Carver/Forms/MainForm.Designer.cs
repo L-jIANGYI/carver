@@ -75,18 +75,33 @@
             btnNewProspect = new Button();
             txtSearchProspects = new TextBox();
             tpScheduled = new TabPage();
+            lstFilteredScheduled = new ListBox();
+            txtSearchScheduled = new TextBox();
+            dgvScheduled = new DataGridView();
             tpCompleted = new TabPage();
+            lstFilteredCompleted = new ListBox();
+            txtSearchCompleted = new TextBox();
+            dgvCompleted = new DataGridView();
             tpStatistics = new TabPage();
             tpEmployeeManagement = new TabPage();
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
+            ProspectName = new DataGridViewTextBoxColumn();
+            ScheduledAt = new DataGridViewTextBoxColumn();
+            Model = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewTextBoxColumn();
+            editCol = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpNewTestDrive.SuspendLayout();
             grpTestDriveDetails.SuspendLayout();
             grpProspect.SuspendLayout();
             tpProspect.SuspendLayout();
+            tpScheduled.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvScheduled).BeginInit();
+            tpCompleted.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCompleted).BeginInit();
             SuspendLayout();
             // 
             // dgvProspects
@@ -559,6 +574,9 @@
             // 
             // tpScheduled
             // 
+            tpScheduled.Controls.Add(lstFilteredScheduled);
+            tpScheduled.Controls.Add(txtSearchScheduled);
+            tpScheduled.Controls.Add(dgvScheduled);
             tpScheduled.Location = new Point(4, 29);
             tpScheduled.Name = "tpScheduled";
             tpScheduled.Size = new Size(768, 430);
@@ -566,14 +584,73 @@
             tpScheduled.Text = "Gepland";
             tpScheduled.UseVisualStyleBackColor = true;
             // 
+            // lstFilteredScheduled
+            // 
+            lstFilteredScheduled.FormattingEnabled = true;
+            lstFilteredScheduled.Location = new Point(18, 39);
+            lstFilteredScheduled.Name = "lstFilteredScheduled";
+            lstFilteredScheduled.Size = new Size(201, 104);
+            lstFilteredScheduled.TabIndex = 6;
+            lstFilteredScheduled.Visible = false;
+            // 
+            // txtSearchScheduled
+            // 
+            txtSearchScheduled.Location = new Point(18, 15);
+            txtSearchScheduled.Name = "txtSearchScheduled";
+            txtSearchScheduled.PlaceholderText = "Zoek op prospect naam";
+            txtSearchScheduled.Size = new Size(201, 27);
+            txtSearchScheduled.TabIndex = 5;
+            txtSearchScheduled.Tag = "lstFilteredProspects";
+            // 
+            // dgvScheduled
+            // 
+            dgvScheduled.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvScheduled.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvScheduled.Columns.AddRange(new DataGridViewColumn[] { ProspectName, ScheduledAt, Model, Status, editCol });
+            dgvScheduled.Location = new Point(18, 60);
+            dgvScheduled.Name = "dgvScheduled";
+            dgvScheduled.RowHeadersWidth = 51;
+            dgvScheduled.Size = new Size(727, 358);
+            dgvScheduled.TabIndex = 0;
+            // 
             // tpCompleted
             // 
+            tpCompleted.Controls.Add(lstFilteredCompleted);
+            tpCompleted.Controls.Add(txtSearchCompleted);
+            tpCompleted.Controls.Add(dgvCompleted);
             tpCompleted.Location = new Point(4, 29);
             tpCompleted.Name = "tpCompleted";
             tpCompleted.Size = new Size(768, 430);
             tpCompleted.TabIndex = 3;
             tpCompleted.Text = "Uitgevoerd";
             tpCompleted.UseVisualStyleBackColor = true;
+            // 
+            // lstFilteredCompleted
+            // 
+            lstFilteredCompleted.FormattingEnabled = true;
+            lstFilteredCompleted.Location = new Point(18, 40);
+            lstFilteredCompleted.Name = "lstFilteredCompleted";
+            lstFilteredCompleted.Size = new Size(201, 104);
+            lstFilteredCompleted.TabIndex = 8;
+            lstFilteredCompleted.Visible = false;
+            // 
+            // txtSearchCompleted
+            // 
+            txtSearchCompleted.Location = new Point(18, 16);
+            txtSearchCompleted.Name = "txtSearchCompleted";
+            txtSearchCompleted.PlaceholderText = "Zoek op prospect naam";
+            txtSearchCompleted.Size = new Size(201, 27);
+            txtSearchCompleted.TabIndex = 7;
+            txtSearchCompleted.Tag = "lstFilteredProspects";
+            // 
+            // dgvCompleted
+            // 
+            dgvCompleted.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCompleted.Location = new Point(18, 60);
+            dgvCompleted.Name = "dgvCompleted";
+            dgvCompleted.RowHeadersWidth = 51;
+            dgvCompleted.Size = new Size(727, 358);
+            dgvCompleted.TabIndex = 1;
             // 
             // tpStatistics
             // 
@@ -623,6 +700,38 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
+            // ProspectName
+            // 
+            ProspectName.HeaderText = "Naam";
+            ProspectName.MinimumWidth = 6;
+            ProspectName.Name = "ProspectName";
+            // 
+            // ScheduledAt
+            // 
+            ScheduledAt.HeaderText = "Gepland op";
+            ScheduledAt.MinimumWidth = 6;
+            ScheduledAt.Name = "ScheduledAt";
+            // 
+            // Model
+            // 
+            Model.HeaderText = "Model";
+            Model.MinimumWidth = 6;
+            Model.Name = "Model";
+            // 
+            // Status
+            // 
+            Status.HeaderText = "Status";
+            Status.MinimumWidth = 6;
+            Status.Name = "Status";
+            // 
+            // editCol
+            // 
+            editCol.HeaderText = "";
+            editCol.MinimumWidth = 6;
+            editCol.Name = "editCol";
+            editCol.Text = "Bijwerken";
+            editCol.UseColumnTextForButtonValue = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -643,6 +752,12 @@
             grpProspect.PerformLayout();
             tpProspect.ResumeLayout(false);
             tpProspect.PerformLayout();
+            tpScheduled.ResumeLayout(false);
+            tpScheduled.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvScheduled).EndInit();
+            tpCompleted.ResumeLayout(false);
+            tpCompleted.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCompleted).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -702,5 +817,16 @@
         private Label lblFirstName;
         private CheckBox chkIsDisabledVehicle;
         private CheckBox chkHasScooterLicense;
+        private DataGridView dgvScheduled;
+        private DataGridView dgvCompleted;
+        private ListBox lstFilteredScheduled;
+        private TextBox txtSearchScheduled;
+        private ListBox lstFilteredCompleted;
+        private TextBox txtSearchCompleted;
+        private DataGridViewTextBoxColumn ProspectName;
+        private DataGridViewTextBoxColumn ScheduledAt;
+        private DataGridViewTextBoxColumn Model;
+        private DataGridViewTextBoxColumn Status;
+        private DataGridViewButtonColumn editCol;
     }
 }
