@@ -15,11 +15,6 @@ namespace Carver.Forms
             InitializeComponent();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ExperienceForm_Load(object sender, EventArgs e)
         {
 

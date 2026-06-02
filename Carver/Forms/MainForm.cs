@@ -313,5 +313,16 @@ namespace Carver
         {
             ResetTestDriveForm();
         }
+
+        private void dgvCompleted_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex != colExperience.Index) return;
+
+            TestDrive? selected = dgvCompleted.Rows[e.RowIndex].DataBoundItem as TestDrive;
+            if (selected == null) return;
+
+            ExperienceForm form = new ExperienceForm();
+            if (form.ShowDialog() == DialogResult.OK) { }
+        }
     }
 }

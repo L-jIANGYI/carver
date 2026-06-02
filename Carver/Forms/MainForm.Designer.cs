@@ -699,6 +699,7 @@
             dgvCompleted.RowHeadersWidth = 51;
             dgvCompleted.Size = new Size(727, 358);
             dgvCompleted.TabIndex = 1;
+            dgvCompleted.CellContentClick += dgvCompleted_CellContentClick;
             // 
             // colCompletedProspectName
             // 
