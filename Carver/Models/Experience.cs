@@ -2,7 +2,7 @@
 {
     internal class Experience
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public int TestDriveId { get; set; }
         public ExperienceAnswer MeetExpectation { get; set; }
         public ExperienceAnswer PriceSatisfaction { get; set; }
