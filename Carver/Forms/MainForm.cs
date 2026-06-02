@@ -322,15 +322,27 @@ namespace Carver
             TestDrive? selected = dgvCompleted.Rows[e.RowIndex].DataBoundItem as TestDrive;
             if (selected == null) return;
 
-            if (_experienceService.ExistsForTestDrive(selected.Id))
+            Experience? existing = _experienceService.GetByTestDriveId(selected.Id);
+            if (existing != null)
             {
-                MessageBox.Show("Er is al een ervaring ingevuld voor deze proefrit.", "Melding",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ExperienceForm form = new ExperienceForm(selected.Id, existing);
+                form.ShowDialog();
                 return;
             }
 
-            ExperienceForm form = new ExperienceForm(selected.Id);
-            form.ShowDialog();
+            ExperienceForm newForm = new ExperienceForm(selected.Id);
+            newForm.ShowDialog();
+        }
+
+        private void dgvCompleted_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || dgvCompleted.Columns[e.ColumnIndex].Name != "colExperience") return;
+
+            TestDrive? testDrive = dgvCompleted.Rows[e.RowIndex].DataBoundItem as TestDrive;
+            if (testDrive == null) return;
+
+            bool hasExperience = _experienceService.ExistsForTestDrive(testDrive.Id);
+            e.Value = hasExperience ? "✔ bekijken" : "Ervaring invullen";
         }
     }
 }

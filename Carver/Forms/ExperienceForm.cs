@@ -3,15 +3,23 @@ using Carver.Services;
 
 namespace Carver.Forms
 {
-    public partial class ExperienceForm : Form
+    internal partial class ExperienceForm : Form
     {
         private readonly int _testDriveId;
         private readonly ExperienceService _experienceService = new ExperienceService();
+        private readonly bool _isReadOnly;
 
-        public ExperienceForm(int testDriveId)
+        public ExperienceForm(int testDriveId, Experience? existingExperience = null)
         {
             InitializeComponent();
             _testDriveId = testDriveId;
+
+            if (existingExperience != null)
+            {
+                _isReadOnly = true;
+                LoadExperience(existingExperience);
+                SetReadOnly();
+            }
         }
 
         private ExperienceAnswer? GetAnswer(Panel panel)
@@ -19,7 +27,7 @@ namespace Carver.Forms
             foreach (RadioButton rb in panel.Controls.OfType<RadioButton>())
             {
                 if (rb.Checked)
-                    return (ExperienceAnswer)(rb.TabIndex + 1); // TabIndex 0=Disagree(1), 1=Neutral(2), 2=Agree(3)
+                    return (ExperienceAnswer)(rb.TabIndex + 1);
             }
             return null;
         }
@@ -59,6 +67,33 @@ namespace Carver.Forms
                 MessageBox.Show($"Fout bij opslaan: {ex.Message}", "Fout",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Load existing experience into the form for read-only display
+        private void LoadExperience(Experience experience)
+        {
+            SetAnswer(pnlExperience1, experience.MeetExpectation);
+            SetAnswer(pnlExperience2, experience.PriceSatisfaction);
+            SetAnswer(pnlExperience3, experience.OptionsAdequate);
+            SetAnswer(pnlExperience4, experience.WillPurchase);
+        }
+
+        private void SetAnswer(Panel panel, ExperienceAnswer answer)
+        {
+            foreach (RadioButton rb in panel.Controls.OfType<RadioButton>())
+            {
+                if (rb.TabIndex + 1 == (int)answer)
+                    rb.Checked = true;
+            }
+        }
+
+        private void SetReadOnly()
+        {
+            foreach (Panel panel in new[] { pnlExperience1, pnlExperience2, pnlExperience3, pnlExperience4 })
+                foreach (RadioButton rb in panel.Controls.OfType<RadioButton>())
+                    rb.Enabled = false;
+
+            btnExperienceSubmit.Visible = false;
         }
     }
 }
