@@ -73,7 +73,7 @@ namespace Carver.Database
             using (SqlConnection conn = DBConnection.GetConnection())
             {
                 conn.Open();
-                string query = @"SELECT * FROM ORDER BY ScheduledAt";
+                string query = @"SELECT * FROM TestDrives BY ScheduledAt";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
