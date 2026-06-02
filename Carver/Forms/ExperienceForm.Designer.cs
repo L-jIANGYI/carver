@@ -32,24 +32,24 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton3 = new RadioButton();
+            rbQ1Disagree = new RadioButton();
+            rbQ1Neutral = new RadioButton();
+            rbQ1Agree = new RadioButton();
             lblUserExperience = new Label();
             btnExperienceSubmit = new Button();
             pnlExperience1 = new Panel();
             pnlExperience2 = new Panel();
-            radioButton4 = new RadioButton();
-            radioButton5 = new RadioButton();
-            radioButton6 = new RadioButton();
+            rbQ2Disagree = new RadioButton();
+            rbQ2Neutral = new RadioButton();
+            rbQ2Agree = new RadioButton();
             pnlExperience3 = new Panel();
-            radioButton7 = new RadioButton();
-            radioButton8 = new RadioButton();
-            radioButton9 = new RadioButton();
+            rbQ3Disagree = new RadioButton();
+            rbQ3Neutral = new RadioButton();
+            rbQ3Agree = new RadioButton();
             pnlExperience4 = new Panel();
-            radioButton10 = new RadioButton();
-            radioButton11 = new RadioButton();
-            radioButton12 = new RadioButton();
+            rbQ4Disagree = new RadioButton();
+            rbQ4Neutral = new RadioButton();
+            rbQ4Agree = new RadioButton();
             pnlExperience1.SuspendLayout();
             pnlExperience2.SuspendLayout();
             pnlExperience3.SuspendLayout();
@@ -96,38 +96,38 @@
             label4.TabIndex = 3;
             label4.Text = "Ik ga snel over tot aanschaf van een Carver";
             // 
-            // radioButton1
+            // rbQ1Disagree
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(6, 7);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(135, 24);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Niet mee eens";
-            radioButton1.UseVisualStyleBackColor = true;
+            rbQ1Disagree.AutoSize = true;
+            rbQ1Disagree.Location = new Point(6, 7);
+            rbQ1Disagree.Name = "rbQ1Disagree";
+            rbQ1Disagree.Size = new Size(135, 24);
+            rbQ1Disagree.TabIndex = 0;
+            rbQ1Disagree.TabStop = true;
+            rbQ1Disagree.Text = "Niet mee eens";
+            rbQ1Disagree.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbQ1Neutral
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(179, 7);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(92, 24);
-            radioButton2.TabIndex = 1;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Neutraal";
-            radioButton2.UseVisualStyleBackColor = true;
+            rbQ1Neutral.AutoSize = true;
+            rbQ1Neutral.Location = new Point(179, 7);
+            rbQ1Neutral.Name = "rbQ1Neutral";
+            rbQ1Neutral.Size = new Size(92, 24);
+            rbQ1Neutral.TabIndex = 1;
+            rbQ1Neutral.TabStop = true;
+            rbQ1Neutral.Text = "Neutraal";
+            rbQ1Neutral.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rbQ1Agree
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(308, 7);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(101, 24);
-            radioButton3.TabIndex = 2;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "Mee eens";
-            radioButton3.UseVisualStyleBackColor = true;
+            rbQ1Agree.AutoSize = true;
+            rbQ1Agree.Location = new Point(308, 7);
+            rbQ1Agree.Name = "rbQ1Agree";
+            rbQ1Agree.Size = new Size(101, 24);
+            rbQ1Agree.TabIndex = 2;
+            rbQ1Agree.TabStop = true;
+            rbQ1Agree.Text = "Mee eens";
+            rbQ1Agree.UseVisualStyleBackColor = true;
             // 
             // lblUserExperience
             // 
@@ -147,12 +147,13 @@
             btnExperienceSubmit.TabIndex = 12;
             btnExperienceSubmit.Text = "Bevestigen";
             btnExperienceSubmit.UseVisualStyleBackColor = true;
+            btnExperienceSubmit.Click += btnExperienceSubmit_Click;
             // 
             // pnlExperience1
             // 
-            pnlExperience1.Controls.Add(radioButton1);
-            pnlExperience1.Controls.Add(radioButton2);
-            pnlExperience1.Controls.Add(radioButton3);
+            pnlExperience1.Controls.Add(rbQ1Disagree);
+            pnlExperience1.Controls.Add(rbQ1Neutral);
+            pnlExperience1.Controls.Add(rbQ1Agree);
             pnlExperience1.Location = new Point(28, 134);
             pnlExperience1.Name = "pnlExperience1";
             pnlExperience1.Size = new Size(442, 37);
@@ -160,132 +161,132 @@
             // 
             // pnlExperience2
             // 
-            pnlExperience2.Controls.Add(radioButton4);
-            pnlExperience2.Controls.Add(radioButton5);
-            pnlExperience2.Controls.Add(radioButton6);
+            pnlExperience2.Controls.Add(rbQ2Disagree);
+            pnlExperience2.Controls.Add(rbQ2Neutral);
+            pnlExperience2.Controls.Add(rbQ2Agree);
             pnlExperience2.Location = new Point(28, 235);
             pnlExperience2.Name = "pnlExperience2";
             pnlExperience2.Size = new Size(442, 37);
             pnlExperience2.TabIndex = 21;
             // 
-            // radioButton4
+            // rbQ2Disagree
             // 
-            radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(6, 7);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(135, 24);
-            radioButton4.TabIndex = 0;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "Niet mee eens";
-            radioButton4.UseVisualStyleBackColor = true;
+            rbQ2Disagree.AutoSize = true;
+            rbQ2Disagree.Location = new Point(6, 7);
+            rbQ2Disagree.Name = "rbQ2Disagree";
+            rbQ2Disagree.Size = new Size(135, 24);
+            rbQ2Disagree.TabIndex = 0;
+            rbQ2Disagree.TabStop = true;
+            rbQ2Disagree.Text = "Niet mee eens";
+            rbQ2Disagree.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // rbQ2Neutral
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(179, 7);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(92, 24);
-            radioButton5.TabIndex = 1;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "Neutraal";
-            radioButton5.UseVisualStyleBackColor = true;
+            rbQ2Neutral.AutoSize = true;
+            rbQ2Neutral.Location = new Point(179, 7);
+            rbQ2Neutral.Name = "rbQ2Neutral";
+            rbQ2Neutral.Size = new Size(92, 24);
+            rbQ2Neutral.TabIndex = 1;
+            rbQ2Neutral.TabStop = true;
+            rbQ2Neutral.Text = "Neutraal";
+            rbQ2Neutral.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // rbQ2Agree
             // 
-            radioButton6.AutoSize = true;
-            radioButton6.Location = new Point(308, 7);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(101, 24);
-            radioButton6.TabIndex = 2;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "Mee eens";
-            radioButton6.UseVisualStyleBackColor = true;
+            rbQ2Agree.AutoSize = true;
+            rbQ2Agree.Location = new Point(308, 7);
+            rbQ2Agree.Name = "rbQ2Agree";
+            rbQ2Agree.Size = new Size(101, 24);
+            rbQ2Agree.TabIndex = 2;
+            rbQ2Agree.TabStop = true;
+            rbQ2Agree.Text = "Mee eens";
+            rbQ2Agree.UseVisualStyleBackColor = true;
             // 
             // pnlExperience3
             // 
-            pnlExperience3.Controls.Add(radioButton7);
-            pnlExperience3.Controls.Add(radioButton8);
-            pnlExperience3.Controls.Add(radioButton9);
+            pnlExperience3.Controls.Add(rbQ3Disagree);
+            pnlExperience3.Controls.Add(rbQ3Neutral);
+            pnlExperience3.Controls.Add(rbQ3Agree);
             pnlExperience3.Location = new Point(28, 338);
             pnlExperience3.Name = "pnlExperience3";
             pnlExperience3.Size = new Size(442, 37);
             pnlExperience3.TabIndex = 21;
             // 
-            // radioButton7
+            // rbQ3Disagree
             // 
-            radioButton7.AutoSize = true;
-            radioButton7.Location = new Point(6, 7);
-            radioButton7.Name = "radioButton7";
-            radioButton7.Size = new Size(135, 24);
-            radioButton7.TabIndex = 0;
-            radioButton7.TabStop = true;
-            radioButton7.Text = "Niet mee eens";
-            radioButton7.UseVisualStyleBackColor = true;
+            rbQ3Disagree.AutoSize = true;
+            rbQ3Disagree.Location = new Point(6, 7);
+            rbQ3Disagree.Name = "rbQ3Disagree";
+            rbQ3Disagree.Size = new Size(135, 24);
+            rbQ3Disagree.TabIndex = 0;
+            rbQ3Disagree.TabStop = true;
+            rbQ3Disagree.Text = "Niet mee eens";
+            rbQ3Disagree.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
+            // rbQ3Neutral
             // 
-            radioButton8.AutoSize = true;
-            radioButton8.Location = new Point(179, 7);
-            radioButton8.Name = "radioButton8";
-            radioButton8.Size = new Size(92, 24);
-            radioButton8.TabIndex = 1;
-            radioButton8.TabStop = true;
-            radioButton8.Text = "Neutraal";
-            radioButton8.UseVisualStyleBackColor = true;
+            rbQ3Neutral.AutoSize = true;
+            rbQ3Neutral.Location = new Point(179, 7);
+            rbQ3Neutral.Name = "rbQ3Neutral";
+            rbQ3Neutral.Size = new Size(92, 24);
+            rbQ3Neutral.TabIndex = 1;
+            rbQ3Neutral.TabStop = true;
+            rbQ3Neutral.Text = "Neutraal";
+            rbQ3Neutral.UseVisualStyleBackColor = true;
             // 
-            // radioButton9
+            // rbQ3Agree
             // 
-            radioButton9.AutoSize = true;
-            radioButton9.Location = new Point(308, 7);
-            radioButton9.Name = "radioButton9";
-            radioButton9.Size = new Size(101, 24);
-            radioButton9.TabIndex = 2;
-            radioButton9.TabStop = true;
-            radioButton9.Text = "Mee eens";
-            radioButton9.UseVisualStyleBackColor = true;
+            rbQ3Agree.AutoSize = true;
+            rbQ3Agree.Location = new Point(308, 7);
+            rbQ3Agree.Name = "rbQ3Agree";
+            rbQ3Agree.Size = new Size(101, 24);
+            rbQ3Agree.TabIndex = 2;
+            rbQ3Agree.TabStop = true;
+            rbQ3Agree.Text = "Mee eens";
+            rbQ3Agree.UseVisualStyleBackColor = true;
             // 
             // pnlExperience4
             // 
-            pnlExperience4.Controls.Add(radioButton10);
-            pnlExperience4.Controls.Add(radioButton11);
-            pnlExperience4.Controls.Add(radioButton12);
+            pnlExperience4.Controls.Add(rbQ4Disagree);
+            pnlExperience4.Controls.Add(rbQ4Neutral);
+            pnlExperience4.Controls.Add(rbQ4Agree);
             pnlExperience4.Location = new Point(28, 429);
             pnlExperience4.Name = "pnlExperience4";
             pnlExperience4.Size = new Size(442, 37);
             pnlExperience4.TabIndex = 22;
             // 
-            // radioButton10
+            // rbQ4Disagree
             // 
-            radioButton10.AutoSize = true;
-            radioButton10.Location = new Point(6, 7);
-            radioButton10.Name = "radioButton10";
-            radioButton10.Size = new Size(135, 24);
-            radioButton10.TabIndex = 0;
-            radioButton10.TabStop = true;
-            radioButton10.Text = "Niet mee eens";
-            radioButton10.UseVisualStyleBackColor = true;
+            rbQ4Disagree.AutoSize = true;
+            rbQ4Disagree.Location = new Point(6, 7);
+            rbQ4Disagree.Name = "rbQ4Disagree";
+            rbQ4Disagree.Size = new Size(135, 24);
+            rbQ4Disagree.TabIndex = 0;
+            rbQ4Disagree.TabStop = true;
+            rbQ4Disagree.Text = "Niet mee eens";
+            rbQ4Disagree.UseVisualStyleBackColor = true;
             // 
-            // radioButton11
+            // rbQ4Neutral
             // 
-            radioButton11.AutoSize = true;
-            radioButton11.Location = new Point(179, 7);
-            radioButton11.Name = "radioButton11";
-            radioButton11.Size = new Size(92, 24);
-            radioButton11.TabIndex = 1;
-            radioButton11.TabStop = true;
-            radioButton11.Text = "Neutraal";
-            radioButton11.UseVisualStyleBackColor = true;
+            rbQ4Neutral.AutoSize = true;
+            rbQ4Neutral.Location = new Point(179, 7);
+            rbQ4Neutral.Name = "rbQ4Neutral";
+            rbQ4Neutral.Size = new Size(92, 24);
+            rbQ4Neutral.TabIndex = 1;
+            rbQ4Neutral.TabStop = true;
+            rbQ4Neutral.Text = "Neutraal";
+            rbQ4Neutral.UseVisualStyleBackColor = true;
             // 
-            // radioButton12
+            // rbQ4Agree
             // 
-            radioButton12.AutoSize = true;
-            radioButton12.Location = new Point(308, 7);
-            radioButton12.Name = "radioButton12";
-            radioButton12.Size = new Size(101, 24);
-            radioButton12.TabIndex = 2;
-            radioButton12.TabStop = true;
-            radioButton12.Text = "Mee eens";
-            radioButton12.UseVisualStyleBackColor = true;
+            rbQ4Agree.AutoSize = true;
+            rbQ4Agree.Location = new Point(308, 7);
+            rbQ4Agree.Name = "rbQ4Agree";
+            rbQ4Agree.Size = new Size(101, 24);
+            rbQ4Agree.TabIndex = 2;
+            rbQ4Agree.TabStop = true;
+            rbQ4Agree.Text = "Mee eens";
+            rbQ4Agree.UseVisualStyleBackColor = true;
             // 
             // ExperienceForm
             // 
@@ -304,7 +305,6 @@
             Controls.Add(label1);
             Name = "ExperienceForm";
             Text = "Gebruikerservaring formulier";
-            Load += ExperienceForm_Load;
             pnlExperience1.ResumeLayout(false);
             pnlExperience1.PerformLayout();
             pnlExperience2.ResumeLayout(false);
@@ -323,23 +323,23 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton3;
+        private RadioButton rbQ1Disagree;
+        private RadioButton rbQ1Neutral;
+        private RadioButton rbQ1Agree;
         private Label lblUserExperience;
         private Button btnExperienceSubmit;
         private Panel pnlExperience1;
         private Panel pnlExperience2;
         private Panel pnlExperience3;
-        private RadioButton radioButton7;
-        private RadioButton radioButton8;
-        private RadioButton radioButton9;
-        private RadioButton radioButton4;
-        private RadioButton radioButton5;
-        private RadioButton radioButton6;
+        private RadioButton rbQ3Disagree;
+        private RadioButton rbQ3Neutral;
+        private RadioButton rbQ3Agree;
+        private RadioButton rbQ2Disagree;
+        private RadioButton rbQ2Neutral;
+        private RadioButton rbQ2Agree;
         private Panel pnlExperience4;
-        private RadioButton radioButton10;
-        private RadioButton radioButton11;
-        private RadioButton radioButton12;
+        private RadioButton rbQ4Disagree;
+        private RadioButton rbQ4Neutral;
+        private RadioButton rbQ4Agree;
     }
 }

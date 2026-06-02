@@ -10,6 +10,7 @@ namespace Carver
         public bool IsLogout { get; private set; } = false;
         private readonly ProspectService _prospectService = new ProspectService();
         private readonly TestDriveService _testDriveService = new TestDriveService();
+        private readonly ExperienceService _experienceService = new ExperienceService();
         private List<Prospect> _allProspects = new List<Prospect>();
         private Prospect? _selectedProspect;
         private TestDrive? _editingTestDrive;
@@ -321,8 +322,15 @@ namespace Carver
             TestDrive? selected = dgvCompleted.Rows[e.RowIndex].DataBoundItem as TestDrive;
             if (selected == null) return;
 
-            ExperienceForm form = new ExperienceForm();
-            if (form.ShowDialog() == DialogResult.OK) { }
+            if (_experienceService.ExistsForTestDrive(selected.Id))
+            {
+                MessageBox.Show("Er is al een ervaring ingevuld voor deze proefrit.", "Melding",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            ExperienceForm form = new ExperienceForm(selected.Id);
+            form.ShowDialog();
         }
     }
 }
