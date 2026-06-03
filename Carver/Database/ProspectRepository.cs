@@ -80,6 +80,7 @@ namespace Carver.Database
                     prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
                     prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
                     prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
+                    prospect.Id = reader.GetInt32(reader.GetOrdinal("Id"));
                     return prospect;
                 }
                 return null;

@@ -204,6 +204,7 @@ namespace Carver
             {
                 _allProspects = _prospectService.GetAll();
                 DisplaySelectedProspect(form.CreatedProspect);
+                _selectedProspect = form.CreatedProspect;
             }
         }
 
