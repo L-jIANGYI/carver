@@ -36,6 +36,14 @@
             colDelete = new DataGridViewButtonColumn();
             tabMain = new TabControl();
             tpDashboard = new TabPage();
+            dgvDashboard = new DataGridView();
+            lblUpcomingTestDrives = new Label();
+            pnlDashboardCompleted = new Panel();
+            lblTotalCompleted = new Label();
+            lblDashboardCompleted = new Label();
+            pnlDashboardScheduled = new Panel();
+            lblTotalScheduled = new Label();
+            lblDashboardScheduled = new Label();
             tpNewTestDrive = new TabPage();
             grpTestDriveDetails = new GroupBox();
             rtbInterestReason = new RichTextBox();
@@ -97,22 +105,16 @@
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
-            pnlDashboardScheduled = new Panel();
-            pnlDashboardCompleted = new Panel();
-            lblDashboardScheduled = new Label();
-            lblDashboardCompleted = new Label();
-            lblTotalScheduled = new Label();
-            lblTotalCompleted = new Label();
-            lblUpcomingTestDrives = new Label();
-            dgvDashboard = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewComboBoxColumn1 = new DataGridViewComboBoxColumn();
-            dataGridViewButtonColumn1 = new DataGridViewButtonColumn();
+            colDashName = new DataGridViewTextBoxColumn();
+            colDashScheduledDate = new DataGridViewTextBoxColumn();
+            colDashModel = new DataGridViewTextBoxColumn();
+            colDashStatus = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpDashboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDashboard).BeginInit();
+            pnlDashboardCompleted.SuspendLayout();
+            pnlDashboardScheduled.SuspendLayout();
             tpNewTestDrive.SuspendLayout();
             grpTestDriveDetails.SuspendLayout();
             grpProspect.SuspendLayout();
@@ -121,9 +123,6 @@
             ((System.ComponentModel.ISupportInitialize)dgvScheduled).BeginInit();
             tpCompleted.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCompleted).BeginInit();
-            pnlDashboardScheduled.SuspendLayout();
-            pnlDashboardCompleted.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvDashboard).BeginInit();
             SuspendLayout();
             // 
             // dgvProspects
@@ -212,6 +211,88 @@
             tpDashboard.Size = new Size(768, 430);
             tpDashboard.TabIndex = 0;
             tpDashboard.Text = "Dashboard";
+            // 
+            // dgvDashboard
+            // 
+            dgvDashboard.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDashboard.BackgroundColor = SystemColors.Control;
+            dgvDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDashboard.Columns.AddRange(new DataGridViewColumn[] { colDashName, colDashScheduledDate, colDashModel, colDashStatus });
+            dgvDashboard.Location = new Point(23, 203);
+            dgvDashboard.Name = "dgvDashboard";
+            dgvDashboard.RowHeadersWidth = 51;
+            dgvDashboard.Size = new Size(724, 211);
+            dgvDashboard.TabIndex = 4;
+            // 
+            // lblUpcomingTestDrives
+            // 
+            lblUpcomingTestDrives.AutoSize = true;
+            lblUpcomingTestDrives.Font = new Font("Microsoft YaHei UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            lblUpcomingTestDrives.Location = new Point(23, 169);
+            lblUpcomingTestDrives.Name = "lblUpcomingTestDrives";
+            lblUpcomingTestDrives.Size = new Size(311, 31);
+            lblUpcomingTestDrives.TabIndex = 3;
+            lblUpcomingTestDrives.Text = "Eerstvolgende proefritten";
+            // 
+            // pnlDashboardCompleted
+            // 
+            pnlDashboardCompleted.BorderStyle = BorderStyle.FixedSingle;
+            pnlDashboardCompleted.Controls.Add(lblTotalCompleted);
+            pnlDashboardCompleted.Controls.Add(lblDashboardCompleted);
+            pnlDashboardCompleted.Location = new Point(393, 16);
+            pnlDashboardCompleted.Name = "pnlDashboardCompleted";
+            pnlDashboardCompleted.Size = new Size(354, 125);
+            pnlDashboardCompleted.TabIndex = 1;
+            // 
+            // lblTotalCompleted
+            // 
+            lblTotalCompleted.Font = new Font("Microsoft YaHei UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            lblTotalCompleted.Location = new Point(3, 20);
+            lblTotalCompleted.Name = "lblTotalCompleted";
+            lblTotalCompleted.Size = new Size(346, 55);
+            lblTotalCompleted.TabIndex = 3;
+            lblTotalCompleted.Text = "-";
+            lblTotalCompleted.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblDashboardCompleted
+            // 
+            lblDashboardCompleted.AutoSize = true;
+            lblDashboardCompleted.Font = new Font("Microsoft YaHei UI", 13.8F);
+            lblDashboardCompleted.Location = new Point(43, 75);
+            lblDashboardCompleted.Name = "lblDashboardCompleted";
+            lblDashboardCompleted.Size = new Size(277, 30);
+            lblDashboardCompleted.TabIndex = 2;
+            lblDashboardCompleted.Text = "Uitgevoerde proefritten";
+            // 
+            // pnlDashboardScheduled
+            // 
+            pnlDashboardScheduled.BorderStyle = BorderStyle.FixedSingle;
+            pnlDashboardScheduled.Controls.Add(lblTotalScheduled);
+            pnlDashboardScheduled.Controls.Add(lblDashboardScheduled);
+            pnlDashboardScheduled.Location = new Point(23, 16);
+            pnlDashboardScheduled.Name = "pnlDashboardScheduled";
+            pnlDashboardScheduled.Size = new Size(354, 125);
+            pnlDashboardScheduled.TabIndex = 0;
+            // 
+            // lblTotalScheduled
+            // 
+            lblTotalScheduled.Font = new Font("Microsoft YaHei UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            lblTotalScheduled.Location = new Point(3, 20);
+            lblTotalScheduled.Name = "lblTotalScheduled";
+            lblTotalScheduled.Size = new Size(346, 55);
+            lblTotalScheduled.TabIndex = 2;
+            lblTotalScheduled.Text = "-";
+            lblTotalScheduled.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblDashboardScheduled
+            // 
+            lblDashboardScheduled.AutoSize = true;
+            lblDashboardScheduled.Font = new Font("Microsoft YaHei UI", 13.8F);
+            lblDashboardScheduled.Location = new Point(52, 75);
+            lblDashboardScheduled.Name = "lblDashboardScheduled";
+            lblDashboardScheduled.Size = new Size(246, 30);
+            lblDashboardScheduled.TabIndex = 0;
+            lblDashboardScheduled.Text = "Geplande proefritten";
             // 
             // tpNewTestDrive
             // 
@@ -806,126 +887,34 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
-            // pnlDashboardScheduled
+            // colDashName
             // 
-            pnlDashboardScheduled.BorderStyle = BorderStyle.FixedSingle;
-            pnlDashboardScheduled.Controls.Add(lblTotalScheduled);
-            pnlDashboardScheduled.Controls.Add(lblDashboardScheduled);
-            pnlDashboardScheduled.Location = new Point(23, 16);
-            pnlDashboardScheduled.Name = "pnlDashboardScheduled";
-            pnlDashboardScheduled.Size = new Size(354, 125);
-            pnlDashboardScheduled.TabIndex = 0;
+            colDashName.DataPropertyName = "ProspectName";
+            colDashName.HeaderText = "Naam";
+            colDashName.MinimumWidth = 6;
+            colDashName.Name = "colDashName";
             // 
-            // pnlDashboardCompleted
+            // colDashScheduledDate
             // 
-            pnlDashboardCompleted.BorderStyle = BorderStyle.FixedSingle;
-            pnlDashboardCompleted.Controls.Add(lblTotalCompleted);
-            pnlDashboardCompleted.Controls.Add(lblDashboardCompleted);
-            pnlDashboardCompleted.Location = new Point(393, 16);
-            pnlDashboardCompleted.Name = "pnlDashboardCompleted";
-            pnlDashboardCompleted.Size = new Size(354, 125);
-            pnlDashboardCompleted.TabIndex = 1;
+            colDashScheduledDate.DataPropertyName = "ScheduledAt";
+            colDashScheduledDate.HeaderText = "Gepland op";
+            colDashScheduledDate.MinimumWidth = 6;
+            colDashScheduledDate.Name = "colDashScheduledDate";
             // 
-            // lblDashboardScheduled
+            // colDashModel
             // 
-            lblDashboardScheduled.AutoSize = true;
-            lblDashboardScheduled.Font = new Font("Microsoft YaHei UI", 13.8F);
-            lblDashboardScheduled.Location = new Point(52, 75);
-            lblDashboardScheduled.Name = "lblDashboardScheduled";
-            lblDashboardScheduled.Size = new Size(246, 30);
-            lblDashboardScheduled.TabIndex = 0;
-            lblDashboardScheduled.Text = "Geplande proefritten";
+            colDashModel.DataPropertyName = "CarverModel";
+            colDashModel.HeaderText = "Model";
+            colDashModel.MinimumWidth = 6;
+            colDashModel.Name = "colDashModel";
             // 
-            // lblDashboardCompleted
+            // colDashStatus
             // 
-            lblDashboardCompleted.AutoSize = true;
-            lblDashboardCompleted.Font = new Font("Microsoft YaHei UI", 13.8F);
-            lblDashboardCompleted.Location = new Point(43, 75);
-            lblDashboardCompleted.Name = "lblDashboardCompleted";
-            lblDashboardCompleted.Size = new Size(277, 30);
-            lblDashboardCompleted.TabIndex = 2;
-            lblDashboardCompleted.Text = "Uitgevoerde proefritten";
-            lblDashboardCompleted.Click += label11_Click;
-            // 
-            // lblTotalScheduled
-            // 
-            lblTotalScheduled.Font = new Font("Microsoft YaHei UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            lblTotalScheduled.Location = new Point(3, 20);
-            lblTotalScheduled.Name = "lblTotalScheduled";
-            lblTotalScheduled.Size = new Size(346, 55);
-            lblTotalScheduled.TabIndex = 2;
-            lblTotalScheduled.Text = "-";
-            lblTotalScheduled.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblTotalCompleted
-            // 
-            lblTotalCompleted.Font = new Font("Microsoft YaHei UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            lblTotalCompleted.Location = new Point(3, 20);
-            lblTotalCompleted.Name = "lblTotalCompleted";
-            lblTotalCompleted.Size = new Size(346, 55);
-            lblTotalCompleted.TabIndex = 3;
-            lblTotalCompleted.Text = "-";
-            lblTotalCompleted.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblUpcomingTestDrives
-            // 
-            lblUpcomingTestDrives.AutoSize = true;
-            lblUpcomingTestDrives.Font = new Font("Microsoft YaHei UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            lblUpcomingTestDrives.Location = new Point(23, 169);
-            lblUpcomingTestDrives.Name = "lblUpcomingTestDrives";
-            lblUpcomingTestDrives.Size = new Size(311, 31);
-            lblUpcomingTestDrives.TabIndex = 3;
-            lblUpcomingTestDrives.Text = "Eerstvolgende proefritten";
-            // 
-            // dgvDashboard
-            // 
-            dgvDashboard.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvDashboard.BackgroundColor = SystemColors.Control;
-            dgvDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDashboard.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewComboBoxColumn1, dataGridViewButtonColumn1 });
-            dgvDashboard.Location = new Point(23, 203);
-            dgvDashboard.Name = "dgvDashboard";
-            dgvDashboard.RowHeadersWidth = 51;
-            dgvDashboard.Size = new Size(724, 211);
-            dgvDashboard.TabIndex = 4;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "ProspectName";
-            dataGridViewTextBoxColumn1.HeaderText = "Naam";
-            dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "ScheduledAt";
-            dataGridViewTextBoxColumn2.HeaderText = "Gepland op";
-            dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "CarverModel";
-            dataGridViewTextBoxColumn3.HeaderText = "Model";
-            dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewComboBoxColumn1
-            // 
-            dataGridViewComboBoxColumn1.DataPropertyName = "Status";
-            dataGridViewComboBoxColumn1.HeaderText = "Status";
-            dataGridViewComboBoxColumn1.MinimumWidth = 6;
-            dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
-            dataGridViewComboBoxColumn1.Resizable = DataGridViewTriState.True;
-            dataGridViewComboBoxColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            dataGridViewButtonColumn1.HeaderText = "";
-            dataGridViewButtonColumn1.MinimumWidth = 6;
-            dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            dataGridViewButtonColumn1.Text = "Bijwerken";
-            dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
+            colDashStatus.DataPropertyName = "Status";
+            colDashStatus.HeaderText = "Status";
+            colDashStatus.MinimumWidth = 6;
+            colDashStatus.Name = "colDashStatus";
+            colDashStatus.Resizable = DataGridViewTriState.True;
             // 
             // MainForm
             // 
@@ -942,6 +931,11 @@
             tabMain.ResumeLayout(false);
             tpDashboard.ResumeLayout(false);
             tpDashboard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDashboard).EndInit();
+            pnlDashboardCompleted.ResumeLayout(false);
+            pnlDashboardCompleted.PerformLayout();
+            pnlDashboardScheduled.ResumeLayout(false);
+            pnlDashboardScheduled.PerformLayout();
             tpNewTestDrive.ResumeLayout(false);
             grpTestDriveDetails.ResumeLayout(false);
             grpTestDriveDetails.PerformLayout();
@@ -955,11 +949,6 @@
             tpCompleted.ResumeLayout(false);
             tpCompleted.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCompleted).EndInit();
-            pnlDashboardScheduled.ResumeLayout(false);
-            pnlDashboardScheduled.PerformLayout();
-            pnlDashboardCompleted.ResumeLayout(false);
-            pnlDashboardCompleted.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvDashboard).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1043,10 +1032,9 @@
         private Label lblTotalScheduled;
         private Label lblUpcomingTestDrives;
         private DataGridView dgvDashboard;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
-        private DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private DataGridViewTextBoxColumn colDashName;
+        private DataGridViewTextBoxColumn colDashScheduledDate;
+        private DataGridViewTextBoxColumn colDashModel;
+        private DataGridViewTextBoxColumn colDashStatus;
     }
 }

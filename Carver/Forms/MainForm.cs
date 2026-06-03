@@ -24,6 +24,7 @@ namespace Carver
             LoadProspects();
             LoadScheduledTestDrives();
             LoadCompletedTestDrives();
+            LoadDashboard();
 
             var statusColumn = dgvScheduled.Columns["colStatus"] as DataGridViewComboBoxColumn;
             if (statusColumn != null)
@@ -35,6 +36,7 @@ namespace Carver
             dgvProspects.AutoGenerateColumns = false;
             dgvScheduled.AutoGenerateColumns = false;
             dgvCompleted.AutoGenerateColumns = false;
+            dgvDashboard.AutoGenerateColumns = false;
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -47,6 +49,25 @@ namespace Carver
                 IsLogout = true;
                 this.Close();
             }
+        }
+
+        // =======================================
+        // Dashboard tabpage
+        // =======================================
+        private void LoadDashboard()
+        {
+            var scheduled = _testDriveService.GetByStatus(TestDriveStatus.Scheduled);
+            var completed = _testDriveService.GetByStatus(TestDriveStatus.Completed);
+
+            lblTotalScheduled.Text = scheduled.Count.ToString();
+            lblTotalCompleted.Text = completed.Count.ToString();
+
+            var recent = scheduled
+                .OrderBy(t => t.ScheduledAt)
+                .Take(5)
+                .ToList();
+
+            dgvDashboard.DataSource = recent;
         }
 
         // =======================================
@@ -289,6 +310,7 @@ namespace Carver
             {
                 _testDriveService.UpdateStatus(testDrive.Id, newStatus);
 
+                LoadDashboard();
                 LoadScheduledTestDrives();
                 LoadCompletedTestDrives();
             }
