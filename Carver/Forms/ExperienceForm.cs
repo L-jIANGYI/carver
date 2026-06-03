@@ -7,7 +7,6 @@ namespace Carver.Forms
     {
         private readonly int _testDriveId;
         private readonly ExperienceService _experienceService = new ExperienceService();
-        private readonly bool _isReadOnly;
 
         public ExperienceForm(int testDriveId, Experience? existingExperience = null)
         {
@@ -16,7 +15,6 @@ namespace Carver.Forms
 
             if (existingExperience != null)
             {
-                _isReadOnly = true;
                 LoadExperience(existingExperience);
                 SetReadOnly();
             }

@@ -25,9 +25,9 @@ namespace Carver
             LoadScheduledTestDrives();
             LoadCompletedTestDrives();
 
-            var statusColumn = (DataGridViewComboBoxColumn)dgvScheduled.Columns["colStatus"];
-            statusColumn.DataSource = Enum.GetValues(typeof(TestDriveStatus));
-
+            var statusColumn = dgvScheduled.Columns["colStatus"] as DataGridViewComboBoxColumn;
+            if (statusColumn != null)
+                statusColumn.DataSource = Enum.GetValues(typeof(TestDriveStatus));
         }
 
         private void InitDataGridView()
@@ -285,11 +285,13 @@ namespace Carver
             TestDrive? testDrive = dgvScheduled.Rows[e.RowIndex].DataBoundItem as TestDrive;
             if (testDrive == null) return;
 
-            TestDriveStatus newStatus = (TestDriveStatus)dgvScheduled.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-            _testDriveService.UpdateStatus(testDrive.Id, newStatus);
+            if (dgvScheduled.Rows[e.RowIndex].Cells[e.ColumnIndex].Value is TestDriveStatus newStatus)
+            {
+                _testDriveService.UpdateStatus(testDrive.Id, newStatus);
 
-            LoadScheduledTestDrives();
-            LoadCompletedTestDrives();
+                LoadScheduledTestDrives();
+                LoadCompletedTestDrives();
+            }
         }
 
         private void dgvScheduled_CellContentClick(object sender, DataGridViewCellEventArgs e)
