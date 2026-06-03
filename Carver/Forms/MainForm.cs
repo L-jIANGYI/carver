@@ -28,7 +28,25 @@ namespace Carver
 
             var statusColumn = dgvScheduled.Columns["colStatus"] as DataGridViewComboBoxColumn;
             if (statusColumn != null)
-                statusColumn.DataSource = Enum.GetValues(typeof(TestDriveStatus));
+            {
+                var statuses = Enum.GetValues(typeof(TestDriveStatus))
+                    .Cast<TestDriveStatus>()
+                    .Select(s => new {
+                        Value = s,
+                        Display = s switch
+                        {
+                            TestDriveStatus.Scheduled => "Gepland",
+                            TestDriveStatus.Completed => "Uitgevoerd",
+                            TestDriveStatus.Canceled => "Geannuleerd",
+                            _ => s.ToString()
+                        }
+                    })
+                    .ToList();
+
+                statusColumn.DataSource = statuses;
+                statusColumn.DisplayMember = "Display";
+                statusColumn.ValueMember = "Value";
+            }
         }
 
         private void InitDataGridView()
@@ -260,6 +278,7 @@ namespace Carver
                 ResetTestDriveForm();
                 LoadScheduledTestDrives();
                 LoadCompletedTestDrives();
+                LoadDashboard();
             }
             catch (ArgumentException ex)
             {

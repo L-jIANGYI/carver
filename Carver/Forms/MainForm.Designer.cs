@@ -37,6 +37,10 @@
             tabMain = new TabControl();
             tpDashboard = new TabPage();
             dgvDashboard = new DataGridView();
+            colDashName = new DataGridViewTextBoxColumn();
+            colDashScheduledDate = new DataGridViewTextBoxColumn();
+            colDashModel = new DataGridViewTextBoxColumn();
+            colDashStatus = new DataGridViewTextBoxColumn();
             lblUpcomingTestDrives = new Label();
             pnlDashboardCompleted = new Panel();
             lblTotalCompleted = new Label();
@@ -105,10 +109,6 @@
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
-            colDashName = new DataGridViewTextBoxColumn();
-            colDashScheduledDate = new DataGridViewTextBoxColumn();
-            colDashModel = new DataGridViewTextBoxColumn();
-            colDashStatus = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpDashboard.SuspendLayout();
@@ -216,6 +216,7 @@
             // 
             dgvDashboard.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDashboard.BackgroundColor = SystemColors.Control;
+            dgvDashboard.BorderStyle = BorderStyle.None;
             dgvDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDashboard.Columns.AddRange(new DataGridViewColumn[] { colDashName, colDashScheduledDate, colDashModel, colDashStatus });
             dgvDashboard.Location = new Point(23, 203);
@@ -223,6 +224,35 @@
             dgvDashboard.RowHeadersWidth = 51;
             dgvDashboard.Size = new Size(724, 211);
             dgvDashboard.TabIndex = 4;
+            // 
+            // colDashName
+            // 
+            colDashName.DataPropertyName = "ProspectName";
+            colDashName.HeaderText = "Naam";
+            colDashName.MinimumWidth = 6;
+            colDashName.Name = "colDashName";
+            // 
+            // colDashScheduledDate
+            // 
+            colDashScheduledDate.DataPropertyName = "ScheduledAt";
+            colDashScheduledDate.HeaderText = "Gepland op";
+            colDashScheduledDate.MinimumWidth = 6;
+            colDashScheduledDate.Name = "colDashScheduledDate";
+            // 
+            // colDashModel
+            // 
+            colDashModel.DataPropertyName = "CarverModel";
+            colDashModel.HeaderText = "Model";
+            colDashModel.MinimumWidth = 6;
+            colDashModel.Name = "colDashModel";
+            // 
+            // colDashStatus
+            // 
+            colDashStatus.DataPropertyName = "StatusDisplay";
+            colDashStatus.HeaderText = "Status";
+            colDashStatus.MinimumWidth = 6;
+            colDashStatus.Name = "colDashStatus";
+            colDashStatus.Resizable = DataGridViewTriState.True;
             // 
             // lblUpcomingTestDrives
             // 
@@ -886,35 +916,6 @@
             btnLogOut.Text = "Uitloggen";
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
-            // 
-            // colDashName
-            // 
-            colDashName.DataPropertyName = "ProspectName";
-            colDashName.HeaderText = "Naam";
-            colDashName.MinimumWidth = 6;
-            colDashName.Name = "colDashName";
-            // 
-            // colDashScheduledDate
-            // 
-            colDashScheduledDate.DataPropertyName = "ScheduledAt";
-            colDashScheduledDate.HeaderText = "Gepland op";
-            colDashScheduledDate.MinimumWidth = 6;
-            colDashScheduledDate.Name = "colDashScheduledDate";
-            // 
-            // colDashModel
-            // 
-            colDashModel.DataPropertyName = "CarverModel";
-            colDashModel.HeaderText = "Model";
-            colDashModel.MinimumWidth = 6;
-            colDashModel.Name = "colDashModel";
-            // 
-            // colDashStatus
-            // 
-            colDashStatus.DataPropertyName = "Status";
-            colDashStatus.HeaderText = "Status";
-            colDashStatus.MinimumWidth = 6;
-            colDashStatus.Name = "colDashStatus";
-            colDashStatus.Resizable = DataGridViewTriState.True;
             // 
             // MainForm
             // 
