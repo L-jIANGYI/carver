@@ -104,11 +104,11 @@
             colDateTime = new DataGridViewTextBoxColumn();
             colCompletedStatus = new DataGridViewTextBoxColumn();
             colExperience = new DataGridViewButtonColumn();
-            tpStatistics = new TabPage();
             tpEmployeeManagement = new TabPage();
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
+            btnOpenStatistics = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpDashboard.SuspendLayout();
@@ -189,7 +189,6 @@
             tabMain.Controls.Add(tpProspect);
             tabMain.Controls.Add(tpScheduled);
             tabMain.Controls.Add(tpCompleted);
-            tabMain.Controls.Add(tpStatistics);
             tabMain.Controls.Add(tpEmployeeManagement);
             tabMain.Location = new Point(12, 70);
             tabMain.Name = "tabMain";
@@ -793,6 +792,7 @@
             // 
             // tpCompleted
             // 
+            tpCompleted.Controls.Add(btnOpenStatistics);
             tpCompleted.Controls.Add(lstFilteredCompleted);
             tpCompleted.Controls.Add(txtSearchCompleted);
             tpCompleted.Controls.Add(dgvCompleted);
@@ -869,15 +869,6 @@
             colExperience.Name = "colExperience";
             colExperience.Text = "";
             // 
-            // tpStatistics
-            // 
-            tpStatistics.Location = new Point(4, 29);
-            tpStatistics.Name = "tpStatistics";
-            tpStatistics.Size = new Size(768, 430);
-            tpStatistics.TabIndex = 4;
-            tpStatistics.Text = "Statistieken";
-            tpStatistics.UseVisualStyleBackColor = true;
-            // 
             // tpEmployeeManagement
             // 
             tpEmployeeManagement.Location = new Point(4, 29);
@@ -916,6 +907,15 @@
             btnLogOut.Text = "Uitloggen";
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
+            // 
+            // btnOpenStatistics
+            // 
+            btnOpenStatistics.Location = new Point(601, 16);
+            btnOpenStatistics.Name = "btnOpenStatistics";
+            btnOpenStatistics.Size = new Size(144, 29);
+            btnOpenStatistics.TabIndex = 9;
+            btnOpenStatistics.Text = "Bekijk grafieken";
+            btnOpenStatistics.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -963,7 +963,6 @@
         private Label lblTitle;
         private TabPage tpScheduled;
         private TabPage tpCompleted;
-        private TabPage tpStatistics;
         private TabPage tpEmployeeManagement;
         private Button btnLogOut;
         private Button btnTestDriveSubmit;
@@ -1037,5 +1036,6 @@
         private DataGridViewTextBoxColumn colDashScheduledDate;
         private DataGridViewTextBoxColumn colDashModel;
         private DataGridViewTextBoxColumn colDashStatus;
+        private Button btnOpenStatistics;
     }
 }
