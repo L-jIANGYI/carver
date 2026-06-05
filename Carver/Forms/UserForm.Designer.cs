@@ -121,6 +121,7 @@
             // rbEmployee
             // 
             rbEmployee.AutoSize = true;
+            rbEmployee.Checked = true;
             rbEmployee.Location = new Point(220, 272);
             rbEmployee.Name = "rbEmployee";
             rbEmployee.Size = new Size(123, 24);
@@ -136,7 +137,6 @@
             rbAdministrator.Name = "rbAdministrator";
             rbAdministrator.Size = new Size(131, 24);
             rbAdministrator.TabIndex = 4;
-            rbAdministrator.TabStop = true;
             rbAdministrator.Text = "Administrator";
             rbAdministrator.UseVisualStyleBackColor = true;
             // 

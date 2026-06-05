@@ -11,6 +11,7 @@ namespace Carver
         private readonly ProspectService _prospectService = new ProspectService();
         private readonly TestDriveService _testDriveService = new TestDriveService();
         private readonly ExperienceService _experienceService = new ExperienceService();
+        private readonly UserService _userService = new UserService();
         private List<Prospect> _allProspects = new List<Prospect>();
         private Prospect? _selectedProspect;
         private TestDrive? _editingTestDrive;
@@ -25,6 +26,7 @@ namespace Carver
             LoadScheduledTestDrives();
             LoadCompletedTestDrives();
             LoadDashboard();
+            LoadUsers();
 
             var statusColumn = dgvScheduled.Columns["colStatus"] as DataGridViewComboBoxColumn;
             if (statusColumn != null)
@@ -56,6 +58,7 @@ namespace Carver
             dgvScheduled.AutoGenerateColumns = false;
             dgvCompleted.AutoGenerateColumns = false;
             dgvDashboard.AutoGenerateColumns = false;
+            dgvUsers.AutoGenerateColumns = false;
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -396,14 +399,47 @@ namespace Carver
             form.Show();
         }
 
+        // =======================================
+        // User management (admin only)
+        // =======================================
+
+        private void LoadUsers()
+        {
+            var users = _userService.GetAllUsers();
+            dgvUsers.DataSource = users;
+        }
+
         private void btnNewUser_Click(object sender, EventArgs e)
         {
             UserForm form = new UserForm();
 
-            if(form.ShowDialog() == DialogResult.OK)
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Nieuwe gebruiker toegevoegd.", "Succes",
+                LoadUsers();
+            }
+        }
+
+        private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            User? selected = dgvUsers.Rows[e.RowIndex].DataBoundItem as User;
+            if (selected == null) return;
+
+            if (e.ColumnIndex == colBtnDelete.Index)
+            {
+                var result = MessageBox.Show($"Weet je zeker dat je {selected.Name} wilt verwijderen?",
+                    "Bevestigen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    _userService.Delete(selected);
+
+                    MessageBox.Show("Gebruiker verwijderd.", "Succes",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LoadUsers();
+                }
             }
         }
     }

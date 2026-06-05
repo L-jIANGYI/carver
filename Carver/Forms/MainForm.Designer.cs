@@ -106,16 +106,16 @@
             colCompletedStatus = new DataGridViewTextBoxColumn();
             colExperience = new DataGridViewButtonColumn();
             tpEmployeeManagement = new TabPage();
-            lblWelcome = new Label();
-            lblTitle = new Label();
-            btnLogOut = new Button();
-            dgvUsers = new DataGridView();
+            btnNewUser = new Button();
             lstFilteredUsers = new ListBox();
             txtSearchUser = new TextBox();
-            btnNewUser = new Button();
+            dgvUsers = new DataGridView();
             colName = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
             colBtnDelete = new DataGridViewButtonColumn();
+            lblWelcome = new Label();
+            lblTitle = new Label();
+            btnLogOut = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpDashboard.SuspendLayout();
@@ -901,6 +901,70 @@
             tpEmployeeManagement.Text = "Medewerkers";
             tpEmployeeManagement.UseVisualStyleBackColor = true;
             // 
+            // btnNewUser
+            // 
+            btnNewUser.Location = new Point(575, 14);
+            btnNewUser.Name = "btnNewUser";
+            btnNewUser.Size = new Size(171, 29);
+            btnNewUser.TabIndex = 11;
+            btnNewUser.Text = "Gebruiker aanmaken";
+            btnNewUser.UseVisualStyleBackColor = true;
+            btnNewUser.Click += btnNewUser_Click;
+            // 
+            // lstFilteredUsers
+            // 
+            lstFilteredUsers.FormattingEnabled = true;
+            lstFilteredUsers.Location = new Point(18, 39);
+            lstFilteredUsers.Name = "lstFilteredUsers";
+            lstFilteredUsers.Size = new Size(201, 104);
+            lstFilteredUsers.TabIndex = 10;
+            lstFilteredUsers.Visible = false;
+            // 
+            // txtSearchUser
+            // 
+            txtSearchUser.Location = new Point(18, 16);
+            txtSearchUser.Name = "txtSearchUser";
+            txtSearchUser.PlaceholderText = "Zoek de gebruiker naam";
+            txtSearchUser.Size = new Size(201, 27);
+            txtSearchUser.TabIndex = 9;
+            txtSearchUser.Tag = "lstFilteredProspects";
+            // 
+            // dgvUsers
+            // 
+            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsers.Columns.AddRange(new DataGridViewColumn[] { colName, colEmail, colBtnDelete });
+            dgvUsers.Location = new Point(18, 60);
+            dgvUsers.Name = "dgvUsers";
+            dgvUsers.RowHeadersWidth = 51;
+            dgvUsers.Size = new Size(728, 358);
+            dgvUsers.TabIndex = 0;
+            dgvUsers.CellContentClick += dgvUsers_CellContentClick;
+            // 
+            // colName
+            // 
+            colName.DataPropertyName = "Name";
+            colName.HeaderText = "Naam";
+            colName.MinimumWidth = 6;
+            colName.Name = "colName";
+            colName.Width = 200;
+            // 
+            // colEmail
+            // 
+            colEmail.DataPropertyName = "Email";
+            colEmail.HeaderText = "Email";
+            colEmail.MinimumWidth = 6;
+            colEmail.Name = "colEmail";
+            colEmail.Width = 325;
+            // 
+            // colBtnDelete
+            // 
+            colBtnDelete.HeaderText = "";
+            colBtnDelete.MinimumWidth = 6;
+            colBtnDelete.Name = "colBtnDelete";
+            colBtnDelete.Text = "Verwijderen";
+            colBtnDelete.UseColumnTextForButtonValue = true;
+            colBtnDelete.Width = 150;
+            // 
             // lblWelcome
             // 
             lblWelcome.Location = new Point(363, 18);
@@ -930,69 +994,6 @@
             btnLogOut.Text = "Uitloggen";
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
-            // 
-            // dgvUsers
-            // 
-            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsers.Columns.AddRange(new DataGridViewColumn[] { colName, colEmail, colBtnDelete });
-            dgvUsers.Location = new Point(18, 60);
-            dgvUsers.Name = "dgvUsers";
-            dgvUsers.RowHeadersWidth = 51;
-            dgvUsers.Size = new Size(728, 358);
-            dgvUsers.TabIndex = 0;
-            // 
-            // lstFilteredUsers
-            // 
-            lstFilteredUsers.FormattingEnabled = true;
-            lstFilteredUsers.Location = new Point(18, 39);
-            lstFilteredUsers.Name = "lstFilteredUsers";
-            lstFilteredUsers.Size = new Size(201, 104);
-            lstFilteredUsers.TabIndex = 10;
-            lstFilteredUsers.Visible = false;
-            // 
-            // txtSearchUser
-            // 
-            txtSearchUser.Location = new Point(18, 16);
-            txtSearchUser.Name = "txtSearchUser";
-            txtSearchUser.PlaceholderText = "Zoek de gebruiker naam";
-            txtSearchUser.Size = new Size(201, 27);
-            txtSearchUser.TabIndex = 9;
-            txtSearchUser.Tag = "lstFilteredProspects";
-            // 
-            // btnNewUser
-            // 
-            btnNewUser.Location = new Point(575, 14);
-            btnNewUser.Name = "btnNewUser";
-            btnNewUser.Size = new Size(171, 29);
-            btnNewUser.TabIndex = 11;
-            btnNewUser.Text = "Gebruiker aanmaken";
-            btnNewUser.UseVisualStyleBackColor = true;
-            btnNewUser.Click += btnNewUser_Click;
-            // 
-            // colName
-            // 
-            colName.DataPropertyName = "Name";
-            colName.HeaderText = "Naam";
-            colName.MinimumWidth = 6;
-            colName.Name = "colName";
-            colName.Width = 200;
-            // 
-            // colEmail
-            // 
-            colEmail.DataPropertyName = "Email";
-            colEmail.HeaderText = "Email";
-            colEmail.MinimumWidth = 6;
-            colEmail.Name = "colEmail";
-            colEmail.Width = 325;
-            // 
-            // colBtnDelete
-            // 
-            colBtnDelete.HeaderText = "";
-            colBtnDelete.MinimumWidth = 6;
-            colBtnDelete.Name = "colBtnDelete";
-            colBtnDelete.Text = "Verwijderen";
-            colBtnDelete.UseColumnTextForButtonValue = true;
-            colBtnDelete.Width = 150;
             // 
             // MainForm
             // 
