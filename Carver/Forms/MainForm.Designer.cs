@@ -96,6 +96,7 @@
             colStatus = new DataGridViewComboBoxColumn();
             colScheduledEdit = new DataGridViewButtonColumn();
             tpCompleted = new TabPage();
+            btnOpenStatistics = new Button();
             lstFilteredCompleted = new ListBox();
             txtSearchCompleted = new TextBox();
             dgvCompleted = new DataGridView();
@@ -108,7 +109,6 @@
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
-            btnOpenStatistics = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpDashboard.SuspendLayout();
@@ -803,6 +803,16 @@
             tpCompleted.Text = "Uitgevoerd";
             tpCompleted.UseVisualStyleBackColor = true;
             // 
+            // btnOpenStatistics
+            // 
+            btnOpenStatistics.Location = new Point(601, 16);
+            btnOpenStatistics.Name = "btnOpenStatistics";
+            btnOpenStatistics.Size = new Size(144, 29);
+            btnOpenStatistics.TabIndex = 9;
+            btnOpenStatistics.Text = "Bekijk grafieken";
+            btnOpenStatistics.UseVisualStyleBackColor = true;
+            btnOpenStatistics.Click += btnOpenStatistics_Click;
+            // 
             // lstFilteredCompleted
             // 
             lstFilteredCompleted.FormattingEnabled = true;
@@ -907,15 +917,6 @@
             btnLogOut.Text = "Uitloggen";
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
-            // 
-            // btnOpenStatistics
-            // 
-            btnOpenStatistics.Location = new Point(601, 16);
-            btnOpenStatistics.Name = "btnOpenStatistics";
-            btnOpenStatistics.Size = new Size(144, 29);
-            btnOpenStatistics.TabIndex = 9;
-            btnOpenStatistics.Text = "Bekijk grafieken";
-            btnOpenStatistics.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

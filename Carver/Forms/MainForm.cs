@@ -31,7 +31,8 @@ namespace Carver
             {
                 var statuses = Enum.GetValues(typeof(TestDriveStatus))
                     .Cast<TestDriveStatus>()
-                    .Select(s => new {
+                    .Select(s => new
+                    {
                         Value = s,
                         Display = s switch
                         {
@@ -387,6 +388,12 @@ namespace Carver
 
             bool hasExperience = _experienceService.ExistsForTestDrive(testDrive.Id);
             e.Value = hasExperience ? "✔ bekijken" : "Ervaring invullen";
+        }
+
+        private void btnOpenStatistics_Click(object sender, EventArgs e)
+        {
+            StatisticsForm form = new StatisticsForm();
+            form.Show();
         }
     }
 }

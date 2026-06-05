@@ -1,3 +1,5 @@
+using Carver.Forms;
+
 namespace Carver
 {
     internal static class Program
@@ -23,8 +25,6 @@ namespace Carver
                     break;
                 }
             }
-
-            //Application.Run(new MainForm());
         }
     }
 }

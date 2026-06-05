@@ -28,62 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             cmbModel = new ComboBox();
-            chartBar = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
             lblTitle = new Label();
             label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)chartBar).BeginInit();
+            tableLayoutPanel1 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)chartPie).BeginInit();
             SuspendLayout();
             // 
             // cmbModel
             // 
             cmbModel.FormattingEnabled = true;
-            cmbModel.Location = new Point(628, 114);
+            cmbModel.Location = new Point(586, 114);
             cmbModel.Name = "cmbModel";
             cmbModel.Size = new Size(216, 28);
             cmbModel.TabIndex = 5;
-            // 
-            // chartBar
-            // 
-            chartArea3.Name = "ChartArea1";
-            chartBar.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            chartBar.Legends.Add(legend3);
-            chartBar.Location = new Point(463, 152);
-            chartBar.Name = "chartBar";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            chartBar.Series.Add(series3);
-            chartBar.Size = new Size(560, 495);
-            chartBar.TabIndex = 4;
-            chartBar.Text = "chart2";
+            cmbModel.SelectedIndexChanged += cmbModel_SelectedIndexChanged;
             // 
             // chartPie
             // 
-            chartArea4.Name = "ChartArea1";
-            chartPie.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            chartPie.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            chartPie.ChartAreas.Add(chartArea1);
+            legend1.MaximumAutoSize = 100F;
+            legend1.Name = "Legend1";
+            chartPie.Legends.Add(legend1);
             chartPie.Location = new Point(12, 114);
             chartPie.Name = "chartPie";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            chartPie.Series.Add(series4);
-            chartPie.Size = new Size(423, 533);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartPie.Series.Add(series1);
+            chartPie.Size = new Size(381, 429);
             chartPie.TabIndex = 3;
             chartPie.Text = "chart1";
+            title1.Name = "Title1";
+            title1.Text = "Proefritten per model";
+            chartPie.Titles.Add(title1);
             // 
             // lblTitle
             // 
@@ -99,25 +84,37 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 134);
-            label1.Location = new Point(463, 114);
+            label1.Location = new Point(421, 114);
             label1.Name = "label1";
             label1.Size = new Size(158, 27);
             label1.TabIndex = 7;
             label1.Text = "Ervaring model";
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Location = new Point(421, 157);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(842, 386);
+            tableLayoutPanel1.TabIndex = 8;
+            // 
             // StatisticsForm
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1035, 659);
+            ClientSize = new Size(1275, 559);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(label1);
             Controls.Add(lblTitle);
             Controls.Add(cmbModel);
-            Controls.Add(chartBar);
             Controls.Add(chartPie);
             Name = "StatisticsForm";
             Text = "Carver Statistieken ";
-            ((System.ComponentModel.ISupportInitialize)chartBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)chartPie).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -126,9 +123,9 @@
         #endregion
 
         private ComboBox cmbModel;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartBar;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPie;
         private Label lblTitle;
         private Label label1;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }
