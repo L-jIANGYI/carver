@@ -967,6 +967,7 @@
             btnNewUser.TabIndex = 11;
             btnNewUser.Text = "Gebruiker aanmaken";
             btnNewUser.UseVisualStyleBackColor = true;
+            btnNewUser.Click += btnNewUser_Click;
             // 
             // colName
             // 

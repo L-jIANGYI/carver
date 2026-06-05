@@ -395,5 +395,16 @@ namespace Carver
             StatisticsForm form = new StatisticsForm();
             form.Show();
         }
+
+        private void btnNewUser_Click(object sender, EventArgs e)
+        {
+            UserForm form = new UserForm();
+
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Nieuwe gebruiker toegevoegd.", "Succes",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
