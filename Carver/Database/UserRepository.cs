@@ -62,6 +62,34 @@ namespace Carver.Database
             }
         }
 
+        public List<User> GetAll()
+        {
+            List<User> users = new List<User>();
+
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT * FROM Users";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    User user = new User(
+                        reader.GetString(reader.GetOrdinal("Name")),
+                        reader.GetString(reader.GetOrdinal("Email")),
+                        reader.GetString(reader.GetOrdinal("Password")),
+                        (UserRole)reader.GetInt32(reader.GetOrdinal("Role"))
+                    );
+                    user.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+
+                    users.Add(user);
+                }
+            }
+
+            return users;
+        }
+
         public void Delete(User user)
         {
             using (SqlConnection conn = DBConnection.GetConnection())

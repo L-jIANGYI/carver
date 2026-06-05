@@ -23,6 +23,11 @@ namespace Carver.Services
             _userRepo.Add(user);
         }
 
+        public List<User> GetAllUsers()
+        {
+            return _userRepo.GetAll();
+        }
+
         public void Delete(User user)
         {
             if (user == null)
