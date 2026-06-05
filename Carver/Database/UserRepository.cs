@@ -7,7 +7,7 @@ namespace Carver.Database
     {
         public User? Login(string email, string password)
         {
-            using(SqlConnection conn = DBConnection.GetConnection())
+            using (SqlConnection conn = DBConnection.GetConnection())
             {
                 // Open the connection and execute a query to find the user with the given email and password
                 conn.Open();
@@ -42,6 +42,37 @@ namespace Carver.Database
                     }
                 }
                 return null;
+            }
+        }
+
+        public void Add(User user)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                conn.Open();
+                string query = "INSERT INTO Users (Name, Email, Password, Role) VALUES (@Name, @Email, @Password, @Role)";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Name", user.Name);
+                cmd.Parameters.AddWithValue("@Email", user.Email);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                cmd.Parameters.AddWithValue("@Role", (int)user.Role);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Delete(User user)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                conn.Open();
+                string query = "DELETE FROM Users WHERE Id = @Id";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Id", user.Id);
+
+                cmd.ExecuteNonQuery();
             }
         }
     }
