@@ -50,6 +50,11 @@ namespace Carver
                 statusColumn.DisplayMember = "Display";
                 statusColumn.ValueMember = "Value";
             }
+
+            if (user.Role != UserRole.Administrator)
+            {
+                tabMain.TabPages.Remove(tpEmployeeManagement);
+            }
         }
 
         private void InitDataGridView()
