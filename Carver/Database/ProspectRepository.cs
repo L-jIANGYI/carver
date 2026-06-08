@@ -10,20 +10,13 @@ namespace Carver.Database
             using(SqlConnection conn = DBConnection.GetConnection())
             {
                 conn.Open();
-                string query = @"INSERT INTO Prospects (FirstName, LastName, Email, Phone, Address, City, HasDrivingLicense, HasScooterLicense, IsDisabledVehicle)
-                                 VALUES (@FirstName, @LastName, @Email, @Phone, @Address, @City, @HasDrivingLicense, @HasScooterLicense, @IsDisabledVehicle)";
+                string query = @"INSERT INTO Prospects
+                    (FirstName, LastName, Email, Phone, Address, City, HasDrivingLicense, HasScooterLicense, IsDisabledVehicle)
+                    VALUES
+                    (@FirstName, @LastName, @Email, @Phone, @Address, @City, @HasDrivingLicense, @HasScooterLicense, @IsDisabledVehicle)";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@FirstName", prospect.FirstName);
-                cmd.Parameters.AddWithValue("@LastName", prospect.LastName);
-                cmd.Parameters.AddWithValue("@Email", prospect.Email);
-                cmd.Parameters.AddWithValue("@Phone", prospect.Phone);
-                cmd.Parameters.AddWithValue("@Address", prospect.Address);
-                cmd.Parameters.AddWithValue("@City", prospect.City);
-                cmd.Parameters.AddWithValue("@HasDrivingLicense", prospect.HasDrivingLicense);
-                cmd.Parameters.AddWithValue("@HasScooterLicense", prospect.HasScooterLicense);
-                cmd.Parameters.AddWithValue("@IsDisabledVehicle", prospect.IsDisabledVehicle);
-
+                AddProspectParameters(cmd, prospect);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -38,22 +31,7 @@ namespace Carver.Database
                 cmd.Parameters.AddWithValue("@Id", id);
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    Prospect prospect = new Prospect(
-                        reader.GetString(reader.GetOrdinal("FirstName")),
-                        reader.GetString(reader.GetOrdinal("LastName")),
-                        reader.GetString(reader.GetOrdinal("Email")),
-                        reader.GetString(reader.GetOrdinal("Phone")),
-                        reader.GetString(reader.GetOrdinal("Address")),
-                        reader.GetString(reader.GetOrdinal("City"))
-                    );
-                    prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
-                    prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
-                    prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
-                    return prospect;
-                }
-                return null;
+                return reader.Read() ? MapProspect(reader) : null;
             }
         }
 
@@ -67,23 +45,7 @@ namespace Carver.Database
                 cmd.Parameters.AddWithValue("@Email", email);
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    Prospect prospect = new Prospect(
-                        reader.GetString(reader.GetOrdinal("FirstName")),
-                        reader.GetString(reader.GetOrdinal("LastName")),
-                        reader.GetString(reader.GetOrdinal("Email")),
-                        reader.GetString(reader.GetOrdinal("Phone")),
-                        reader.GetString(reader.GetOrdinal("Address")),
-                        reader.GetString(reader.GetOrdinal("City"))
-                    );
-                    prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
-                    prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
-                    prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
-                    prospect.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                    return prospect;
-                }
-                return null;
+                return reader.Read() ? MapProspect(reader) : null;
             }
         }
 
@@ -98,23 +60,8 @@ namespace Carver.Database
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                while(reader.Read())
-                {
-                    Prospect prospect = new Prospect(
-                        reader.GetString(reader.GetOrdinal("FirstName")),
-                        reader.GetString(reader.GetOrdinal("LastName")),
-                        reader.GetString(reader.GetOrdinal("Email")),
-                        reader.GetString(reader.GetOrdinal("Phone")),
-                        reader.GetString(reader.GetOrdinal("Address")),
-                        reader.GetString(reader.GetOrdinal("City"))
-                    );
-                    prospect.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                    prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
-                    prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
-                    prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
-
-                    prospects.Add(prospect);
-                }
+                while (reader.Read())
+                    prospects.Add(MapProspect(reader));
             }
 
             return prospects;
@@ -136,16 +83,7 @@ namespace Carver.Database
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Id", prospect.Id);
-                cmd.Parameters.AddWithValue("@FirstName", prospect.FirstName);
-                cmd.Parameters.AddWithValue("@LastName", prospect.LastName);
-                cmd.Parameters.AddWithValue("@Email", prospect.Email);
-                cmd.Parameters.AddWithValue("@Phone", prospect.Phone);
-                cmd.Parameters.AddWithValue("@Address", prospect.Address);
-                cmd.Parameters.AddWithValue("@City", prospect.City);
-                cmd.Parameters.AddWithValue("@HasDrivingLicense", prospect.HasDrivingLicense);
-                cmd.Parameters.AddWithValue("@HasScooterLicense", prospect.HasScooterLicense);
-                cmd.Parameters.AddWithValue("@IsDisabledVehicle", prospect.IsDisabledVehicle);
-
+                AddProspectParameters(cmd, prospect)
                 cmd.ExecuteNonQuery();
             }
         }
@@ -160,6 +98,38 @@ namespace Carver.Database
                 cmd.Parameters.AddWithValue("@Id", prospect.Id);
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        private void AddProspectParameters(SqlCommand cmd, Prospect prospect)
+        {
+            cmd.Parameters.AddWithValue("@FirstName", prospect.FirstName);
+            cmd.Parameters.AddWithValue("@LastName", prospect.LastName);
+            cmd.Parameters.AddWithValue("@Email", prospect.Email);
+            cmd.Parameters.AddWithValue("@Phone", prospect.Phone);
+            cmd.Parameters.AddWithValue("@Address", prospect.Address);
+            cmd.Parameters.AddWithValue("@City", prospect.City);
+            cmd.Parameters.AddWithValue("@HasDrivingLicense", prospect.HasDrivingLicense);
+            cmd.Parameters.AddWithValue("@HasScooterLicense", prospect.HasScooterLicense);
+            cmd.Parameters.AddWithValue("@IsDisabledVehicle", prospect.IsDisabledVehicle);
+        }
+
+        private Prospect MapProspect(SqlDataReader reader)
+        {
+            Prospect prospect = new Prospect(
+                reader.GetString(reader.GetOrdinal("FirstName")),
+                reader.GetString(reader.GetOrdinal("LastName")),
+                reader.GetString(reader.GetOrdinal("Email")),
+                reader.GetString(reader.GetOrdinal("Phone")),
+                reader.GetString(reader.GetOrdinal("Address")),
+                reader.GetString(reader.GetOrdinal("City"))
+            );
+
+            prospect.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+            prospect.HasDrivingLicense = reader.GetBoolean(reader.GetOrdinal("HasDrivingLicense"));
+            prospect.HasScooterLicense = reader.GetBoolean(reader.GetOrdinal("HasScooterLicense"));
+            prospect.IsDisabledVehicle = reader.GetBoolean(reader.GetOrdinal("IsDisabledVehicle"));
+
+            return prospect;
         }
     }
 }
