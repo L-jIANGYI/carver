@@ -33,17 +33,7 @@ namespace Carver
             {
                 var statuses = Enum.GetValues(typeof(TestDriveStatus))
                     .Cast<TestDriveStatus>()
-                    .Select(s => new
-                    {
-                        Value = s,
-                        Display = s switch
-                        {
-                            TestDriveStatus.Scheduled => "Gepland",
-                            TestDriveStatus.Completed => "Uitgevoerd",
-                            TestDriveStatus.Canceled => "Geannuleerd",
-                            _ => s.ToString()
-                        }
-                    })
+                    .Select(s => new { Value = s, Display = s.ToDisplayName() })
                     .ToList();
 
                 statusColumn.DataSource = statuses;
@@ -168,7 +158,7 @@ namespace Carver
                 return;
             }
 
-            var filtered = _prospectService.Search(_allProspects, query);
+            var filtered = _prospectService.Search(query);
             lstFilteredProspects.DataSource = filtered;
             lstFilteredProspects.DisplayMember = "FullName";
             lstFilteredProspects.Visible = true;
@@ -209,7 +199,7 @@ namespace Carver
                 return;
             }
 
-            var filtered = _prospectService.Search(_allProspects, query);
+            var filtered = _prospectService.Search(query);
             lstProspects.DataSource = filtered;
             lstProspects.DisplayMember = "FullName";
             lstProspects.Visible = true;
