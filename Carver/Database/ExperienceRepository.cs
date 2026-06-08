@@ -47,7 +47,7 @@ namespace Carver.Database
             using (SqlConnection conn = DBConnection.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT * FROM Experiences"
+                string query = "SELECT * FROM Experiences";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 

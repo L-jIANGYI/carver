@@ -83,7 +83,7 @@ namespace Carver.Database
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Id", prospect.Id);
-                AddProspectParameters(cmd, prospect)
+                AddProspectParameters(cmd, prospect);
                 cmd.ExecuteNonQuery();
             }
         }
