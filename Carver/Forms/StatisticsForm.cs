@@ -1,5 +1,4 @@
-﻿using Carver.Database;
-using Carver.Models;
+﻿using Carver.Models;
 using Carver.Services;
 using System.Windows.Forms.DataVisualization.Charting;
 using CarverModel = Carver.Models.Carver;
@@ -9,8 +8,8 @@ namespace Carver.Forms
     internal partial class StatisticsForm : Form
     {
         private readonly TestDriveService _testDriveService = new TestDriveService();
-        private readonly ExperienceRepository _experienceRepo = new ExperienceRepository();
-        
+        private readonly ExperienceService _experienceService = new ExperienceService();
+
         public StatisticsForm()
         {
             InitializeComponent();
@@ -88,7 +87,7 @@ namespace Carver.Forms
                 .Select(t => t.Id)
                 .ToHashSet();
 
-            var experiences = _experienceRepo.GetAll()
+            var experiences = _experienceService.GetAll()
                 .Where(e => testDriveIds.Contains(e.TestDriveId))
                 .ToList();
 
