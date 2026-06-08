@@ -24,28 +24,13 @@ namespace Carver.Services
 
         public void Add(Prospect prospect)
         {
-            if (string.IsNullOrWhiteSpace(prospect.FirstName))
-                throw new ArgumentException("Voornaam is verplicht.");
-
-            if (string.IsNullOrWhiteSpace(prospect.LastName))
-                throw new ArgumentException("Achternaam is verplicht.");
-
-            if (string.IsNullOrWhiteSpace(prospect.Email))
-                throw new ArgumentException("E-mailadres is verplicht.");
-
-            if (string.IsNullOrWhiteSpace(prospect.Phone))
-                throw new ArgumentException("Telefoonnummer is verplicht.");
-
+            Validate(prospect, requirePhone: true);
             _prospectRepo.Add(prospect);
         }
 
         public void Update(Prospect prospect)
         {
-            if (string.IsNullOrWhiteSpace(prospect.FirstName))
-                throw new ArgumentException("Voornaam is verplicht.");
-
-            if (string.IsNullOrWhiteSpace(prospect.LastName))
-                throw new ArgumentException("Achternaam is verplicht.");
+            Validate(prospect, requirePhone: true);
 
             _prospectRepo.Update(prospect);
         }
@@ -57,9 +42,24 @@ namespace Carver.Services
 
         public List<Prospect> Search(List<Prospect> prospects, string query)
         {
-            return prospects
-                .Where(p => p.FullName.ToLower().Contains(query.ToLower()))
+            return _prospectRepo.GetAll()
+                .Where(p => p.FullName.Contains(query, StringComparison.OrdinalIgnoreCase))
                 .ToList();
+        }
+
+        private void Validate(Prospect prospect, bool requirePhone)
+        {
+            if (string.IsNullOrWhiteSpace(prospect.FirstName))
+                throw new ArgumentException("Voornaam is verplicht.");
+
+            if (string.IsNullOrWhiteSpace(prospect.LastName))
+                throw new ArgumentException("Achternaam is verplicht.");
+
+            if (string.IsNullOrWhiteSpace(prospect.Email))
+                throw new ArgumentException("E-mailadres is verplicht.");
+
+            if (requirePhone && string.IsNullOrWhiteSpace(prospect.Phone))
+                throw new ArgumentException("Telefoonnummer is verplicht.");
         }
     }
 }

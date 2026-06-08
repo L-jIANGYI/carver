@@ -17,8 +17,17 @@ namespace Carver.Services
 
         public void Register(User user)
         {
-            if (user == null || string.IsNullOrWhiteSpace(user.Email) || string.IsNullOrWhiteSpace(user.Password))
-                throw new ArgumentException("Ongeldige gebruikersgegevens.");
+            if (user == null)
+                throw new ArgumentException("Gebruiker is ongeldig.");
+
+            if (string.IsNullOrWhiteSpace(user.Name))
+                throw new ArgumentException("Naam is verplicht.");
+
+            if (string.IsNullOrWhiteSpace(user.Email))
+                throw new ArgumentException("E-mailadres is verplicht.");
+
+            if (string.IsNullOrWhiteSpace(user.Password))
+                throw new ArgumentException("Wachtwoord is verplicht.");
 
             _userRepo.Add(user);
         }
