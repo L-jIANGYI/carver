@@ -32,25 +32,11 @@ namespace Carver.Database
             {
                 conn.Open();
                 string query = "SELECT * FROM Experiences WHERE TestDriveId = @TestDriveId";
-
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@TestDriveId", testDriveId);
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    Experience experience = new Experience(reader.GetInt32(reader.GetOrdinal("TestDriveId")))
-                    {
-                        MeetExpectation = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("MeetExpectation")),
-                        PriceSatisfaction = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("PriceSatisfaction")),
-                        OptionsAdequate = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("OptionsAdequate")),
-                        WillPurchase = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("WillPurchase"))
-                    };
-                    experience.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                    return experience;
-                }
-
-                return null;
+                return reader.Read() ? MapExperience(reader) : null;
             }
         }
 
@@ -61,26 +47,29 @@ namespace Carver.Database
             using (SqlConnection conn = DBConnection.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT * FROM Experiences";
-
+                string query = "SELECT * FROM Experiences"
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
-                {
-                    Experience experience = new Experience(reader.GetInt32(reader.GetOrdinal("TestDriveId")))
-                    {
-                        MeetExpectation = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("MeetExpectation")),
-                        PriceSatisfaction = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("PriceSatisfaction")),
-                        OptionsAdequate = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("OptionsAdequate")),
-                        WillPurchase = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("WillPurchase"))
-                    };
-                    experience.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                    experiences.Add(experience);
-                }
+                    experiences.Add(MapExperience(reader));
             }
 
             return experiences;
+        }
+
+        private Experience MapExperience(SqlDataReader reader)
+        {
+            Experience experience = new Experience(reader.GetInt32(reader.GetOrdinal("TestDriveId")))
+            {
+                MeetExpectation = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("MeetExpectation")),
+                PriceSatisfaction = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("PriceSatisfaction")),
+                OptionsAdequate = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("OptionsAdequate")),
+                WillPurchase = (ExperienceAnswer)reader.GetInt32(reader.GetOrdinal("WillPurchase"))
+            };
+
+            experience.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+            return experience;
         }
     }
 }

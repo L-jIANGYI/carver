@@ -28,44 +28,6 @@ namespace Carver.Database
             }
         }
 
-        public List<TestDrive> GetByStatus(TestDriveStatus status)
-        {
-            List<TestDrive> testDrives = new List<TestDrive>();
-
-            using (SqlConnection conn = DBConnection.GetConnection())
-            {
-                conn.Open();
-                string query = @"SELECT * FROM TestDrives
-                    WHERE Status = @Status
-                    ORDER BY ScheduledAt";
-
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Status", (int)status);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Prospect prospect = _prospectRepo.GetById(reader.GetInt32(reader.GetOrdinal("ProspectId")))!;
-
-                    CarverModelType modelType = (CarverModelType)reader.GetInt32(reader.GetOrdinal("CarverModel"));
-                    Models.Carver carver = new Models.Carver(modelType);
-
-                    TestDrive testDrive = new TestDrive(
-                        prospect,
-                        carver,
-                        reader.GetDateTime(reader.GetOrdinal("ScheduledAt")),
-                        reader.GetString(reader.GetOrdinal("Reason"))
-                    );
-                    testDrive.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                    testDrive.Status = (TestDriveStatus)reader.GetInt32(reader.GetOrdinal("Status"));
-
-                    testDrives.Add(testDrive);
-                }
-            }
-
-            return testDrives;
-        }
-
         public List<TestDrive> GetAll()
         {
             List<TestDrive> testDrives = new List<TestDrive>();
@@ -79,41 +41,33 @@ namespace Carver.Database
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
-                {
-                    Prospect prospect = _prospectRepo.GetById(reader.GetInt32(reader.GetOrdinal("ProspectId")))!;
-
-                    CarverModelType modelType = (CarverModelType)reader.GetInt32(reader.GetOrdinal("CarverModel"));
-                    Models.Carver carver = new Models.Carver(modelType);
-
-                    TestDrive testDrive = new TestDrive(
-                        prospect,
-                        carver,
-                        reader.GetDateTime(reader.GetOrdinal("ScheduledAt")),
-                        reader.GetString(reader.GetOrdinal("Reason"))
-                    );
-                    testDrive.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                    testDrive.Status = (TestDriveStatus)reader.GetInt32(reader.GetOrdinal("Status"));
-
-                    testDrives.Add(testDrive);
-                }
+                    testDrives.Add(MapTestDrive(reader));
             }
+
             return testDrives;
         }
 
-        public void UpdateStatus(int id, TestDriveStatus newStatus)
+        public List<TestDrive> GetByStatus(TestDriveStatus status)
         {
+            List<TestDrive> testDrives = new List<TestDrive>();
+
             using (SqlConnection conn = DBConnection.GetConnection())
             {
                 conn.Open();
-                string query = @"UPDATE TestDrives SET Status = @Status WHERE Id = @Id";
+                string query = @"SELECT * FROM TestDrives WHERE Status = @Status ORDER BY ScheduledAt";
+
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@Status", (int)newStatus);
-                cmd.ExecuteNonQuery();
+                cmd.Parameters.AddWithValue("@Status", (int)status);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                    testDrives.Add(MapTestDrive(reader));
             }
+
+            return testDrives;
         }
 
-        public void Update(TestDrive testDrive) 
+        public void Update(TestDrive testDrive)
         {
             using (SqlConnection conn = DBConnection.GetConnection())
             {
@@ -133,6 +87,19 @@ namespace Carver.Database
             }
         }
 
+        public void UpdateStatus(int id, TestDriveStatus newStatus)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                conn.Open();
+                string query = @"UPDATE TestDrives SET Status = @Status WHERE Id = @Id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@Status", (int)newStatus);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public void Delete(TestDrive testDrive)
         {
             using (SqlConnection conn = DBConnection.GetConnection())
@@ -143,6 +110,24 @@ namespace Carver.Database
                 cmd.Parameters.AddWithValue("@Id", testDrive.Id);
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        private TestDrive MapTestDrive(SqlDataReader reader)
+        {
+            Prospect prospect = _prospectRepo.GetById(reader.GetInt32(reader.GetOrdinal("ProspectId")))!;
+            CarverModelType modelType = (CarverModelType)reader.GetInt32(reader.GetOrdinal("CarverModel"));
+
+            TestDrive testDrive = new TestDrive(
+                prospect,
+                new Models.Carver(modelType),
+                reader.GetDateTime(reader.GetOrdinal("ScheduledAt")),
+                reader.GetString(reader.GetOrdinal("Reason"))
+            );
+
+            testDrive.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+            testDrive.Status = (TestDriveStatus)reader.GetInt32(reader.GetOrdinal("Status"));
+
+            return testDrive;
         }
     }
 }
