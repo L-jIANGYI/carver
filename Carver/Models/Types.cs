@@ -28,4 +28,15 @@
         Neutral = 2,
         Agree = 3
     }
+
+    internal static class TestDriveStatusExtensions
+    {
+        public static string ToDisplayName(this TestDriveStatus status) => status switch
+        {
+            TestDriveStatus.Scheduled => "Gepland",
+            TestDriveStatus.Completed => "Uitgevoerd",
+            TestDriveStatus.Canceled => "Geannuleerd",
+            _ => status.ToString()
+        };
+    }
 }

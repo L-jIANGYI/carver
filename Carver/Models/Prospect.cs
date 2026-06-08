@@ -9,8 +9,8 @@
         public string Phone { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
-        public bool HasDrivingLicense { get; set; }   // A of B
-        public bool HasScooterLicense { get; set; }   // AM
+        public bool HasDrivingLicense { get; set; }
+        public bool HasScooterLicense { get; set; }
         public bool IsDisabledVehicle { get; set; }
 
         public string FullName => $"{FirstName} {LastName}";

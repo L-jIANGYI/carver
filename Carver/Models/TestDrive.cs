@@ -11,13 +11,7 @@
         public DateTime CreatedAt { get; set; }
         public string ProspectName => Prospect.FullName;
         public string CarverModel => Carver.Type;
-        public string StatusDisplay => Status switch
-        {
-            TestDriveStatus.Scheduled => "Gepland",
-            TestDriveStatus.Completed => "Uitgevoerd",
-            TestDriveStatus.Canceled => "Geannuleerd",
-            _ => Status.ToString()
-        };
+        public string StatusDisplay => Status.ToDisplayName();
 
         public TestDrive(Prospect prospect, Carver carver, DateTime scheduledAt, string reason)
         {
