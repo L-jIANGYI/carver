@@ -40,7 +40,7 @@ namespace Carver.Services
             _prospectRepo.Delete(prospect);
         }
 
-        public List<Prospect> Search(List<Prospect> prospects, string query)
+        public List<Prospect> Search(string query)
         {
             return _prospectRepo.GetAll()
                 .Where(p => p.FullName.Contains(query, StringComparison.OrdinalIgnoreCase))
