@@ -10,12 +10,10 @@
 
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="8.6.0" />
+    <PackageReference Include="itext" Version="9.6.0" />
+    <PackageReference Include="itext.bouncy-castle-adapter" Version="9.6.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
     <PackageReference Include="WinForms.DataVisualization" Version="1.10.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>
