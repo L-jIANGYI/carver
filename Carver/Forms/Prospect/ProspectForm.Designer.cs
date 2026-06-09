@@ -46,7 +46,7 @@
             lblLastname = new Label();
             lblCity = new Label();
             btnSubmit = new Button();
-            btnExportProspectCard = new Button();
+            btnExportPdf = new Button();
             SuspendLayout();
             // 
             // lblProspect
@@ -205,14 +205,15 @@
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
             // 
-            // btnExportProspectCard
+            // btnExportPdf
             // 
-            btnExportProspectCard.Location = new Point(319, 24);
-            btnExportProspectCard.Name = "btnExportProspectCard";
-            btnExportProspectCard.Size = new Size(123, 29);
-            btnExportProspectCard.TabIndex = 43;
-            btnExportProspectCard.Text = "Export in PDF";
-            btnExportProspectCard.UseVisualStyleBackColor = true;
+            btnExportPdf.Location = new Point(327, 24);
+            btnExportPdf.Name = "btnExportPdf";
+            btnExportPdf.Size = new Size(115, 29);
+            btnExportPdf.TabIndex = 43;
+            btnExportPdf.Text = "Export PDF";
+            btnExportPdf.UseVisualStyleBackColor = true;
+            btnExportPdf.Visible = false;
             // 
             // ProspectForm
             // 
@@ -220,7 +221,7 @@
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(455, 450);
-            Controls.Add(btnExportProspectCard);
+            Controls.Add(btnExportPdf);
             Controls.Add(btnSubmit);
             Controls.Add(lblProspect);
             Controls.Add(lblDrivingLicense);
@@ -264,6 +265,6 @@
         private Label lblCity;
         protected Button btnSubmit;
         protected Label lblProspect;
-        private Button btnExportProspectCard;
+        protected Button btnExportPdf;
     }
 }

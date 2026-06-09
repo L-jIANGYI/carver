@@ -1,4 +1,5 @@
-﻿using Carver.Services;
+﻿using Carver.Helpers;
+using Carver.Services;
 using ProspectModel = Carver.Models.Prospect;
 
 namespace Carver.Forms.Prospect
@@ -16,25 +17,12 @@ namespace Carver.Forms.Prospect
             lblProspect.Text = "Prospect Bewerken";
             btnSubmit.Text = "Opslaan";
 
+            btnExportPdf.Visible = true;
+            btnExportPdf.Click += BtnExportPdf_Click;
+
             LaadProspect(_prospectId);
         }
 
-        private void LaadProspect(int id)
-        {
-            ProspectModel? prospect = _prospectService.GetById(id);
-            if (prospect != null)
-            {
-                txtFirstName.Text = prospect.FirstName;
-                txtLastName.Text = prospect.LastName;
-                txtEmail.Text = prospect.Email;
-                txtPhone.Text = prospect.Phone;
-                txtAddress.Text = prospect.Address;
-                txtCity.Text = prospect.City;
-                chkHasDrivingLicense.Checked = prospect.HasDrivingLicense;
-                chkHasScooterLicense.Checked = prospect.HasScooterLicense;
-                chkIsDisabledVehicle.Checked = prospect.IsDisabledVehicle;
-            }
-        }
 
         protected override void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -66,6 +54,31 @@ namespace Carver.Forms.Prospect
             {
                 MessageBox.Show($"Fout bij het bijwerken van de prospect: {ex.Message}", "Fout", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LaadProspect(int id)
+        {
+            ProspectModel? prospect = _prospectService.GetById(id);
+            if (prospect != null)
+            {
+                txtFirstName.Text = prospect.FirstName;
+                txtLastName.Text = prospect.LastName;
+                txtEmail.Text = prospect.Email;
+                txtPhone.Text = prospect.Phone;
+                txtAddress.Text = prospect.Address;
+                txtCity.Text = prospect.City;
+                chkHasDrivingLicense.Checked = prospect.HasDrivingLicense;
+                chkHasScooterLicense.Checked = prospect.HasScooterLicense;
+                chkIsDisabledVehicle.Checked = prospect.IsDisabledVehicle;
+            }
+        }
+
+        private void BtnExportPdf_Click(object? sender, EventArgs e)
+        {
+            ProspectModel? prospect = _prospectService.GetById(_prospectId);
+            if (prospect == null) return;
+
+            PdfExportHelper.ExportKlantenkaart(prospect);
         }
     }
 }

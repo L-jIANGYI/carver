@@ -1,4 +1,6 @@
-﻿namespace Carver.Forms
+﻿using Carver.Helpers;
+
+namespace Carver.Forms
 {
     internal partial class ProspectForm : Form
     {
