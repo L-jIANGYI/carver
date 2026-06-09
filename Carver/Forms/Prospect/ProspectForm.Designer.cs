@@ -46,6 +46,7 @@
             lblLastname = new Label();
             lblCity = new Label();
             btnSubmit = new Button();
+            btnExportProspectCard = new Button();
             SuspendLayout();
             // 
             // lblProspect
@@ -62,7 +63,7 @@
             // 
             lblDrivingLicense.AutoSize = true;
             lblDrivingLicense.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            lblDrivingLicense.Location = new Point(12, 249);
+            lblDrivingLicense.Location = new Point(12, 258);
             lblDrivingLicense.Name = "lblDrivingLicense";
             lblDrivingLicense.Size = new Size(203, 27);
             lblDrivingLicense.TabIndex = 41;
@@ -70,14 +71,14 @@
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(14, 206);
+            txtAddress.Location = new Point(14, 215);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(236, 27);
             txtAddress.TabIndex = 4;
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(14, 79);
+            txtFirstName.Location = new Point(14, 88);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(204, 27);
             txtFirstName.TabIndex = 0;
@@ -85,7 +86,7 @@
             // chkIsDisabledVehicle
             // 
             chkIsDisabledVehicle.AutoSize = true;
-            chkIsDisabledVehicle.Location = new Point(13, 339);
+            chkIsDisabledVehicle.Location = new Point(13, 348);
             chkIsDisabledVehicle.Name = "chkIsDisabledVehicle";
             chkIsDisabledVehicle.Size = new Size(158, 24);
             chkIsDisabledVehicle.TabIndex = 8;
@@ -94,7 +95,7 @@
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(241, 79);
+            txtLastName.Location = new Point(241, 88);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(148, 27);
             txtLastName.TabIndex = 1;
@@ -102,7 +103,7 @@
             // chkHasScooterLicense
             // 
             chkHasScooterLicense.AutoSize = true;
-            chkHasScooterLicense.Location = new Point(13, 309);
+            chkHasScooterLicense.Location = new Point(13, 318);
             chkHasScooterLicense.Name = "chkHasScooterLicense";
             chkHasScooterLicense.Size = new Size(189, 24);
             chkHasScooterLicense.TabIndex = 7;
@@ -111,7 +112,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(14, 141);
+            txtEmail.Location = new Point(14, 150);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(241, 27);
             txtEmail.TabIndex = 2;
@@ -119,7 +120,7 @@
             // chkHasDrivingLicense
             // 
             chkHasDrivingLicense.AutoSize = true;
-            chkHasDrivingLicense.Location = new Point(13, 279);
+            chkHasDrivingLicense.Location = new Point(13, 288);
             chkHasDrivingLicense.Name = "chkHasDrivingLicense";
             chkHasDrivingLicense.Size = new Size(133, 24);
             chkHasDrivingLicense.TabIndex = 6;
@@ -128,14 +129,14 @@
             // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(287, 142);
+            txtPhone.Location = new Point(287, 151);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(148, 27);
+            txtPhone.Size = new Size(156, 27);
             txtPhone.TabIndex = 3;
             // 
             // txtCity
             // 
-            txtCity.Location = new Point(287, 206);
+            txtCity.Location = new Point(287, 215);
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(155, 27);
             txtCity.TabIndex = 5;
@@ -143,7 +144,7 @@
             // lblFirstname
             // 
             lblFirstname.AutoSize = true;
-            lblFirstname.Location = new Point(14, 56);
+            lblFirstname.Location = new Point(14, 65);
             lblFirstname.Name = "lblFirstname";
             lblFirstname.Size = new Size(84, 20);
             lblFirstname.TabIndex = 32;
@@ -152,7 +153,7 @@
             // lblProspectEmail
             // 
             lblProspectEmail.AutoSize = true;
-            lblProspectEmail.Location = new Point(14, 118);
+            lblProspectEmail.Location = new Point(14, 127);
             lblProspectEmail.Name = "lblProspectEmail";
             lblProspectEmail.Size = new Size(47, 20);
             lblProspectEmail.TabIndex = 33;
@@ -161,7 +162,7 @@
             // lblPhone
             // 
             lblPhone.AutoSize = true;
-            lblPhone.Location = new Point(287, 118);
+            lblPhone.Location = new Point(287, 127);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(135, 20);
             lblPhone.TabIndex = 34;
@@ -170,7 +171,7 @@
             // lblAddress
             // 
             lblAddress.AutoSize = true;
-            lblAddress.Location = new Point(14, 183);
+            lblAddress.Location = new Point(14, 192);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(52, 20);
             lblAddress.TabIndex = 35;
@@ -179,7 +180,7 @@
             // lblLastname
             // 
             lblLastname.AutoSize = true;
-            lblLastname.Location = new Point(241, 56);
+            lblLastname.Location = new Point(241, 65);
             lblLastname.Name = "lblLastname";
             lblLastname.Size = new Size(97, 20);
             lblLastname.TabIndex = 36;
@@ -188,7 +189,7 @@
             // lblCity
             // 
             lblCity.AutoSize = true;
-            lblCity.Location = new Point(287, 183);
+            lblCity.Location = new Point(287, 192);
             lblCity.Name = "lblCity";
             lblCity.Size = new Size(42, 20);
             lblCity.TabIndex = 37;
@@ -196,7 +197,7 @@
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(164, 388);
+            btnSubmit.Location = new Point(168, 394);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(113, 37);
             btnSubmit.TabIndex = 9;
@@ -204,12 +205,22 @@
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
             // 
+            // btnExportProspectCard
+            // 
+            btnExportProspectCard.Location = new Point(319, 24);
+            btnExportProspectCard.Name = "btnExportProspectCard";
+            btnExportProspectCard.Size = new Size(123, 29);
+            btnExportProspectCard.TabIndex = 43;
+            btnExportProspectCard.Text = "Export in PDF";
+            btnExportProspectCard.UseVisualStyleBackColor = true;
+            // 
             // ProspectForm
             // 
             AcceptButton = btnSubmit;
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(455, 450);
+            Controls.Add(btnExportProspectCard);
             Controls.Add(btnSubmit);
             Controls.Add(lblProspect);
             Controls.Add(lblDrivingLicense);
@@ -253,5 +264,6 @@
         private Label lblCity;
         protected Button btnSubmit;
         protected Label lblProspect;
+        private Button btnExportProspectCard;
     }
 }

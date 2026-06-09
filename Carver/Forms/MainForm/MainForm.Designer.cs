@@ -116,6 +116,7 @@
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
+            btnExportList = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpDashboard.SuspendLayout();
@@ -676,6 +677,7 @@
             // 
             // tpProspect
             // 
+            tpProspect.Controls.Add(btnExportList);
             tpProspect.Controls.Add(lstFilteredProspects);
             tpProspect.Controls.Add(dgvProspects);
             tpProspect.Controls.Add(btnNewProspect);
@@ -995,6 +997,15 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
+            // btnExportList
+            // 
+            btnExportList.Location = new Point(434, 14);
+            btnExportList.Name = "btnExportList";
+            btnExportList.Size = new Size(148, 29);
+            btnExportList.TabIndex = 5;
+            btnExportList.Text = "Export naar Excel";
+            btnExportList.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -1125,5 +1136,6 @@
         private DataGridViewTextBoxColumn colName;
         private DataGridViewTextBoxColumn colEmail;
         private DataGridViewButtonColumn colBtnDelete;
+        private Button btnExportList;
     }
 }
