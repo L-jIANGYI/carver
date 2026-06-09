@@ -83,6 +83,7 @@
             btnTestDriveNewProspect = new Button();
             lblProspectInfo = new Label();
             tpProspect = new TabPage();
+            btnExportList = new Button();
             lstFilteredProspects = new ListBox();
             btnNewProspect = new Button();
             txtSearchProspects = new TextBox();
@@ -116,7 +117,6 @@
             lblWelcome = new Label();
             lblTitle = new Label();
             btnLogOut = new Button();
-            btnExportList = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProspects).BeginInit();
             tabMain.SuspendLayout();
             tpDashboard.SuspendLayout();
@@ -689,6 +689,16 @@
             tpProspect.Text = "Prospects";
             tpProspect.UseVisualStyleBackColor = true;
             // 
+            // btnExportList
+            // 
+            btnExportList.Location = new Point(434, 14);
+            btnExportList.Name = "btnExportList";
+            btnExportList.Size = new Size(148, 29);
+            btnExportList.TabIndex = 5;
+            btnExportList.Text = "Export naar Excel";
+            btnExportList.UseVisualStyleBackColor = true;
+            btnExportList.Click += btnExportList_Click;
+            // 
             // lstFilteredProspects
             // 
             lstFilteredProspects.FormattingEnabled = true;
@@ -996,15 +1006,6 @@
             btnLogOut.Text = "Uitloggen";
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
-            // 
-            // btnExportList
-            // 
-            btnExportList.Location = new Point(434, 14);
-            btnExportList.Name = "btnExportList";
-            btnExportList.Size = new Size(148, 29);
-            btnExportList.TabIndex = 5;
-            btnExportList.Text = "Export naar Excel";
-            btnExportList.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

@@ -1,4 +1,5 @@
 using Carver.Forms.Prospect;
+using Carver.Helpers;
 using Carver.Models;
 
 namespace Carver
@@ -98,6 +99,23 @@ namespace Carver
                 lstProspects.Visible = false;
 
             e.SuppressKeyPress = true;
+        }
+
+        private void btnExportList_Click(object sender, EventArgs e)
+        {
+            var prospects = dgvProspects.DataSource as List<Prospect>;
+
+            if (prospects == null || prospects.Count == 0)
+            {
+                MessageBox.Show(
+                    "Er zijn geen klanten om te exporteren.",
+                    "Lege lijst",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            ExcelExportHelper.ExportProspectenLijst(prospects);
         }
     }
 }
