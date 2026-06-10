@@ -654,7 +654,6 @@
             txtSearchProspect.TabIndex = 28;
             txtSearchProspect.Tag = "";
             txtSearchProspect.TextChanged += txtSearchProspect_TextChanged;
-            txtSearchProspect.KeyDown += txtSearch_KeyDown;
             // 
             // btnTestDriveNewProspect
             // 
@@ -729,7 +728,6 @@
             txtSearchProspects.TabIndex = 0;
             txtSearchProspects.Tag = "lstFilteredProspects";
             txtSearchProspects.TextChanged += txtSearchProspects_TextChanged;
-            txtSearchProspects.KeyDown += txtSearch_KeyDown;
             // 
             // tpScheduled
             // 

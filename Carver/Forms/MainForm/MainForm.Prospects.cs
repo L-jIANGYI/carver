@@ -64,41 +64,18 @@ namespace Carver
 
         private void txtSearchProspects_TextChanged(object sender, EventArgs e)
         {
-            string query = txtSearchProspects.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(query))
-            {
-                lstFilteredProspects.Visible = false;
-                dgvProspects.DataSource = _allProspects;
-                return;
-            }
-
-            var filtered = _prospectService.Search(query);
-            lstFilteredProspects.DataSource = filtered;
-            lstFilteredProspects.DisplayMember = "FullName";
-            lstFilteredProspects.Visible = true;
-            dgvProspects.DataSource = filtered;
+            HandleProspectSearch(txtSearchProspects.Text.Trim(), lstFilteredProspects, dgvProspects, _allProspects);
         }
 
         private void lstFilteredProspects_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Prospect? selected = lstFilteredProspects.SelectedItem as Prospect;
-            if (selected == null) return;
-
-            dgvProspects.DataSource = new List<Prospect> { selected };
-            lstFilteredProspects.Visible = false;
+            HandleProspectSelected(lstFilteredProspects, txtSearchProspects, dgvProspects);
         }
 
-        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        private void txtSearchProspects_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Enter) return;
-
-            if (sender == txtSearchProspects)
-                lstFilteredProspects.Visible = false;
-            else if (sender == txtSearchProspect)
-                lstProspects.Visible = false;
-
-            e.SuppressKeyPress = true;
+            HandleSearchKeyDown(e, lstFilteredProspects, txtSearchProspects,
+                () => HandleProspectSelected(lstFilteredProspects, txtSearchProspects, dgvProspects));
         }
 
         private void btnExportList_Click(object sender, EventArgs e)

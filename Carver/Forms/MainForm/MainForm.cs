@@ -76,5 +76,73 @@ namespace Carver
         {
             ResetTestDriveForm();
         }
+
+        // search
+        private void HandleProspectSearch(string query, ListBox lst, DataGridView dgv, List<Prospect> allItems)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                lst.Visible = false;
+                dgv.DataSource = allItems.ToList();
+                return;
+            }
+
+            var filtered = _prospectService.Search(query);
+            lst.DataSource = filtered;
+            lst.DisplayMember = "FullName";
+            lst.Visible = filtered.Count > 0;
+            dgv.DataSource = filtered.ToList();
+        }
+
+        private void HandleProspectSelected(ListBox lst, TextBox txt, DataGridView dgv)
+        {
+            Prospect? selected = lst.SelectedItem as Prospect;
+            if (selected == null) return;
+
+            txt.Text = selected.FullName;
+            dgv.DataSource = new List<Prospect> { selected };
+            lst.Visible = false;
+        }
+
+        private void HandleTestDriveSearch(string query, ListBox lst, DataGridView dgv, TestDriveStatus status)
+        {
+            var all = _testDriveService.GetByStatus(status);
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                var matched = all.Where(t => t.ProspectName.Contains(query, StringComparison.OrdinalIgnoreCase)).ToList();
+                lst.DataSource = matched;
+                lst.DisplayMember = "ProspectName";
+                lst.Visible = matched.Count > 0;
+                dgv.DataSource = matched;
+            }
+            else
+            {
+                lst.Visible = false;
+                dgv.DataSource = all;
+            }
+        }
+
+        private void HandleTestDriveSelected(ListBox lst, TextBox txt, DataGridView dgv)
+        {
+            TestDrive? selected = lst.SelectedItem as TestDrive;
+            if (selected == null) return;
+
+            txt.Text = selected.ProspectName;
+            dgv.DataSource = new List<TestDrive> { selected };
+            lst.Visible = false;
+        }
+
+        private void HandleSearchKeyDown(KeyEventArgs e, ListBox lst, TextBox txt, Action onEnter)
+        {
+            if (e.KeyCode != Keys.Enter) return;
+
+            if (lst.Visible && lst.SelectedItem != null)
+                onEnter();
+            else
+                lst.Visible = false;
+
+            e.SuppressKeyPress = true;
+        }
     }
 }
