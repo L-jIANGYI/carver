@@ -88,6 +88,7 @@
             btnNewProspect = new Button();
             txtSearchProspects = new TextBox();
             tpScheduled = new TabPage();
+            chkShowCancelled = new CheckBox();
             lstFilteredScheduled = new ListBox();
             txtSearchScheduled = new TextBox();
             dgvScheduled = new DataGridView();
@@ -732,6 +733,7 @@
             // 
             // tpScheduled
             // 
+            tpScheduled.Controls.Add(chkShowCancelled);
             tpScheduled.Controls.Add(lstFilteredScheduled);
             tpScheduled.Controls.Add(txtSearchScheduled);
             tpScheduled.Controls.Add(dgvScheduled);
@@ -741,6 +743,17 @@
             tpScheduled.TabIndex = 2;
             tpScheduled.Text = "Gepland";
             tpScheduled.UseVisualStyleBackColor = true;
+            // 
+            // chkShowCancelled
+            // 
+            chkShowCancelled.AutoSize = true;
+            chkShowCancelled.Location = new Point(571, 18);
+            chkShowCancelled.Name = "chkShowCancelled";
+            chkShowCancelled.Size = new Size(174, 24);
+            chkShowCancelled.TabIndex = 7;
+            chkShowCancelled.Text = "Toon geannuleerde";
+            chkShowCancelled.UseVisualStyleBackColor = true;
+            chkShowCancelled.CheckedChanged += this.chkShowCancelled_CheckedChanged;
             // 
             // lstFilteredScheduled
             // 
@@ -1138,5 +1151,6 @@
         private DataGridViewTextBoxColumn colEmail;
         private DataGridViewButtonColumn colBtnDelete;
         private Button btnExportList;
+        private CheckBox chkShowCancelled;
     }
 }

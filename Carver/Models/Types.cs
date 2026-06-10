@@ -19,7 +19,7 @@
     {
         Scheduled,
         Completed,
-        Canceled
+        Cancelled
     }
 
     internal enum ExperienceAnswer
@@ -35,7 +35,7 @@
         {
             TestDriveStatus.Scheduled => "Gepland",
             TestDriveStatus.Completed => "Uitgevoerd",
-            TestDriveStatus.Canceled => "Geannuleerd",
+            TestDriveStatus.Cancelled => "Geannuleerd",
             _ => status.ToString()
         };
     }

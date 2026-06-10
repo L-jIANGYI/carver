@@ -8,7 +8,11 @@ namespace Carver
     {
         private void LoadScheduledTestDrives()
         {
-            dgvScheduled.DataSource = _testDriveService.GetByStatus(TestDriveStatus.Scheduled);
+            var testDrives = chkShowCancelled.Checked
+            ? _testDriveService.GetByStatuses(TestDriveStatus.Scheduled, TestDriveStatus.Cancelled)
+            : _testDriveService.GetByStatus(TestDriveStatus.Scheduled);
+
+            dgvScheduled.DataSource = testDrives.OrderBy(t => t.ScheduledAt).ToList();
         }
 
         private void LoadCompletedTestDrives()
@@ -188,6 +192,10 @@ namespace Carver
         private void btnOpenStatistics_Click(object sender, EventArgs e)
         {
             new StatisticsForm().Show();
+        }
+        private void chkShowCancelled_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadScheduledTestDrives();
         }
     }
 }

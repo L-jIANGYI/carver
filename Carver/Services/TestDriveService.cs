@@ -22,6 +22,13 @@ namespace Carver.Services
             return result;
         }
 
+        public List<TestDrive> GetByStatuses(params TestDriveStatus[] statuses)
+        {
+            return _testDriveRepo.GetAll()
+                .Where(t => statuses.Contains(t.Status))
+                .ToList();
+        }
+
         public void Add(TestDrive testDrive)
         {
             if (testDrive.ScheduledAt < DateTime.Today)
