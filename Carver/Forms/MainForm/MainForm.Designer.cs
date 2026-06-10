@@ -728,6 +728,7 @@
             txtSearchProspects.TabIndex = 0;
             txtSearchProspects.Tag = "lstFilteredProspects";
             txtSearchProspects.TextChanged += txtSearchProspects_TextChanged;
+            txtSearchProspects.KeyDown += this.txtSearchProspects_KeyDown;
             // 
             // tpScheduled
             // 
@@ -867,7 +868,7 @@
             txtSearchCompleted.TabIndex = 7;
             txtSearchCompleted.Tag = "lstFilteredProspects";
             txtSearchCompleted.TextChanged += txtSearchCompleted_TextChanged;
-            txtSearchCompleted.KeyDown += this.txtSearchCompleted_KeyDown;
+            txtSearchCompleted.KeyDown += txtSearchCompleted_KeyDown;
             // 
             // dgvCompleted
             // 

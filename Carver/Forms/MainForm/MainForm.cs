@@ -99,7 +99,6 @@ namespace Carver
             Prospect? selected = lst.SelectedItem as Prospect;
             if (selected == null) return;
 
-            txt.Text = selected.FullName;
             dgv.DataSource = new List<Prospect> { selected };
             lst.Visible = false;
         }
@@ -128,7 +127,6 @@ namespace Carver
             TestDrive? selected = lst.SelectedItem as TestDrive;
             if (selected == null) return;
 
-            txt.Text = selected.ProspectName;
             dgv.DataSource = new List<TestDrive> { selected };
             lst.Visible = false;
         }
