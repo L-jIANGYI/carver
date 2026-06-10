@@ -14,7 +14,12 @@ namespace Carver.Services
 
         public List<TestDrive> GetByStatus(TestDriveStatus status)
         {
-            return _testDriveRepo.GetByStatus(status);
+            var result = _testDriveRepo.GetByStatus(status);
+
+            if (status == TestDriveStatus.Completed)
+                return result.OrderByDescending(t => t.ScheduledAt).ToList();
+
+            return result;
         }
 
         public void Add(TestDrive testDrive)
