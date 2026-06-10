@@ -193,9 +193,31 @@ namespace Carver
         {
             new StatisticsForm().Show();
         }
+
         private void chkShowCancelled_CheckedChanged(object sender, EventArgs e)
         {
             LoadScheduledTestDrives();
         }
+
+        // search handlers
+        private void txtSearchScheduled_TextChanged(object sender, EventArgs e) =>
+            HandleTestDriveSearch(txtSearchScheduled.Text.Trim(), lstFilteredScheduled, dgvScheduled, TestDriveStatus.Scheduled);
+
+        private void lstFilteredScheduled_SelectedIndexChanged(object sender, EventArgs e) =>
+            HandleTestDriveSelected(lstFilteredScheduled, txtSearchScheduled, dgvScheduled);
+
+        private void txtSearchScheduled_KeyDown(object sender, KeyEventArgs e) =>
+            HandleSearchKeyDown(e, lstFilteredScheduled, txtSearchScheduled,
+                () => HandleTestDriveSelected(lstFilteredScheduled, txtSearchScheduled, dgvScheduled));
+
+        private void txtSearchCompleted_TextChanged(object sender, EventArgs e) =>
+            HandleTestDriveSearch(txtSearchCompleted.Text.Trim(), lstFilteredCompleted, dgvCompleted, TestDriveStatus.Completed);
+
+        private void lstFilteredCompleted_SelectedIndexChanged(object sender, EventArgs e) =>
+            HandleTestDriveSelected(lstFilteredCompleted, txtSearchCompleted, dgvCompleted);
+
+        private void txtSearchCompleted_KeyDown(object sender, KeyEventArgs e) =>
+            HandleSearchKeyDown(e, lstFilteredCompleted, txtSearchCompleted,
+                () => HandleTestDriveSelected(lstFilteredCompleted, txtSearchCompleted, dgvCompleted));
     }
 }

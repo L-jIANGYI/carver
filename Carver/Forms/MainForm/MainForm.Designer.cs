@@ -751,7 +751,7 @@
             chkShowCancelled.TabIndex = 7;
             chkShowCancelled.Text = "Toon geannuleerde";
             chkShowCancelled.UseVisualStyleBackColor = true;
-            chkShowCancelled.CheckedChanged += this.chkShowCancelled_CheckedChanged;
+            chkShowCancelled.CheckedChanged += chkShowCancelled_CheckedChanged;
             // 
             // lstFilteredScheduled
             // 
@@ -761,6 +761,7 @@
             lstFilteredScheduled.Size = new Size(201, 104);
             lstFilteredScheduled.TabIndex = 6;
             lstFilteredScheduled.Visible = false;
+            lstFilteredScheduled.SelectedIndexChanged += lstFilteredScheduled_SelectedIndexChanged;
             // 
             // txtSearchScheduled
             // 
@@ -770,6 +771,8 @@
             txtSearchScheduled.Size = new Size(201, 27);
             txtSearchScheduled.TabIndex = 5;
             txtSearchScheduled.Tag = "lstFilteredProspects";
+            txtSearchScheduled.TextChanged += txtSearchScheduled_TextChanged;
+            txtSearchScheduled.KeyDown += txtSearchScheduled_KeyDown;
             // 
             // dgvScheduled
             // 
@@ -853,6 +856,7 @@
             lstFilteredCompleted.Size = new Size(201, 104);
             lstFilteredCompleted.TabIndex = 8;
             lstFilteredCompleted.Visible = false;
+            lstFilteredCompleted.SelectedIndexChanged += lstFilteredCompleted_SelectedIndexChanged;
             // 
             // txtSearchCompleted
             // 
@@ -862,6 +866,8 @@
             txtSearchCompleted.Size = new Size(201, 27);
             txtSearchCompleted.TabIndex = 7;
             txtSearchCompleted.Tag = "lstFilteredProspects";
+            txtSearchCompleted.TextChanged += txtSearchCompleted_TextChanged;
+            txtSearchCompleted.KeyDown += this.txtSearchCompleted_KeyDown;
             // 
             // dgvCompleted
             // 
